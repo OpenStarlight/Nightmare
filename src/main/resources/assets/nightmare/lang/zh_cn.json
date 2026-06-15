@@ -1,8 +1,22 @@
 {
   "item.nightmare.flint_shard": "燧石碎片",
+  "item.nightmare.obsidian_shard": "黑曜石碎片",
+  "item.nightmare.emerald_shard": "绿宝石碎片",
+  "item.nightmare.diamond_shard": "钻石碎片",
+  "item.nightmare.quartz_shard": "下界石英碎片",
+  "item.nightmare.glass_shard": "玻璃碎片",
   "item.nightmare.leather_string": "皮革线",
+  "item.nightmare.silver_nugget": "银粒",
+  "item.nightmare.ancient_metal_nugget": "远古金属粒",
+  "item.nightmare.mithril_nugget": "秘银粒",
+  "item.nightmare.adamantium_nugget": "艾德曼粒",
+  "item.nightmare.silver_ingot": "银锭",
+  "item.nightmare.ancient_metal_ingot": "远古金属锭",
+  "item.nightmare.mithril_ingot": "秘银锭",
+  "item.nightmare.adamantium_ingot": "艾德曼锭",
   "item.nightmare.flint_axe": "燧石斧",
   "item.nightmare.flint_hatchet": "燧石手斧",
   "item.nightmare.flint_knife": "燧石小刀",
-  "item.nightmare.flint_shovel": "燧石铲"
+  "item.nightmare.flint_shovel": "燧石铲",
+  "item.nightmare.salad": "沙拉"
 }

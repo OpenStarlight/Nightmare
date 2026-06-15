@@ -35,17 +35,41 @@
                   "type": "minecraft:item",
                   "conditions": [
                     {
-                      "chances": [
-                        0.15625,
-                        0.3125,
-                        0.46875,
-                        1.0
-                      ],
-                      "condition": "minecraft:table_bonus",
-                      "enchantment": "minecraft:fortune"
+                      "chance": 0.0556,
+                      "condition": "minecraft:random_chance"
+                    }
+                  ],
+                  "name": "minecraft:copper_nugget"
+                },
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "chance": 0.1654,
+                      "condition": "minecraft:random_chance"
                     }
                   ],
                   "name": "nightmare:flint_shard"
+                },
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "chance": 0.0396,
+                      "condition": "minecraft:random_chance"
+                    }
+                  ],
+                  "name": "minecraft:flint"
+                },
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "chance": 0.0367,
+                      "condition": "minecraft:random_chance"
+                    }
+                  ],
+                  "name": "minecraft:gold_nugget"
                 },
                 {
                   "type": "minecraft:item",

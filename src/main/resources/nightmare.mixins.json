@@ -9,6 +9,7 @@
 		"item.MixinFoodData",
 		"item.MixinItem",
 		"item.MixinConsumable",
+		"item.MixinToolMaterial",
 		"player.MixinPlayer"
 	],
 	"injectors": {
