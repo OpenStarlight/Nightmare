@@ -67,7 +67,7 @@ public abstract class MixinGui {
 
     @Unique
     private static int nightmare$gradient(int index) {
-        double wave = Math.sin(System.currentTimeMillis() / 180.0D - index * 0.4D) * 0.5D + 0.5D;
+        double wave = Math.sin(System.currentTimeMillis() / 180.0D - index * 0.2D) * 0.5D + 0.5D;
         int r = (int) (24 + wave * 40);
         int g = (int) (96 + wave * 96);
         int b = (int) (180 + wave * 75);

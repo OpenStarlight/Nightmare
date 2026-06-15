@@ -2,18 +2,12 @@
   "feature": "minecraft:flower_meadow",
   "placement": [
     {
-      "type": "minecraft:in_square"
-    },
-    {
-      "type": "minecraft:heightmap",
-      "heightmap": "MOTION_BLOCKING"
-    },
-    {
-      "type": "minecraft:biome"
-    },
-    {
       "type": "minecraft:count",
-      "count": 64
+      "count": 96
+    },
+    {
+      "type": "minecraft:rarity_filter",
+      "chance": 4
     },
     {
       "type": "minecraft:random_offset",
