@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "nightmare:block/mithril_ore"
+    }
+  }
+}

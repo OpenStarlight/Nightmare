@@ -24,7 +24,7 @@ public class ModToolMaterials {
     public static final ToolMaterial FLINT = new ToolMaterial(
             INCORRECT_FOR_FLINT_TOOL,
             20,
-            1.0F,
+            3.0F,
             0F,
             1,
             FLINT_TOOL_MATERIALS
@@ -32,7 +32,7 @@ public class ModToolMaterials {
     public static final ToolMaterial SILVER = new ToolMaterial(
             INCORRECT_FOR_SILVER_TOOL,
             160,
-            4.0F,
+            6.0F,
             1.5F,
             4,
             SILVER_TOOL_MATERIALS
@@ -40,7 +40,7 @@ public class ModToolMaterials {
     public static final ToolMaterial ANCIENT_METAL = new ToolMaterial(
             INCORRECT_FOR_ANCIENT_METAL_TOOL,
             640,
-            6.0F,
+            8.5F,
             2.5F,
             6,
             ANCIENT_METAL_TOOL_MATERIALS
@@ -48,7 +48,7 @@ public class ModToolMaterials {
     public static final ToolMaterial MITHRIL = new ToolMaterial(
             INCORRECT_FOR_MITHRIL_TOOL,
             2560,
-            8.0F,
+            9.0F,
             3.5F,
             8,
             MITHRIL_TOOL_MATERIALS
@@ -56,7 +56,7 @@ public class ModToolMaterials {
     public static final ToolMaterial ADAMANTIUM = new ToolMaterial(
             INCORRECT_FOR_ADAMANTIUM_TOOL,
             5120,
-            11.0F,
+            14.5F,
             5.5F,
             12,
             ADAMANTIUM_TOOL_MATERIALS

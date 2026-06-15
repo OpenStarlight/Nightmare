@@ -44,12 +44,12 @@ public class MixinToolMaterial {
 
     @Inject(method = "<clinit>", at = @At("TAIL"))
     private static void modifyToolMaterials(CallbackInfo ci) {
-        WOOD = new ToolMaterial(BlockTags.INCORRECT_FOR_WOODEN_TOOL, 40, 2.0F, 0.5F, 2, ItemTags.WOODEN_TOOL_MATERIALS);
-        STONE = new ToolMaterial(BlockTags.INCORRECT_FOR_STONE_TOOL, 40, 2.0F, 0.5F, 2, ItemTags.STONE_TOOL_MATERIALS);
-        GOLD = new ToolMaterial(BlockTags.INCORRECT_FOR_GOLD_TOOL, 80, 3.0F, 1.0F, 3, ItemTags.GOLD_TOOL_MATERIALS);
-        COPPER = new ToolMaterial(BlockTags.INCORRECT_FOR_COPPER_TOOL, 160, 4.0F, 1.5F, 4, ItemTags.COPPER_TOOL_MATERIALS);
-        IRON = new ToolMaterial(BlockTags.INCORRECT_FOR_IRON_TOOL, 320, 5.0F, 2.0F, 5, ItemTags.IRON_TOOL_MATERIALS);
-        DIAMOND = new ToolMaterial(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1280, 7.0F, 3.0F, 7, ItemTags.DIAMOND_TOOL_MATERIALS);
-        NETHERITE = new ToolMaterial(BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 3840, 9.5F, 4.5F, 10, ItemTags.NETHERITE_TOOL_MATERIALS);
+        WOOD = new ToolMaterial(BlockTags.INCORRECT_FOR_WOODEN_TOOL, 40, 3.0F, 0.5F, 2, ItemTags.WOODEN_TOOL_MATERIALS);
+        STONE = new ToolMaterial(BlockTags.INCORRECT_FOR_STONE_TOOL, 1, 0.1F, 0F, 1, ItemTags.STONE_TOOL_MATERIALS);
+        GOLD = new ToolMaterial(BlockTags.INCORRECT_FOR_GOLD_TOOL, 80, 5.0F, 1.0F, 3, ItemTags.GOLD_TOOL_MATERIALS);
+        COPPER = new ToolMaterial(BlockTags.INCORRECT_FOR_COPPER_TOOL, 160, 6.0F, 1.5F, 4, ItemTags.COPPER_TOOL_MATERIALS);
+        IRON = new ToolMaterial(BlockTags.INCORRECT_FOR_IRON_TOOL, 320, 7.0F, 2.0F, 5, ItemTags.IRON_TOOL_MATERIALS);
+        DIAMOND = new ToolMaterial(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1280, 10.0F, 3.0F, 7, ItemTags.DIAMOND_TOOL_MATERIALS);
+        NETHERITE = new ToolMaterial(BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 3840, 13F, 4.5F, 10, ItemTags.NETHERITE_TOOL_MATERIALS);
     }
 }

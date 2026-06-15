@@ -65,11 +65,91 @@
                   "type": "minecraft:item",
                   "conditions": [
                     {
-                      "chance": 0.0367,
+                      "chance": 0.0734,
                       "condition": "minecraft:random_chance"
                     }
                   ],
                   "name": "minecraft:gold_nugget"
+                },
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "chance": 0.0264,
+                      "condition": "minecraft:random_chance"
+                    }
+                  ],
+                  "name": "nightmare:silver_nugget"
+                },
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "chance": 0.0136,
+                      "condition": "minecraft:random_chance"
+                    }
+                  ],
+                  "name": "minecraft:iron_nugget"
+                },
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "chance": 0.0001,
+                      "condition": "minecraft:random_chance"
+                    }
+                  ],
+                  "name": "nightmare:mithril_nugget"
+                },
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "chance": 0.0001,
+                      "condition": "minecraft:random_chance"
+                    }
+                  ],
+                  "name": "nightmare:adamantium_nugget"
+                },
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "chance": 0.0031,
+                      "condition": "minecraft:random_chance"
+                    }
+                  ],
+                  "name": "nightmare:obsidian_shard"
+                },
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "chance": 0.001,
+                      "condition": "minecraft:random_chance"
+                    }
+                  ],
+                  "name": "nightmare:emerald_shard"
+                },
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "chance": 0.0003,
+                      "condition": "minecraft:random_chance"
+                    }
+                  ],
+                  "name": "nightmare:diamond_shard"
+                },
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "chance": 0.233,
+                      "condition": "minecraft:random_chance"
+                    }
+                  ],
+                  "name": "nightmare:quartz_shard"
                 },
                 {
                   "type": "minecraft:item",

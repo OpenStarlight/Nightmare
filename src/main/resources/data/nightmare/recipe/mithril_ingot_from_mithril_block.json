@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "nightmare:mithril_block"
+  ],
+  "result": {
+    "count": 9,
+    "id": "nightmare:mithril_ingot"
+  }
+}

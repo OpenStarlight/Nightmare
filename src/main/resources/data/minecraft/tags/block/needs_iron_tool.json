@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "nightmare:silver_ore",
+    "nightmare:deepslate_silver_ore",
+    "nightmare:silver_block",
+    "nightmare:ancient_metal_block"
+  ]
+}

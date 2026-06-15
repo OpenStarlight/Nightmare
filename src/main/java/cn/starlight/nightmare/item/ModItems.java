@@ -1,6 +1,7 @@
 package cn.starlight.nightmare.item;
 
 import cn.starlight.nightmare.NightmareMod;
+import cn.starlight.nightmare.block.ModBlocks;
 import cn.starlight.nightmare.modifier.ItemModifier;
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.minecraft.core.Registry;
@@ -29,6 +30,9 @@ public class ModItems {
     public static final Item ANCIENT_METAL_NUGGET = register("ancient_metal_nugget", Item::new, new Item.Properties());
     public static final Item MITHRIL_NUGGET = register("mithril_nugget", Item::new, new Item.Properties());
     public static final Item ADAMANTIUM_NUGGET = register("adamantium_nugget", Item::new, new Item.Properties());
+    public static final Item RAW_SILVER = register("raw_silver", Item::new, new Item.Properties());
+    public static final Item RAW_MITHRIL = register("raw_mithril", Item::new, new Item.Properties());
+    public static final Item ADAMANTIUM_SHARD = register("adamantium_shard", Item::new, new Item.Properties());
     public static final Item SILVER_INGOT = register("silver_ingot", Item::new, new Item.Properties());
     public static final Item ANCIENT_METAL_INGOT = register("ancient_metal_ingot", Item::new, new Item.Properties());
     public static final Item MITHRIL_INGOT = register("mithril_ingot", Item::new, new Item.Properties());
@@ -55,15 +59,19 @@ public class ModItems {
                     creativeTab.insertAfter(EMERALD_SHARD, DIAMOND_SHARD);
                     creativeTab.insertAfter(DIAMOND_SHARD, QUARTZ_SHARD);
                     creativeTab.insertAfter(QUARTZ_SHARD, GLASS_SHARD);
-                    creativeTab.insertBefore(Items.STRING, LEATHER_STRING);
+                    creativeTab.insertAfter(Items.STRING, LEATHER_STRING);
                     creativeTab.insertAfter(Items.GOLD_NUGGET, SILVER_NUGGET);
                     creativeTab.insertAfter(SILVER_NUGGET, ANCIENT_METAL_NUGGET);
                     creativeTab.insertAfter(ANCIENT_METAL_NUGGET, MITHRIL_NUGGET);
                     creativeTab.insertAfter(MITHRIL_NUGGET, ADAMANTIUM_NUGGET);
+                    creativeTab.insertAfter(ADAMANTIUM_NUGGET, RAW_SILVER);
+                    creativeTab.insertAfter(RAW_SILVER, RAW_MITHRIL);
+                    creativeTab.insertAfter(RAW_MITHRIL, ADAMANTIUM_SHARD);
                     creativeTab.insertAfter(Items.IRON_INGOT, SILVER_INGOT);
                     creativeTab.insertAfter(SILVER_INGOT, ANCIENT_METAL_INGOT);
                     creativeTab.insertAfter(ANCIENT_METAL_INGOT, MITHRIL_INGOT);
                     creativeTab.insertAfter(MITHRIL_INGOT, ADAMANTIUM_INGOT);
+                    creativeTab.insertAfter(Items.ANCIENT_DEBRIS, ModBlocks.DEEPSLATE_SILVER_ORE.asItem());
                 });
         CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.TOOLS_AND_UTILITIES)
                 .register((creativeTab) -> {

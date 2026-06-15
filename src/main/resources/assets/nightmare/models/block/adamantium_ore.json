@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "nightmare:block/adamantium_ore_side",
+    "down": "nightmare:block/adamantium_ore_top",
+    "up": "nightmare:block/adamantium_ore_top",
+    "north": "nightmare:block/adamantium_ore_side",
+    "south": "nightmare:block/adamantium_ore_side",
+    "west": "nightmare:block/adamantium_ore_side",
+    "east": "nightmare:block/adamantium_ore_side"
+  }
+}

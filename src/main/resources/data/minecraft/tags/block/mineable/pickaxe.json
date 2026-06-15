@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "nightmare:silver_ore",
+    "nightmare:deepslate_silver_ore",
+    "nightmare:mithril_ore",
+    "nightmare:deepslate_mithril_ore",
+    "nightmare:adamantium_ore",
+    "nightmare:silver_block",
+    "nightmare:ancient_metal_block",
+    "nightmare:mithril_block",
+    "nightmare:adamantium_block"
+  ]
+}

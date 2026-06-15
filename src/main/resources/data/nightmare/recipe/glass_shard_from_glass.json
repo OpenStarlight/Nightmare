@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:glass"
+  ],
+  "result": {
+    "count": 9,
+    "id": "nightmare:glass_shard"
+  }
+}

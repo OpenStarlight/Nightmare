@@ -1,5 +1,6 @@
 package cn.starlight.nightmare;
 
+import cn.starlight.nightmare.block.ModBlocks;
 import cn.starlight.nightmare.event.ServerEvent;
 import cn.starlight.nightmare.modifier.BlockModifier;
 import cn.starlight.nightmare.modifier.ItemModifier;
@@ -23,6 +24,7 @@ public class NightmareMod implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        ModBlocks.initialize();
         ModItems.initialize();
         ItemModifier.initialize();
         BlockModifier.initialize();
