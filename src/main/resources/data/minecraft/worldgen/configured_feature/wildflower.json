@@ -1,0 +1,112 @@
+{
+  "type": "minecraft:simple_block",
+  "config": {
+    "to_place": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "data": {
+            "Name": "minecraft:dandelion"
+          },
+          "weight": 24
+        },
+        {
+          "data": {
+            "Name": "minecraft:wildflowers"
+          },
+          "weight": 1
+        },
+        {
+          "data": {
+            "Name": "minecraft:wildflowers"
+          },
+          "weight": 1
+        },
+        {
+          "data": {
+            "Name": "minecraft:wildflowers"
+          },
+          "weight": 1
+        },
+        {
+          "data": {
+            "Name": "minecraft:wildflowers"
+          },
+          "weight": 1
+        },
+        {
+          "data": {
+            "Name": "minecraft:wildflowers"
+          },
+          "weight": 1
+        },
+        {
+          "data": {
+            "Name": "minecraft:wildflowers"
+          },
+          "weight": 1
+        },
+        {
+          "data": {
+            "Name": "minecraft:wildflowers"
+          },
+          "weight": 1
+        },
+        {
+          "data": {
+            "Name": "minecraft:wildflowers"
+          },
+          "weight": 1
+        },
+        {
+          "data": {
+            "Name": "minecraft:wildflowers"
+          },
+          "weight": 1
+        },
+        {
+          "data": {
+            "Name": "minecraft:wildflowers"
+          },
+          "weight": 1
+        },
+        {
+          "data": {
+            "Name": "minecraft:wildflowers"
+          },
+          "weight": 1
+        },
+        {
+          "data": {
+            "Name": "minecraft:wildflowers"
+          },
+          "weight": 1
+        },
+        {
+          "data": {
+            "Name": "minecraft:wildflowers"
+          },
+          "weight": 1
+        },
+        {
+          "data": {
+            "Name": "minecraft:wildflowers"
+          },
+          "weight": 1
+        },
+        {
+          "data": {
+            "Name": "minecraft:wildflowers"
+          },
+          "weight": 1
+        },
+        {
+          "data": {
+            "Name": "minecraft:wildflowers"
+          },
+          "weight": 1
+        }
+      ]
+    }
+  }
+}

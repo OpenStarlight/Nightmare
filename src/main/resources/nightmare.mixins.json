@@ -1,0 +1,20 @@
+{
+	"required": true,
+	"package": "cn.starlight.nightmare.mixin",
+	"compatibilityLevel": "JAVA_25",
+	"mixins": [
+		"block.MixinBlockBehaviour",
+		"entity.MixinEntity",
+		"entity.MixinLivingEntity",
+		"item.MixinFoodData",
+		"item.MixinItem",
+		"item.MixinConsumable",
+		"player.MixinPlayer"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"overwrites": {
+		"requireAnnotations": true
+	}
+}

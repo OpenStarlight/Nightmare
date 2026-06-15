@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "F": "minecraft:flint",
+    "S": "minecraft:stick",
+    "L": "nightmare:leather_string"
+  },
+  "pattern": [
+    "FF ",
+    "FSL",
+    " S "
+  ],
+  "result": {
+    "id": "nightmare:flint_axe"
+  }
+}

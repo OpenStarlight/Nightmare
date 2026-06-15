@@ -1,0 +1,40 @@
+{
+  "type": "minecraft:simple_block",
+  "config": {
+    "to_place": {
+      "type": "minecraft:noise_threshold_provider",
+      "default_state": {
+        "Name": "minecraft:dandelion"
+      },
+      "high_chance": 0.05,
+      "high_states": [
+        {
+          "Name": "minecraft:poppy"
+        },
+        {
+          "Name": "minecraft:azure_bluet"
+        },
+        {
+          "Name": "minecraft:oxeye_daisy"
+        },
+        {
+          "Name": "minecraft:cornflower"
+        }
+      ],
+      "low_states": [
+        {
+          "Name": "minecraft:dandelion"
+        }
+      ],
+      "noise": {
+        "amplitudes": [
+          1.0
+        ],
+        "firstOctave": 0
+      },
+      "scale": 0.005,
+      "seed": 2345,
+      "threshold": -0.8
+    }
+  }
+}
