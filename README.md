@@ -38,5 +38,5 @@ Nightmare 是一个基于 Fabric 的提高 Minecraft 生存难度的模组。这
 
 ## 许可证
 
-本项目使用 GNU General Public License v3.0 (GPL v3.0) 开源和发行，详见 [LICENSE](LICENSE)
-本项目归属于 [Starlight](https://github.com/Starlight) 团队
+本项目使用 GNU General Public License v3.0 (GPL v3.0) 开源和发行，详见 [LICENSE](LICENSE) 文件。  
+本项目归属于 [Starlight](https://github.com/Starlight) 团队。
