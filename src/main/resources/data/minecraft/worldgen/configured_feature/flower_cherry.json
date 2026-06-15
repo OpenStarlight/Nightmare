@@ -8,103 +8,13 @@
           "data": {
             "Name": "minecraft:dandelion"
           },
-          "weight": 24
+          "weight": 8
         },
         {
           "data": {
             "Name": "minecraft:pink_petals"
           },
-          "weight": 1
-        },
-        {
-          "data": {
-            "Name": "minecraft:pink_petals"
-          },
-          "weight": 1
-        },
-        {
-          "data": {
-            "Name": "minecraft:pink_petals"
-          },
-          "weight": 1
-        },
-        {
-          "data": {
-            "Name": "minecraft:pink_petals"
-          },
-          "weight": 1
-        },
-        {
-          "data": {
-            "Name": "minecraft:pink_petals"
-          },
-          "weight": 1
-        },
-        {
-          "data": {
-            "Name": "minecraft:pink_petals"
-          },
-          "weight": 1
-        },
-        {
-          "data": {
-            "Name": "minecraft:pink_petals"
-          },
-          "weight": 1
-        },
-        {
-          "data": {
-            "Name": "minecraft:pink_petals"
-          },
-          "weight": 1
-        },
-        {
-          "data": {
-            "Name": "minecraft:pink_petals"
-          },
-          "weight": 1
-        },
-        {
-          "data": {
-            "Name": "minecraft:pink_petals"
-          },
-          "weight": 1
-        },
-        {
-          "data": {
-            "Name": "minecraft:pink_petals"
-          },
-          "weight": 1
-        },
-        {
-          "data": {
-            "Name": "minecraft:pink_petals"
-          },
-          "weight": 1
-        },
-        {
-          "data": {
-            "Name": "minecraft:pink_petals"
-          },
-          "weight": 1
-        },
-        {
-          "data": {
-            "Name": "minecraft:pink_petals"
-          },
-          "weight": 1
-        },
-        {
-          "data": {
-            "Name": "minecraft:pink_petals"
-          },
-          "weight": 1
-        },
-        {
-          "data": {
-            "Name": "minecraft:pink_petals"
-          },
-          "weight": 1
+          "weight": 16
         }
       ]
     }
