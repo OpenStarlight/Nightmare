@@ -30,6 +30,16 @@
             },
             {
               "type": "minecraft:item",
+              "functions": [
+                {
+                  "enchantment": "minecraft:fortune",
+                  "formula": "minecraft:ore_drops",
+                  "function": "minecraft:apply_bonus"
+                },
+                {
+                  "function": "minecraft:explosion_decay"
+                }
+              ],
               "name": "nightmare:raw_silver"
             }
           ]
@@ -38,5 +48,5 @@
       "rolls": 1.0
     }
   ],
-  "random_sequence": "minecraft:blocks/deepslate_silver_ore"
+  "random_sequence": "nightmare:blocks/deepslate_silver_ore"
 }

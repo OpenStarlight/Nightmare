@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.7,
+  "ingredient": "nightmare:raw_silver",
+  "result": {
+    "id": "nightmare:silver_ingot"
+  }
+}

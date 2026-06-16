@@ -3,13 +3,7 @@
   "pools": [
     {
       "bonus_rolls": 0.0,
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:wooden_axe",
-          "weight": 3
-        }
-      ],
+      "entries": [],
       "rolls": 1.0
     },
     {
@@ -219,7 +213,7 @@
           "weight": 3
         }
       ],
-      "rolls": 4.0
+      "rolls": 3.0
     }
   ],
   "random_sequence": "minecraft:chests/spawn_bonus_chest"

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "nightmare:item/tool/ancient_metal_shovel"
+  }
+}

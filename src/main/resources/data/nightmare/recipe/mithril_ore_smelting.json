@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 1.2,
+  "ingredient": "nightmare:mithril_ore",
+  "result": {
+    "id": "nightmare:mithril_ingot"
+  }
+}

@@ -3,8 +3,12 @@
     "minecraft:diamond_hoe",
     "minecraft:golden_hoe",
     "minecraft:netherite_hoe",
-    "minecraft:wooden_hoe",
     "minecraft:iron_hoe",
-    "minecraft:copper_hoe"
+    "minecraft:copper_hoe",
+    "nightmare:silver_hoe",
+    "nightmare:rusted_iron_hoe",
+    "nightmare:ancient_metal_hoe",
+    "nightmare:mithril_hoe",
+    "nightmare:adamantium_hoe"
   ]
 }

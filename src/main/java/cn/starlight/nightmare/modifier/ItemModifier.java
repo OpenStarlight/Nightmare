@@ -13,6 +13,7 @@ import net.minecraft.world.item.component.Consumable;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 
 import java.util.Map;
+import java.util.Set;
 
 public class ItemModifier {
 
@@ -64,32 +65,34 @@ public class ItemModifier {
 
         // 调整工具数值
         Map<Item, Double> toolDamage = Map.ofEntries(
-                Map.entry(Items.WOODEN_SWORD, 4.0),
-                Map.entry(Items.GOLDEN_SWORD, 5.0),
+                Map.entry(Items.GOLDEN_SWORD, 4.0),
                 Map.entry(Items.COPPER_SWORD, 6.0),
                 Map.entry(Items.IRON_SWORD, 7.0),
                 Map.entry(Items.DIAMOND_SWORD, 9.0),
                 Map.entry(Items.NETHERITE_SWORD, 11.0),
-                Map.entry(Items.WOODEN_AXE, 6.0),
-                Map.entry(Items.GOLDEN_AXE, 7.0),
-                Map.entry(Items.COPPER_AXE, 8.0),
-                Map.entry(Items.IRON_AXE, 9.0),
-                Map.entry(Items.DIAMOND_AXE, 11.0),
-                Map.entry(Items.NETHERITE_AXE, 13.0),
-                Map.entry(Items.WOODEN_PICKAXE, 3.0),
-                Map.entry(Items.GOLDEN_PICKAXE, 4.0),
+                Map.entry(Items.GOLDEN_AXE, 5.0),
+                Map.entry(Items.COPPER_AXE, 7.0),
+                Map.entry(Items.IRON_AXE, 8.0),
+                Map.entry(Items.DIAMOND_AXE, 10.0),
+                Map.entry(Items.NETHERITE_AXE, 12.0),
+                Map.entry(Items.GOLDEN_PICKAXE, 3.0),
                 Map.entry(Items.COPPER_PICKAXE, 5.0),
                 Map.entry(Items.IRON_PICKAXE, 6.0),
                 Map.entry(Items.DIAMOND_PICKAXE, 8.0),
                 Map.entry(Items.NETHERITE_PICKAXE, 10.0),
-                Map.entry(Items.WOODEN_SHOVEL, 3.0),
-                Map.entry(Items.GOLDEN_SHOVEL, 4.0),
+                Map.entry(Items.GOLDEN_SHOVEL, 3.0),
                 Map.entry(Items.COPPER_SHOVEL, 5.0),
                 Map.entry(Items.IRON_SHOVEL, 6.0),
                 Map.entry(Items.DIAMOND_SHOVEL, 8.0),
                 Map.entry(Items.NETHERITE_SHOVEL, 10.0),
-                Map.entry(Items.WOODEN_SPEAR, 1.0),
-                Map.entry(Items.GOLDEN_SPEAR, 2.0),
+                Map.entry(Items.WOODEN_HOE, 1.0),
+                Map.entry(Items.STONE_HOE, 1.0),
+                Map.entry(Items.GOLDEN_HOE, 1.0),
+                Map.entry(Items.COPPER_HOE, 1.0),
+                Map.entry(Items.IRON_HOE, 1.0),
+                Map.entry(Items.DIAMOND_HOE, 1.0),
+                Map.entry(Items.NETHERITE_HOE, 1.0),
+                Map.entry(Items.GOLDEN_SPEAR, 1.0),
                 Map.entry(Items.COPPER_SPEAR, 3.0),
                 Map.entry(Items.IRON_SPEAR, 4.0),
                 Map.entry(Items.DIAMOND_SPEAR, 6.0),
@@ -109,10 +112,34 @@ public class ItemModifier {
                 builder.set(DataComponents.ATTRIBUTE_MODIFIERS, modifierBuilder.build());
             }));
         }
+
+        Map<Item, Double> toolSpeed = Map.ofEntries(
+                Map.entry(Items.GOLDEN_AXE, 1.0),
+                Map.entry(Items.COPPER_AXE, 1.0),
+                Map.entry(Items.IRON_AXE, 1.0),
+                Map.entry(Items.DIAMOND_AXE, 1.0),
+                Map.entry(Items.NETHERITE_AXE, 1.0)
+        );
+
+        for (Map.Entry<Item, Double> entry : toolSpeed.entrySet()) {
+            DefaultItemComponentEvents.MODIFY.register(context -> context.modify(entry.getKey(), builder -> {
+                ItemAttributeModifiers modifiers = entry.getKey().components().getOrDefault(DataComponents.ATTRIBUTE_MODIFIERS, ItemAttributeModifiers.EMPTY);
+                ItemAttributeModifiers.Builder modifierBuilder = ItemAttributeModifiers.builder();
+                for (ItemAttributeModifiers.Entry modifierEntry : modifiers.modifiers()) {
+                    if (modifierEntry.matches(Attributes.ATTACK_SPEED, Item.BASE_ATTACK_SPEED_ID)) {
+                        modifierBuilder.add(Attributes.ATTACK_SPEED, new AttributeModifier(Item.BASE_ATTACK_SPEED_ID, entry.getValue() - 4.0, AttributeModifier.Operation.ADD_VALUE), net.minecraft.world.entity.EquipmentSlotGroup.MAINHAND);
+                    } else {
+                        modifierBuilder.add(modifierEntry.attribute(), modifierEntry.modifier(), modifierEntry.slot(), modifierEntry.display());
+                    }
+                }
+                builder.set(DataComponents.ATTRIBUTE_MODIFIERS, modifierBuilder.build());
+            }));
+        }
     }
 
     public static boolean isForbiddenItem(ItemStack stack) {
-        return stack.is(Items.WOODEN_PICKAXE) || stack.is(Items.STONE_PICKAXE) || stack.is(Items.STONE_AXE) || stack.is(Items.STONE_HOE) || stack.is(Items.STONE_SHOVEL) ||
+        return stack.is(Items.WOODEN_AXE) || stack.is(Items.WOODEN_PICKAXE) || stack.is(Items.WOODEN_SHOVEL) || stack.is(Items.WOODEN_HOE) || stack.is(Items.WOODEN_SWORD) || stack.is(Items.WOODEN_SPEAR) ||
+                stack.is(Items.STONE_PICKAXE) || stack.is(Items.STONE_AXE) || stack.is(Items.STONE_HOE) || stack.is(Items.STONE_SHOVEL) ||
                 stack.is(Items.STONE_SPEAR) || stack.is(Items.STONE_SWORD);
     }
 

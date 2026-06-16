@@ -3,8 +3,13 @@
     "minecraft:diamond_axe",
     "minecraft:golden_axe",
     "minecraft:netherite_axe",
-    "minecraft:wooden_axe",
     "minecraft:iron_axe",
-    "minecraft:copper_axe"
+    "minecraft:copper_axe",
+    "nightmare:obsidian_axe",
+    "nightmare:silver_axe",
+    "nightmare:rusted_iron_axe",
+    "nightmare:ancient_metal_axe",
+    "nightmare:mithril_axe",
+    "nightmare:adamantium_axe"
   ]
 }

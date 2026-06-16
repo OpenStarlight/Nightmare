@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.7,
+  "ingredient": "nightmare:deepslate_silver_ore",
+  "result": {
+    "id": "nightmare:silver_ingot"
+  }
+}

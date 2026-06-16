@@ -4,6 +4,11 @@
     "minecraft:golden_pickaxe",
     "minecraft:netherite_pickaxe",
     "minecraft:iron_pickaxe",
-    "minecraft:copper_pickaxe"
+    "minecraft:copper_pickaxe",
+    "nightmare:silver_pickaxe",
+    "nightmare:rusted_iron_pickaxe",
+    "nightmare:ancient_metal_pickaxe",
+    "nightmare:mithril_pickaxe",
+    "nightmare:adamantium_pickaxe"
   ]
 }

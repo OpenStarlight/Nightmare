@@ -3,8 +3,13 @@
     "minecraft:diamond_shovel",
     "minecraft:golden_shovel",
     "minecraft:netherite_shovel",
-    "minecraft:wooden_shovel",
     "minecraft:iron_shovel",
-    "minecraft:copper_shovel"
+    "minecraft:copper_shovel",
+    "nightmare:obsidian_shovel",
+    "nightmare:silver_shovel",
+    "nightmare:rusted_iron_shovel",
+    "nightmare:ancient_metal_shovel",
+    "nightmare:mithril_shovel",
+    "nightmare:adamantium_shovel"
   ]
 }
