@@ -1,21 +1,16 @@
 package cn.starlight.nightmare.modifier;
 
-import cn.starlight.nightmare.item.ModItems;
 import cn.starlight.nightmare.util.item.ItemUtil;
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.fabricmc.fabric.api.item.v1.DefaultItemComponentEvents;
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.component.Consumable;
-import net.minecraft.world.item.component.ItemAttributeModifiers;
 
 import java.util.Map;
-import java.util.Set;
 
 public class ItemModifier {
 

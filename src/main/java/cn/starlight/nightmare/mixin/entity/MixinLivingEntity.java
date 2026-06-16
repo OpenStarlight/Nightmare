@@ -1,6 +1,6 @@
 package cn.starlight.nightmare.mixin.entity;
 
-import cn.starlight.nightmare.system.CapabilitySystem;
+import cn.starlight.nightmare.player.CapabilitySystem;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;

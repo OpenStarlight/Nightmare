@@ -1,8 +1,11 @@
 package cn.starlight.nightmare.mixin.item;
 
-import cn.starlight.nightmare.system.CapabilitySystem;
+import cn.starlight.nightmare.player.CapabilitySystem;
+import cn.starlight.nightmare.player.effect.ModEffects;
+import cn.starlight.nightmare.util.player.PlayerUtil;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Difficulty;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.food.FoodConstants;
 import net.minecraft.world.food.FoodData;
 import org.spongepowered.asm.mixin.Mixin;
@@ -61,8 +64,11 @@ public class MixinFoodData {
     @Overwrite
     public void tick(ServerPlayer player) {
         Difficulty difficulty = player.level().getDifficulty();
-        if (this.exhaustionLevel > 4.0F) {
-            this.exhaustionLevel -= 4.0F;
+        MobEffectInstance malnourished = player.getEffect(ModEffects.MALNOURISHED);
+        float exhaustionTime = 4.0F;
+        if (malnourished != null) exhaustionTime = (float) (exhaustionTime * (0.5 - 0.25 * malnourished.getAmplifier()));
+        if (this.exhaustionLevel > exhaustionTime) {
+            this.exhaustionLevel -= exhaustionTime;
             if (this.saturationLevel > 0.0F) {
                 this.saturationLevel = Math.max(this.saturationLevel - 1.0F, 0.0F);
             } else if (difficulty != Difficulty.PEACEFUL) {
@@ -71,7 +77,12 @@ public class MixinFoodData {
         }
         if (this.foodLevel > 1 && player.isHurt()) {
             this.tickTimer++;
-            if (this.tickTimer >= 1200) {
+            int regenTime = 1200;
+            if (malnourished != null) {
+                regenTime = regenTime * (4 + 2 * malnourished.getAmplifier());
+                PlayerUtil.showMessage(player, "Regen ticks is multiplied: " + regenTime, true);
+            }
+            if (this.tickTimer >= regenTime) {
                 player.heal(1.0F);
                 if (this.saturationLevel > 0.0F) {
                     this.saturationLevel = Math.max(this.saturationLevel - 1.0F, 0.0F);

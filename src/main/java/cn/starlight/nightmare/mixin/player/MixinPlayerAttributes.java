@@ -1,6 +1,6 @@
 package cn.starlight.nightmare.mixin.player;
 
-import cn.starlight.nightmare.registry.ModAttributes;
+import cn.starlight.nightmare.player.NutritionSystem;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.player.Player;
 import org.spongepowered.asm.mixin.Mixin;
@@ -13,8 +13,8 @@ public class MixinPlayerAttributes {
     @Inject(method = "createAttributes", at = @At("RETURN"))
     private static void addNutritionAttributes(CallbackInfoReturnable<AttributeSupplier.Builder> cir) {
         cir.getReturnValue()
-                .add(ModAttributes.PROTEIN)
-                .add(ModAttributes.PHYTONUTRIENT)
-                .add(ModAttributes.INSULIN_RESISTANCE);
+                .add(NutritionSystem.PROTEIN)
+                .add(NutritionSystem.PHYTONUTRIENT)
+                .add(NutritionSystem.INSULIN_RESISTANCE);
     }
 }

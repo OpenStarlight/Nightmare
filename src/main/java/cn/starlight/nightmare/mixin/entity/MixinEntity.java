@@ -1,6 +1,6 @@
 package cn.starlight.nightmare.mixin.entity;
 
-import cn.starlight.nightmare.system.CapabilitySystem;
+import cn.starlight.nightmare.player.CapabilitySystem;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import org.spongepowered.asm.mixin.Mixin;

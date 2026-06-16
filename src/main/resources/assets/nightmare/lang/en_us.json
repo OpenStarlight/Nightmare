@@ -1,4 +1,6 @@
 {
+  "message.nightmare.nutrition_tick_failed": "Failed to tick your nutrition attributes, so you have been kicked forcibly!\nIf you believe this is an error, please report it to Nightmare Mod's developers.",
+
   "item.nightmare.flint_shard": "Flint Shard",
   "item.nightmare.obsidian_shard": "Obsidian Shard",
   "item.nightmare.emerald_shard": "Emerald Shard",
@@ -31,15 +33,6 @@
   "item.nightmare.ancient_metal_block": "Block of Ancient Metal",
   "item.nightmare.mithril_block": "Block of Mithril",
   "item.nightmare.adamantium_block": "Block of Adamantium",
-  "block.nightmare.silver_ore": "Silver Ore",
-  "block.nightmare.deepslate_silver_ore": "Deepslate Silver Ore",
-  "block.nightmare.mithril_ore": "Mithril Ore",
-  "block.nightmare.deepslate_mithril_ore": "Deepslate Mithril Ore",
-  "block.nightmare.adamantium_ore": "Adamantium Ore",
-  "block.nightmare.silver_block": "Block of Silver",
-  "block.nightmare.ancient_metal_block": "Block of Ancient Metal",
-  "block.nightmare.mithril_block": "Block of Mithril",
-  "block.nightmare.adamantium_block": "Block of Adamantium",
   "item.nightmare.obsidian_axe": "Obsidian Axe",
   "item.nightmare.obsidian_shovel": "Obsidian Shovel",
   "item.nightmare.silver_axe": "Silver Axe",
@@ -66,5 +59,17 @@
   "item.nightmare.rusted_iron_pickaxe": "Rusted Iron Pickaxe",
   "item.nightmare.rusted_iron_shovel": "Rusted Iron Shovel",
   "item.nightmare.rusted_iron_hoe": "Rusted Iron Hoe",
-  "item.nightmare.rusted_iron_sword": "Rusted Iron Sword"
+  "item.nightmare.rusted_iron_sword": "Rusted Iron Sword",
+
+  "block.nightmare.silver_ore": "Silver Ore",
+  "block.nightmare.deepslate_silver_ore": "Deepslate Silver Ore",
+  "block.nightmare.mithril_ore": "Mithril Ore",
+  "block.nightmare.deepslate_mithril_ore": "Deepslate Mithril Ore",
+  "block.nightmare.adamantium_ore": "Adamantium Ore",
+  "block.nightmare.silver_block": "Block of Silver",
+  "block.nightmare.ancient_metal_block": "Block of Ancient Metal",
+  "block.nightmare.mithril_block": "Block of Mithril",
+  "block.nightmare.adamantium_block": "Block of Adamantium",
+
+  "effect.nightmare.malnourished": "Malnourished"
 }

@@ -1,4 +1,6 @@
 {
+  "message.nightmare.nutrition_tick_failed": "无法处理你的营养值属性，因此你已被强制踢出！\n如果你认为这是一个错误，请向 Nightmare Mod 的开发者报告。",
+
   "item.nightmare.flint_shard": "燧石碎片",
   "item.nightmare.obsidian_shard": "黑曜石碎片",
   "item.nightmare.emerald_shard": "绿宝石碎片",
@@ -31,15 +33,6 @@
   "item.nightmare.ancient_metal_block": "远古金属块",
   "item.nightmare.mithril_block": "秘银块",
   "item.nightmare.adamantium_block": "艾德曼块",
-  "block.nightmare.silver_ore": "银矿石",
-  "block.nightmare.deepslate_silver_ore": "深层银矿石",
-  "block.nightmare.mithril_ore": "秘银矿石",
-  "block.nightmare.deepslate_mithril_ore": "深层秘银矿石",
-  "block.nightmare.adamantium_ore": "艾德曼矿石",
-  "block.nightmare.silver_block": "银块",
-  "block.nightmare.ancient_metal_block": "远古金属块",
-  "block.nightmare.mithril_block": "秘银块",
-  "block.nightmare.adamantium_block": "艾德曼块",
   "item.nightmare.obsidian_axe": "黑曜石斧",
   "item.nightmare.obsidian_shovel": "黑曜石锹",
   "item.nightmare.silver_axe": "银斧",
@@ -66,5 +59,17 @@
   "item.nightmare.rusted_iron_pickaxe": "锈铁镐",
   "item.nightmare.rusted_iron_shovel": "锈铁锹",
   "item.nightmare.rusted_iron_hoe": "锈铁锄",
-  "item.nightmare.rusted_iron_sword": "锈铁剑"
+  "item.nightmare.rusted_iron_sword": "锈铁剑",
+
+  "block.nightmare.silver_ore": "银矿石",
+  "block.nightmare.deepslate_silver_ore": "深层银矿石",
+  "block.nightmare.mithril_ore": "秘银矿石",
+  "block.nightmare.deepslate_mithril_ore": "深层秘银矿石",
+  "block.nightmare.adamantium_ore": "艾德曼矿石",
+  "block.nightmare.silver_block": "银块",
+  "block.nightmare.ancient_metal_block": "远古金属块",
+  "block.nightmare.mithril_block": "秘银块",
+  "block.nightmare.adamantium_block": "艾德曼块",
+
+  "effect.nightmare.malnourished": "营养不良"
 }

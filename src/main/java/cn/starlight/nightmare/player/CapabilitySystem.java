@@ -1,4 +1,4 @@
-package cn.starlight.nightmare.system;
+package cn.starlight.nightmare.player;
 
 import cn.starlight.nightmare.NightmareMod;
 import cn.starlight.nightmare.util.player.AttributeUtil;

@@ -1,7 +1,8 @@
 package cn.starlight.nightmare.event;
 
-import cn.starlight.nightmare.system.CapabilitySystem;
 import cn.starlight.nightmare.modifier.ItemModifier;
+import cn.starlight.nightmare.player.CapabilitySystem;
+import cn.starlight.nightmare.player.NutritionSystem;
 import cn.starlight.nightmare.util.player.PlayerUtil;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
@@ -9,18 +10,17 @@ import net.minecraft.world.item.ItemStack;
 
 public class ServerEvent {
 
-    // 设置玩家各项数值上限
-    public void tickPlayerStats(MinecraftServer server) {
-        // 不要频繁更新
-        boolean updateEverySecond = server.getTickCount() % 20 == 0;
+    // 设置玩家属性
+    public void tickPlayer(MinecraftServer server) {
         for (ServerPlayer player : server.getPlayerList().getPlayers()) {
-            if (updateEverySecond) {
-                CapabilitySystem.handleHealth(player);
-                CapabilitySystem.handleFood(player);
-                CapabilitySystem.handleAir(player);
-            }
+            // 各个属性上限
+            CapabilitySystem.handleHealth(player);
+            CapabilitySystem.handleFood(player);
+            CapabilitySystem.handleAir(player);
             CapabilitySystem.handleInteractionRange(player);
             CapabilitySystem.handleLevelBonuses(player);
+            // 营养系统
+            NutritionSystem.tickPlayer(player);
         }
     }
 

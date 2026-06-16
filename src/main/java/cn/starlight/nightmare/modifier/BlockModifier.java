@@ -1,8 +1,5 @@
 package cn.starlight.nightmare.modifier;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import cn.starlight.nightmare.NightmareMod;
 import cn.starlight.nightmare.util.item.ItemUtil;
 import cn.starlight.nightmare.util.item.ToolLevel;
@@ -15,6 +12,9 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class BlockModifier {
     private static final Map<Block, ToolRequirement> BLOCK_TOOL_REQUIREMENTS = new HashMap<>();

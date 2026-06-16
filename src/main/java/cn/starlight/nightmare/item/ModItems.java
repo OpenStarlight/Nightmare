@@ -1,112 +1,99 @@
 package cn.starlight.nightmare.item;
 
-import cn.starlight.nightmare.NightmareMod;
-import cn.starlight.nightmare.mixin.item.AccessorItemProperties;
-import cn.starlight.nightmare.modifier.ItemModifier;
+import cn.starlight.nightmare.util.RegistryUtil;
 import cn.starlight.nightmare.util.item.ItemUtil;
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
-import net.minecraft.core.Registry;
-import net.minecraft.core.component.DataComponentInitializers;
-import net.minecraft.core.component.DataComponentMap;
-import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.component.TypedDataComponent;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 
-import java.util.function.Function;
-
 public class ModItems {
-    public static final Item FLINT_SHARD = register("flint_shard", Item::new, new Item.Properties());
-    public static final Item OBSIDIAN_SHARD = register("obsidian_shard", Item::new, new Item.Properties());
-    public static final Item EMERALD_SHARD = register("emerald_shard", Item::new, new Item.Properties());
-    public static final Item DIAMOND_SHARD = register("diamond_shard", Item::new, new Item.Properties());
-    public static final Item QUARTZ_SHARD = register("quartz_shard", Item::new, new Item.Properties());
-    public static final Item GLASS_SHARD = register("glass_shard", Item::new, new Item.Properties());
-    public static final Item LEATHER_STRING = register("leather_string", Item::new, new Item.Properties());
-    public static final Item SILVER_NUGGET = register("silver_nugget", Item::new, new Item.Properties());
-    public static final Item ANCIENT_METAL_NUGGET = register("ancient_metal_nugget", Item::new, new Item.Properties());
-    public static final Item MITHRIL_NUGGET = register("mithril_nugget", Item::new, new Item.Properties());
-    public static final Item ADAMANTIUM_NUGGET = register("adamantium_nugget", Item::new, new Item.Properties());
-    public static final Item RAW_SILVER = register("raw_silver", Item::new, new Item.Properties());
-    public static final Item RAW_MITHRIL = register("raw_mithril", Item::new, new Item.Properties());
-    public static final Item ADAMANTIUM_SHARD = register("adamantium_shard", Item::new, new Item.Properties());
-    public static final Item SILVER_INGOT = register("silver_ingot", Item::new, new Item.Properties());
-    public static final Item ANCIENT_METAL_INGOT = register("ancient_metal_ingot", Item::new, new Item.Properties());
-    public static final Item MITHRIL_INGOT = register("mithril_ingot", Item::new, new Item.Properties());
-    public static final Item ADAMANTIUM_INGOT = register("adamantium_ingot", Item::new, new Item.Properties());
-    public static final Item FLINT_AXE = register("flint_axe", Item::new, ItemUtil.removeComponent(new Item.Properties().axe(
+    public static final Item FLINT_SHARD = RegistryUtil.registerItem("flint_shard", Item::new, new Item.Properties());
+    public static final Item OBSIDIAN_SHARD = RegistryUtil.registerItem("obsidian_shard", Item::new, new Item.Properties());
+    public static final Item EMERALD_SHARD = RegistryUtil.registerItem("emerald_shard", Item::new, new Item.Properties());
+    public static final Item DIAMOND_SHARD = RegistryUtil.registerItem("diamond_shard", Item::new, new Item.Properties());
+    public static final Item QUARTZ_SHARD = RegistryUtil.registerItem("quartz_shard", Item::new, new Item.Properties());
+    public static final Item GLASS_SHARD = RegistryUtil.registerItem("glass_shard", Item::new, new Item.Properties());
+    public static final Item LEATHER_STRING = RegistryUtil.registerItem("leather_string", Item::new, new Item.Properties());
+    public static final Item SILVER_NUGGET = RegistryUtil.registerItem("silver_nugget", Item::new, new Item.Properties());
+    public static final Item ANCIENT_METAL_NUGGET = RegistryUtil.registerItem("ancient_metal_nugget", Item::new, new Item.Properties());
+    public static final Item MITHRIL_NUGGET = RegistryUtil.registerItem("mithril_nugget", Item::new, new Item.Properties());
+    public static final Item ADAMANTIUM_NUGGET = RegistryUtil.registerItem("adamantium_nugget", Item::new, new Item.Properties());
+    public static final Item RAW_SILVER = RegistryUtil.registerItem("raw_silver", Item::new, new Item.Properties());
+    public static final Item RAW_MITHRIL = RegistryUtil.registerItem("raw_mithril", Item::new, new Item.Properties());
+    public static final Item ADAMANTIUM_SHARD = RegistryUtil.registerItem("adamantium_shard", Item::new, new Item.Properties());
+    public static final Item SILVER_INGOT = RegistryUtil.registerItem("silver_ingot", Item::new, new Item.Properties());
+    public static final Item ANCIENT_METAL_INGOT = RegistryUtil.registerItem("ancient_metal_ingot", Item::new, new Item.Properties());
+    public static final Item MITHRIL_INGOT = RegistryUtil.registerItem("mithril_ingot", Item::new, new Item.Properties());
+    public static final Item ADAMANTIUM_INGOT = RegistryUtil.registerItem("adamantium_ingot", Item::new, new Item.Properties());
+    public static final Item FLINT_AXE = RegistryUtil.registerItem("flint_axe", Item::new, ItemUtil.removeComponent(new Item.Properties().axe(
             ModToolMaterials.FLINT, 3F, -3F), DataComponents.ENCHANTABLE));
-    public static final Item FLINT_HATCHET = register("flint_hatchet", Item::new, ItemUtil.removeComponent(new Item.Properties().axe(
+    public static final Item FLINT_HATCHET = RegistryUtil.registerItem("flint_hatchet", Item::new, ItemUtil.removeComponent(new Item.Properties().axe(
             ModToolMaterials.FLINT, 2F, -3F).durability(5), DataComponents.ENCHANTABLE));
-    public static final Item FLINT_KNIFE = register("flint_knife", Item::new, ItemUtil.removeComponent(new Item.Properties().sword(
+    public static final Item FLINT_KNIFE = RegistryUtil.registerItem("flint_knife", Item::new, ItemUtil.removeComponent(new Item.Properties().sword(
             ModToolMaterials.FLINT, 2F, -2.4F), DataComponents.ENCHANTABLE));
-    public static final Item FLINT_SHOVEL = register("flint_shovel", Item::new, ItemUtil.removeComponent(new Item.Properties().shovel(
+    public static final Item FLINT_SHOVEL = RegistryUtil.registerItem("flint_shovel", Item::new, ItemUtil.removeComponent(new Item.Properties().shovel(
             ModToolMaterials.FLINT, 1F, -3F), DataComponents.ENCHANTABLE));
-    public static final Item SALAD = register("salad", Item::new, new Item.Properties()
+    public static final Item SALAD = RegistryUtil.registerItem("salad", Item::new, new Item.Properties()
             .food(new FoodProperties(1, 1.0F, true))
             .usingConvertsTo(Items.BOWL)
             .stacksTo(4));
 
-    public static final Item OBSIDIAN_AXE = register("obsidian_axe", Item::new, new Item.Properties().axe(
+    public static final Item OBSIDIAN_AXE = RegistryUtil.registerItem("obsidian_axe", Item::new, new Item.Properties().axe(
             ModToolMaterials.OBSIDIAN, 2F, -3F));
-    public static final Item OBSIDIAN_SHOVEL = register("obsidian_shovel", Item::new, new Item.Properties().shovel(
+    public static final Item OBSIDIAN_SHOVEL = RegistryUtil.registerItem("obsidian_shovel", Item::new, new Item.Properties().shovel(
             ModToolMaterials.OBSIDIAN, 0F, -3F));
-    public static final Item SILVER_AXE = register("silver_axe", Item::new, new Item.Properties().axe(
+    public static final Item SILVER_AXE = RegistryUtil.registerItem("silver_axe", Item::new, new Item.Properties().axe(
             ModToolMaterials.SILVER, 2F, -3F));
-    public static final Item SILVER_PICKAXE = register("silver_pickaxe", Item::new, new Item.Properties().pickaxe(
+    public static final Item SILVER_PICKAXE = RegistryUtil.registerItem("silver_pickaxe", Item::new, new Item.Properties().pickaxe(
             ModToolMaterials.SILVER, 0F, -2.8F));
-    public static final Item SILVER_SHOVEL = register("silver_shovel", Item::new, new Item.Properties().shovel(
+    public static final Item SILVER_SHOVEL = RegistryUtil.registerItem("silver_shovel", Item::new, new Item.Properties().shovel(
             ModToolMaterials.SILVER, 0F, -3F));
-    public static final Item SILVER_HOE = register("silver_hoe", Item::new, new Item.Properties().hoe(
+    public static final Item SILVER_HOE = RegistryUtil.registerItem("silver_hoe", Item::new, new Item.Properties().hoe(
             ModToolMaterials.SILVER, -3F, -2.4F));
-    public static final Item SILVER_SWORD = register("silver_sword", Item::new, new Item.Properties().sword(
+    public static final Item SILVER_SWORD = RegistryUtil.registerItem("silver_sword", Item::new, new Item.Properties().sword(
             ModToolMaterials.SILVER, 1F, -2.4F));
-    public static final Item RUSTED_IRON_AXE = register("rusted_iron_axe", Item::new, new Item.Properties().axe(
+    public static final Item RUSTED_IRON_AXE = RegistryUtil.registerItem("rusted_iron_axe", Item::new, new Item.Properties().axe(
             ModToolMaterials.RUSTED_IRON, 2F, -3F));
-    public static final Item RUSTED_IRON_PICKAXE = register("rusted_iron_pickaxe", Item::new, new Item.Properties().pickaxe(
+    public static final Item RUSTED_IRON_PICKAXE = RegistryUtil.registerItem("rusted_iron_pickaxe", Item::new, new Item.Properties().pickaxe(
             ModToolMaterials.RUSTED_IRON, 0F, -2.8F));
-    public static final Item RUSTED_IRON_SHOVEL = register("rusted_iron_shovel", Item::new, new Item.Properties().shovel(
+    public static final Item RUSTED_IRON_SHOVEL = RegistryUtil.registerItem("rusted_iron_shovel", Item::new, new Item.Properties().shovel(
             ModToolMaterials.RUSTED_IRON, 0F, -3F));
-    public static final Item RUSTED_IRON_HOE = register("rusted_iron_hoe", Item::new, new Item.Properties().hoe(
+    public static final Item RUSTED_IRON_HOE = RegistryUtil.registerItem("rusted_iron_hoe", Item::new, new Item.Properties().hoe(
             ModToolMaterials.RUSTED_IRON, -3F, -2.4F));
-    public static final Item RUSTED_IRON_SWORD = register("rusted_iron_sword", Item::new, new Item.Properties().sword(
+    public static final Item RUSTED_IRON_SWORD = RegistryUtil.registerItem("rusted_iron_sword", Item::new, new Item.Properties().sword(
             ModToolMaterials.RUSTED_IRON, 1F, -2.4F));
-    public static final Item ANCIENT_METAL_AXE = register("ancient_metal_axe", Item::new, new Item.Properties().axe(
+    public static final Item ANCIENT_METAL_AXE = RegistryUtil.registerItem("ancient_metal_axe", Item::new, new Item.Properties().axe(
             ModToolMaterials.ANCIENT_METAL, 2F, -3F));
-    public static final Item ANCIENT_METAL_PICKAXE = register("ancient_metal_pickaxe", Item::new, new Item.Properties().pickaxe(
+    public static final Item ANCIENT_METAL_PICKAXE = RegistryUtil.registerItem("ancient_metal_pickaxe", Item::new, new Item.Properties().pickaxe(
             ModToolMaterials.ANCIENT_METAL, 0F, -2.8F));
-    public static final Item ANCIENT_METAL_SHOVEL = register("ancient_metal_shovel", Item::new, new Item.Properties().shovel(
+    public static final Item ANCIENT_METAL_SHOVEL = RegistryUtil.registerItem("ancient_metal_shovel", Item::new, new Item.Properties().shovel(
             ModToolMaterials.ANCIENT_METAL, 0F, -3F));
-    public static final Item ANCIENT_METAL_HOE = register("ancient_metal_hoe", Item::new, new Item.Properties().hoe(
+    public static final Item ANCIENT_METAL_HOE = RegistryUtil.registerItem("ancient_metal_hoe", Item::new, new Item.Properties().hoe(
             ModToolMaterials.ANCIENT_METAL, -6F, -2.4F));
-    public static final Item ANCIENT_METAL_SWORD = register("ancient_metal_sword", Item::new, new Item.Properties().sword(
+    public static final Item ANCIENT_METAL_SWORD = RegistryUtil.registerItem("ancient_metal_sword", Item::new, new Item.Properties().sword(
             ModToolMaterials.ANCIENT_METAL, 1F, -2.4F));
-    public static final Item MITHRIL_AXE = register("mithril_axe", Item::new, new Item.Properties().axe(
+    public static final Item MITHRIL_AXE = RegistryUtil.registerItem("mithril_axe", Item::new, new Item.Properties().axe(
             ModToolMaterials.MITHRIL, 2F, -3F));
-    public static final Item MITHRIL_PICKAXE = register("mithril_pickaxe", Item::new, new Item.Properties().pickaxe(
+    public static final Item MITHRIL_PICKAXE = RegistryUtil.registerItem("mithril_pickaxe", Item::new, new Item.Properties().pickaxe(
             ModToolMaterials.MITHRIL, 0F, -2.8F));
-    public static final Item MITHRIL_SHOVEL = register("mithril_shovel", Item::new, new Item.Properties().shovel(
+    public static final Item MITHRIL_SHOVEL = RegistryUtil.registerItem("mithril_shovel", Item::new, new Item.Properties().shovel(
             ModToolMaterials.MITHRIL, 0F, -3F));
-    public static final Item MITHRIL_HOE = register("mithril_hoe", Item::new, new Item.Properties().hoe(
+    public static final Item MITHRIL_HOE = RegistryUtil.registerItem("mithril_hoe", Item::new, new Item.Properties().hoe(
             ModToolMaterials.MITHRIL, -8F, -2.4F));
-    public static final Item MITHRIL_SWORD = register("mithril_sword", Item::new, new Item.Properties().sword(
+    public static final Item MITHRIL_SWORD = RegistryUtil.registerItem("mithril_sword", Item::new, new Item.Properties().sword(
             ModToolMaterials.MITHRIL, 1F, -2.4F));
-    public static final Item ADAMANTIUM_AXE = register("adamantium_axe", Item::new, new Item.Properties().axe(
+    public static final Item ADAMANTIUM_AXE = RegistryUtil.registerItem("adamantium_axe", Item::new, new Item.Properties().axe(
             ModToolMaterials.ADAMANTIUM, 2F, -3F));
-    public static final Item ADAMANTIUM_PICKAXE = register("adamantium_pickaxe", Item::new, new Item.Properties().pickaxe(
+    public static final Item ADAMANTIUM_PICKAXE = RegistryUtil.registerItem("adamantium_pickaxe", Item::new, new Item.Properties().pickaxe(
             ModToolMaterials.ADAMANTIUM, 0F, -2.8F));
-    public static final Item ADAMANTIUM_SHOVEL = register("adamantium_shovel", Item::new, new Item.Properties().shovel(
+    public static final Item ADAMANTIUM_SHOVEL = RegistryUtil.registerItem("adamantium_shovel", Item::new, new Item.Properties().shovel(
             ModToolMaterials.ADAMANTIUM, 0F, -3F));
-    public static final Item ADAMANTIUM_HOE = register("adamantium_hoe", Item::new, new Item.Properties().hoe(
+    public static final Item ADAMANTIUM_HOE = RegistryUtil.registerItem("adamantium_hoe", Item::new, new Item.Properties().hoe(
             ModToolMaterials.ADAMANTIUM, -10F, -2.4F));
-    public static final Item ADAMANTIUM_SWORD = register("adamantium_sword", Item::new, new Item.Properties().sword(
+    public static final Item ADAMANTIUM_SWORD = RegistryUtil.registerItem("adamantium_sword", Item::new, new Item.Properties().sword(
             ModToolMaterials.ADAMANTIUM, 1F, -2.4F));
 
     public static void initialize() {
@@ -177,13 +164,5 @@ public class ModItems {
                     creativeTab.insertAfter(Items.NETHERITE_SWORD, ADAMANTIUM_SWORD);
                     creativeTab.insertAfter(Items.NETHERITE_AXE, ADAMANTIUM_AXE);
                 });
-    }
-
-    public static <T extends Item> T register(String name, Function<Item.Properties, T> itemFactory, Item.Properties settings) {
-        ResourceKey<Item> itemKey = ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(NightmareMod.MOD_ID, name));
-        T item = itemFactory.apply(settings.setId(itemKey));
-
-        Registry.register(BuiltInRegistries.ITEM, itemKey, item);
-        return item;
     }
 }
