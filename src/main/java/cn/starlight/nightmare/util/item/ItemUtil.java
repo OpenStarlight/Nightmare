@@ -9,7 +9,7 @@ public class ItemUtil {
     public static int getToolLevel(ItemStack stack) {
         Item item = stack.getItem();
         if (item == ModItems.FLINT_AXE || item == ModItems.FLINT_HATCHET || item == ModItems.FLINT_SHOVEL) return ToolLevel.FLINT.level();
-        if (item == Items.WOODEN_AXE || item == Items.WOODEN_PICKAXE || item == Items.WOODEN_SHOVEL || item == Items.WOODEN_HOE) return ToolLevel.WOOD.level();
+        if (item == Items.WOODEN_AXE || item == Items.WOODEN_SHOVEL || item == Items.WOODEN_HOE) return ToolLevel.WOOD.level();
         if (item == Items.GOLDEN_AXE || item == Items.GOLDEN_PICKAXE || item == Items.GOLDEN_SHOVEL || item == Items.GOLDEN_HOE) return ToolLevel.GOLD.level();
         if (item == Items.COPPER_AXE || item == Items.COPPER_PICKAXE || item == Items.COPPER_SHOVEL || item == Items.COPPER_HOE) return ToolLevel.COPPER.level();
         if (item == Items.IRON_AXE || item == Items.IRON_PICKAXE || item == Items.IRON_SHOVEL || item == Items.IRON_HOE) return ToolLevel.IRON.level();

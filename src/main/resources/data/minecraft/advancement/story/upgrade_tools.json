@@ -1,25 +1,14 @@
 {
-  "parent": "minecraft:story/mine_stone",
   "criteria": {
-    "stone_pickaxe": {
-      "conditions": {
-        "items": []
-      },
-      "trigger": "minecraft:inventory_changed"
-    }
-  },
-  "display": {
-    "description": {
-      "translate": "advancements.story.upgrade_tools.description"
-    },
-    "title": {
-      "translate": "advancements.story.upgrade_tools.title"
+    "impossible": {
+      "trigger": "minecraft:impossible"
     }
   },
   "requirements": [
     [
-      "stone_pickaxe"
+      "impossible"
     ]
   ],
-  "sends_telemetry_event": true
+  "sends_telemetry_event": false,
+  "parent": "minecraft:story/root"
 }

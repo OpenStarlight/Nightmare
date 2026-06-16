@@ -45,7 +45,7 @@ public class CapabilityHandler {
     public static void handleInteractionRange(ServerPlayer player) {
         double entityRange = player.isCreative() ? 4.0 : 2.0;
         double blockRange = player.isCreative() ? 5.0 : 2.5;
-        if (!player.isCreative() && player.isShiftKeyDown()) {
+        if (player.isShiftKeyDown()) {
             entityRange += 0.5;
             blockRange += 0.5;
         }

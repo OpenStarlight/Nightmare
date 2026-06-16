@@ -97,6 +97,9 @@
     },
     "title": {
       "translate": "advancements.husbandry.wax_off.title"
+    },
+    "icon": {
+      "id": "minecraft:stone_axe"
     }
   },
   "requirements": [

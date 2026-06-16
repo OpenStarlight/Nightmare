@@ -9,6 +9,5 @@
       "impossible"
     ]
   ],
-  "sends_telemetry_event": false,
-  "parent": "minecraft:recipes/root"
+  "sends_telemetry_event": false
 }

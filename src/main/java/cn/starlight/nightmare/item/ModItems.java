@@ -71,7 +71,7 @@ public class ModItems {
                     creativeTab.insertAfter(SILVER_INGOT, ANCIENT_METAL_INGOT);
                     creativeTab.insertAfter(ANCIENT_METAL_INGOT, MITHRIL_INGOT);
                     creativeTab.insertAfter(MITHRIL_INGOT, ADAMANTIUM_INGOT);
-                    creativeTab.insertAfter(Items.ANCIENT_DEBRIS, ModBlocks.DEEPSLATE_SILVER_ORE.asItem());
+                    creativeTab.insertAfter(Items.ANCIENT_DEBRIS, ModBlocks.ADAMANTIUM_ORE.asItem());
                 });
         CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.TOOLS_AND_UTILITIES)
                 .register((creativeTab) -> {
