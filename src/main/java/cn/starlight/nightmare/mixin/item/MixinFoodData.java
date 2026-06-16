@@ -78,10 +78,7 @@ public class MixinFoodData {
         if (this.foodLevel > 1 && player.isHurt()) {
             this.tickTimer++;
             int regenTime = 1200;
-            if (malnourished != null) {
-                regenTime = regenTime * (4 + 2 * malnourished.getAmplifier());
-                PlayerUtil.showMessage(player, "Regen ticks is multiplied: " + regenTime, true);
-            }
+            if (malnourished != null) regenTime = regenTime * (4 + 2 * malnourished.getAmplifier());
             if (this.tickTimer >= regenTime) {
                 player.heal(1.0F);
                 if (this.saturationLevel > 0.0F) {

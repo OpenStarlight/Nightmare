@@ -66,5 +66,27 @@ public class NutritionSystem {
             MobEffectInstance targetMalnourishedEffect = new MobEffectInstance(ModEffects.MALNOURISHED, 1200, targetMalnourishedLevel - 1, false, false, true);
             player.addEffect(targetMalnourishedEffect);
         }
+
+        // 处理糖尿病
+        int targetDiabetesLevel = 0;
+        if (insulinResistance > 48000) targetDiabetesLevel++;
+        if (insulinResistance > 96000) targetDiabetesLevel++;
+        if (insulinResistance > 144000) targetDiabetesLevel++;
+
+        MobEffectInstance playerDiabetesEffect = player.getEffect(ModEffects.DIABETES);
+        if (playerDiabetesEffect != null) {
+            int playerDiabetesLevel = playerDiabetesEffect.getAmplifier();
+            if (targetDiabetesLevel == 0) {
+                player.removeEffect(ModEffects.DIABETES);
+            }
+            else if (targetDiabetesLevel != playerDiabetesLevel) {
+                MobEffectInstance targetDiabetesEffect = new MobEffectInstance(ModEffects.DIABETES, 1200, targetDiabetesLevel - 1, false, false, true);
+                player.removeEffect(ModEffects.DIABETES);
+                player.addEffect(targetDiabetesEffect);
+            }
+        } else if (targetDiabetesLevel != 0) {
+            MobEffectInstance targetDiabetesEffect = new MobEffectInstance(ModEffects.DIABETES, 1200, targetDiabetesLevel - 1, false, false, true);
+            player.addEffect(targetDiabetesEffect);
+        }
     }
 }

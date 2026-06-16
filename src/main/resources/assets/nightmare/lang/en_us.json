@@ -71,5 +71,6 @@
   "block.nightmare.mithril_block": "Block of Mithril",
   "block.nightmare.adamantium_block": "Block of Adamantium",
 
-  "effect.nightmare.malnourished": "Malnourished"
+  "effect.nightmare.malnourished": "Malnourished",
+  "effect.nightmare.diabetes": "Diabetes"
 }

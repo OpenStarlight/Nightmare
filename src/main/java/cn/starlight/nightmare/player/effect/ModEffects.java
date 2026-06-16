@@ -6,6 +6,7 @@ import net.minecraft.world.effect.MobEffect;
 
 public class ModEffects {
     public static final Holder<MobEffect> MALNOURISHED = RegistryUtil.registerMobEffect("malnourished", new MalnourishedEffect());
+    public static final Holder<MobEffect> DIABETES = RegistryUtil.registerMobEffect("diabetes", new DiabetesEffect());
 
     public static void initialize() {
 
