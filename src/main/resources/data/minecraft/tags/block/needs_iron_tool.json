@@ -1,9 +1,6 @@
 {
-  "replace": false,
+  "replace": true,
   "values": [
-    "nightmare:silver_ore",
-    "nightmare:deepslate_silver_ore",
-    "nightmare:silver_block",
-    "nightmare:ancient_metal_block"
+    "#nightmare:needs_iron_tool"
   ]
 }

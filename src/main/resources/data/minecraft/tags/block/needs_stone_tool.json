@@ -1,0 +1,7 @@
+{
+  "replace": true,
+  "values": [
+    "#nightmare:needs_gold_tool",
+    "#nightmare:needs_copper_tool"
+  ]
+}

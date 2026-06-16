@@ -5,6 +5,7 @@ import cn.starlight.nightmare.event.ServerEvent;
 import cn.starlight.nightmare.modifier.BlockModifier;
 import cn.starlight.nightmare.modifier.ItemModifier;
 import cn.starlight.nightmare.item.ModItems;
+import cn.starlight.nightmare.registry.ModAttributes;
 import cn.starlight.nightmare.util.DebugFields;
 import cn.starlight.nightmare.util.player.PlayerUtil;
 import cn.starlight.nightmare.world.ModWorldGeneration;
@@ -36,6 +37,7 @@ public class NightmareMod implements ModInitializer {
     public void onInitialize() {
         ModBlocks.initialize();
         ModItems.initialize();
+        ModAttributes.initialize();
         ItemModifier.initialize();
         BlockModifier.initialize();
         ModWorldGeneration.initialize();

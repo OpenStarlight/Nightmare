@@ -1,0 +1,28 @@
+{
+  "replace": true,
+  "values": [
+    "minecraft:diamond_block",
+    "minecraft:diamond_ore",
+    "minecraft:deepslate_diamond_ore",
+    "minecraft:redstone_block",
+    "minecraft:redstone_ore",
+    "minecraft:deepslate_redstone_ore",
+    "minecraft:lapis_block",
+    "minecraft:lapis_ore",
+    "minecraft:deepslate_lapis_ore",
+    "minecraft:emerald_block",
+    "minecraft:emerald_ore",
+    "minecraft:deepslate_emerald_ore",
+    "minecraft:obsidian",
+    "minecraft:crying_obsidian",
+    "minecraft:respawn_anchor",
+    "minecraft:end_stone",
+    "minecraft:end_stone_bricks",
+    "minecraft:end_stone_brick_slab",
+    "minecraft:end_stone_brick_stairs",
+    "minecraft:end_stone_brick_wall",
+    "minecraft:enchanting_table",
+    "minecraft:ender_chest",
+    "nightmare:ancient_metal_block"
+  ]
+}

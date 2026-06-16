@@ -1,7 +1,7 @@
 package cn.starlight.nightmare.client.mixin;
 
 import cn.starlight.nightmare.NightmareMod;
-import cn.starlight.nightmare.handler.CapabilityHandler;
+import cn.starlight.nightmare.system.CapabilitySystem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.gui.Gui;
@@ -20,32 +20,32 @@ public abstract class MixinGui {
 
     @ModifyConstant(method = "extractArmor", constant = @Constant(intValue = 10, ordinal = 1))
     private static int modifyArmorSlotCount(int constant, GuiGraphicsExtractor graphics, Player player, int y, int rows, int rowHeight, int x) {
-        return CapabilityHandler.getMax(player.experienceLevel) / 2;
+        return CapabilitySystem.getMax(player.experienceLevel) / 2;
     }
 
     @ModifyConstant(method = "extractFood", constant = @Constant(intValue = 10))
     private int modifyFoodSlotCount(int constant, GuiGraphicsExtractor graphics, Player player, int y, int x) {
-        return CapabilityHandler.getMax(player.experienceLevel) / 2;
+        return CapabilitySystem.getMax(player.experienceLevel) / 2;
     }
 
     @ModifyConstant(method = "extractAirBubbles", constant = @Constant(intValue = 10, ordinal = 0))
     private int modifyAirBubbleBaseCount(int constant, GuiGraphicsExtractor graphics, Player player, int vehicleHearts, int y, int x) {
-        return CapabilityHandler.getMax(player.experienceLevel) / 2;
+        return CapabilitySystem.getMax(player.experienceLevel) / 2;
     }
 
     @ModifyConstant(method = "extractAirBubbles", constant = @Constant(intValue = 10, ordinal = 1))
     private int modifyAirBubbleLoopCount(int constant, GuiGraphicsExtractor graphics, Player player, int vehicleHearts, int y, int x) {
-        return CapabilityHandler.getMax(player.experienceLevel) / 2;
+        return CapabilitySystem.getMax(player.experienceLevel) / 2;
     }
 
     @ModifyConstant(method = "extractAirBubbles", constant = @Constant(intValue = 10, ordinal = 2))
     private int modifyAirBubbleEmptyThreshold(int constant, GuiGraphicsExtractor graphics, Player player, int vehicleHearts, int y, int x) {
-        return CapabilityHandler.getMax(player.experienceLevel) / 2;
+        return CapabilitySystem.getMax(player.experienceLevel) / 2;
     }
 
     @ModifyConstant(method = "extractAirBubbles", constant = @Constant(intValue = 10, ordinal = 3))
     private int modifyAirBubbleShakeThreshold(int constant, GuiGraphicsExtractor graphics, Player player, int vehicleHearts, int y, int x) {
-        return CapabilityHandler.getMax(player.experienceLevel) / 2;
+        return CapabilitySystem.getMax(player.experienceLevel) / 2;
     }
 
     @ModifyConstant(method = "getCurrentAirSupplyBubble", constant = @Constant(intValue = 10))

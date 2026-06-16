@@ -1,6 +1,8 @@
 package cn.starlight.nightmare.block;
 
 import cn.starlight.nightmare.NightmareMod;
+import cn.starlight.nightmare.mixin.block.AccessorBlockBehaviour;
+import cn.starlight.nightmare.mixin.block.AccessorBlockStateBase;
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -18,15 +20,15 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import java.util.function.Function;
 
 public class ModBlocks {
-    public static final Block SILVER_ORE = register("silver_ore", Block::new, oreProperties(Blocks.IRON_ORE));
-    public static final Block DEEPSLATE_SILVER_ORE = register("deepslate_silver_ore", Block::new, oreProperties(Blocks.DEEPSLATE_IRON_ORE));
-    public static final Block MITHRIL_ORE = register("mithril_ore", Block::new, oreProperties(Blocks.DIAMOND_ORE));
-    public static final Block DEEPSLATE_MITHRIL_ORE = register("deepslate_mithril_ore", Block::new, oreProperties(Blocks.DEEPSLATE_DIAMOND_ORE));
-    public static final Block ADAMANTIUM_ORE = register("adamantium_ore", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.ANCIENT_DEBRIS).requiresCorrectToolForDrops());
-    public static final Block SILVER_BLOCK = register("silver_block", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK));
-    public static final Block ANCIENT_METAL_BLOCK = register("ancient_metal_block", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK));
-    public static final Block MITHRIL_BLOCK = register("mithril_block", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.DIAMOND_BLOCK));
-    public static final Block ADAMANTIUM_BLOCK = register("adamantium_block", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.NETHERITE_BLOCK));
+    public static final Block SILVER_ORE = register("silver_ore", Block::new, blockProperties(3.0F, 3.0F));
+    public static final Block DEEPSLATE_SILVER_ORE = register("deepslate_silver_ore", Block::new, blockProperties(4.5F, 3.0F));
+    public static final Block MITHRIL_ORE = register("mithril_ore", Block::new, blockProperties(4.5F, 5.0F));
+    public static final Block DEEPSLATE_MITHRIL_ORE = register("deepslate_mithril_ore", Block::new, blockProperties(6.0F, 5.0F));
+    public static final Block ADAMANTIUM_ORE = register("adamantium_ore", Block::new, blockProperties(20.0F, 1000.0F));
+    public static final Block SILVER_BLOCK = register("silver_block", Block::new, blockProperties(5.0F, 6.0F));
+    public static final Block ANCIENT_METAL_BLOCK = register("ancient_metal_block", Block::new, blockProperties(6.0F, 8.0F));
+    public static final Block MITHRIL_BLOCK = register("mithril_block", Block::new, blockProperties(7.0F, 10.0F));
+    public static final Block ADAMANTIUM_BLOCK = register("adamantium_block", Block::new, blockProperties(30.0F, 1000.0F));
 
     public static void initialize() {
         CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.NATURAL_BLOCKS).register(creativeTab -> {
@@ -57,7 +59,7 @@ public class ModBlocks {
         return block;
     }
 
-    private static BlockBehaviour.Properties oreProperties(Block block) {
-        return BlockBehaviour.Properties.ofFullCopy(block).requiresCorrectToolForDrops();
+    private static BlockBehaviour.Properties blockProperties(float destroyTime, float explosionResistance) {
+        return BlockBehaviour.Properties.of().strength(destroyTime, explosionResistance).requiresCorrectToolForDrops();
     }
 }

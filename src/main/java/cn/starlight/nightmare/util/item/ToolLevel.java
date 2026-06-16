@@ -7,6 +7,8 @@ public enum ToolLevel {
     GOLD(3),
     COPPER(4),
     SILVER(4),
+    OBSIDIAN(4),
+    RUSTED_IRON(4),
     IRON(5),
     ANCIENT_METAL(6),
     DIAMOND(7),

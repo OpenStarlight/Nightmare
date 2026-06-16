@@ -3,14 +3,19 @@
 	"package": "cn.starlight.nightmare.mixin",
 	"compatibilityLevel": "JAVA_25",
 	"mixins": [
+		"block.AccessorBlockBehaviour",
+		"block.AccessorBlockStateBase",
 		"block.MixinBlock",
 		"block.MixinBlockBehaviour",
 		"entity.MixinEntity",
 		"entity.MixinLivingEntity",
+		"item.AccessorItemProperties",
 		"item.MixinFoodData",
 		"item.MixinConsumable",
 		"item.MixinToolMaterial",
-		"player.MixinPlayer"
+		"player.MixinPlayer",
+		"player.MixinPlayerAttributes",
+		"player.MixinServerPlayerNutrition"
 	],
 	"injectors": {
 		"defaultRequire": 1

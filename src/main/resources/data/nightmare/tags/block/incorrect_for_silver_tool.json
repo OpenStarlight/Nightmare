@@ -1,6 +1,9 @@
 {
+  "replace": true,
   "values": [
-    "#minecraft:needs_iron_tool",
-    "#minecraft:needs_diamond_tool"
+    "#nightmare:needs_iron_tool",
+    "#nightmare:needs_diamond_tool",
+    "#nightmare:needs_mithril_tool",
+    "#nightmare:needs_netherite_tool"
   ]
 }

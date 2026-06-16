@@ -1,0 +1,17 @@
+{
+  "replace": true,
+  "values": [
+    "#minecraft:anvil",
+    "#minecraft:cauldrons",
+    "minecraft:bell",
+    "minecraft:iron_block",
+    "minecraft:raw_iron_block",
+    "minecraft:iron_ore",
+    "minecraft:deepslate_iron_ore",
+    "minecraft:iron_door",
+    "minecraft:iron_trapdoor",
+    "minecraft:iron_bars",
+    "minecraft:iron_chain",
+    "minecraft:heavy_weighted_pressure_plate"
+  ]
+}

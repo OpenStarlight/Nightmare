@@ -1,3 +1,6 @@
 {
-  "values": []
+  "replace": true,
+  "values": [
+    "#nightmare:needs_netherite_tool"
+  ]
 }

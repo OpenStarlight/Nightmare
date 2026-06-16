@@ -1,15 +1,13 @@
-package cn.starlight.nightmare.handler;
+package cn.starlight.nightmare.system;
 
 import cn.starlight.nightmare.NightmareMod;
 import cn.starlight.nightmare.util.player.AttributeUtil;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.ai.attributes.AttributeInstance;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.food.FoodData;
 
-public class CapabilityHandler {
+public class CapabilitySystem {
     private static final ThreadLocal<ServerPlayer> CURRENT_FOOD_PLAYER = new ThreadLocal<>();
     private static final Identifier LEVEL_BREAK_SPEED_ID = Identifier.fromNamespaceAndPath(NightmareMod.MOD_ID, "level_break_speed");
     private static final Identifier LEVEL_ATTACK_DAMAGE_ID = Identifier.fromNamespaceAndPath(NightmareMod.MOD_ID, "level_attack_damage");

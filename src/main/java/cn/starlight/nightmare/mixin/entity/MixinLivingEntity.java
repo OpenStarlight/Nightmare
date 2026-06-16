@@ -1,6 +1,6 @@
 package cn.starlight.nightmare.mixin.entity;
 
-import cn.starlight.nightmare.handler.CapabilityHandler;
+import cn.starlight.nightmare.system.CapabilitySystem;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
@@ -18,7 +18,7 @@ public class MixinLivingEntity {
     @Inject(method = "getArmorValue", at = @At("RETURN"), cancellable = true)
     private void capPlayerArmorValue(CallbackInfoReturnable<Integer> cir) {
         if ((Object) this instanceof Player player) {
-            cir.setReturnValue(Math.min(cir.getReturnValue(), CapabilityHandler.getMax(player.experienceLevel)));
+            cir.setReturnValue(Math.min(cir.getReturnValue(), CapabilitySystem.getMax(player.experienceLevel)));
         }
     }
 

@@ -1,0 +1,8 @@
+{
+  "replace": true,
+  "values": [
+    "nightmare:mithril_ore",
+    "nightmare:deepslate_mithril_ore",
+    "nightmare:mithril_block"
+  ]
+}

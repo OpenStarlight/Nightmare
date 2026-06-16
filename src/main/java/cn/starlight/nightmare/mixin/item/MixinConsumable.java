@@ -1,6 +1,6 @@
 package cn.starlight.nightmare.mixin.item;
 
-import cn.starlight.nightmare.handler.CapabilityHandler;
+import cn.starlight.nightmare.system.CapabilitySystem;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
@@ -16,14 +16,14 @@ public class MixinConsumable {
     @Inject(method = "onConsume", at = @At("HEAD"))
     private void consumeStart(net.minecraft.world.level.Level level, LivingEntity user, ItemStack stack, CallbackInfoReturnable<ItemStack> cir) {
         if (user instanceof ServerPlayer player) {
-            CapabilityHandler.getCurrentFoodPlayer().set(player);
+            CapabilitySystem.getCurrentFoodPlayer().set(player);
         }
     }
 
     @Inject(method = "onConsume", at = @At("RETURN"))
     private void consumeEnd(net.minecraft.world.level.Level level, LivingEntity user, ItemStack stack, CallbackInfoReturnable<ItemStack> cir) {
         if (user instanceof ServerPlayer) {
-            CapabilityHandler.getCurrentFoodPlayer().remove();
+            CapabilitySystem.getCurrentFoodPlayer().remove();
         }
     }
 }

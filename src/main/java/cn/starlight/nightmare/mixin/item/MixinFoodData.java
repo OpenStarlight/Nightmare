@@ -1,11 +1,10 @@
 package cn.starlight.nightmare.mixin.item;
 
-import cn.starlight.nightmare.handler.CapabilityHandler;
+import cn.starlight.nightmare.system.CapabilitySystem;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.food.FoodConstants;
 import net.minecraft.world.food.FoodData;
-import net.minecraft.world.item.Items;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
@@ -27,8 +26,8 @@ public class MixinFoodData {
      */
     @Overwrite
     public void eat(int nutrition, float saturationModifier) {
-        ServerPlayer player = CapabilityHandler.getCurrentFoodPlayer().get();
-        int cap = player == null ? 20 : CapabilityHandler.getMax(player.experienceLevel);
+        ServerPlayer player = CapabilitySystem.getCurrentFoodPlayer().get();
+        int cap = player == null ? 20 : CapabilitySystem.getMax(player.experienceLevel);
         int missing = Math.max(cap - this.foodLevel, 0);
         int appliedNutrition = Math.min(nutrition, missing);
         this.foodLevel = Math.clamp(this.foodLevel + appliedNutrition, 0, cap);
@@ -41,8 +40,8 @@ public class MixinFoodData {
      */
     @Overwrite
     public boolean needsFood() {
-        ServerPlayer player = CapabilityHandler.getCurrentFoodPlayer().get();
-        int cap = player == null ? 20 : CapabilityHandler.getMax(player.experienceLevel);
+        ServerPlayer player = CapabilitySystem.getCurrentFoodPlayer().get();
+        int cap = player == null ? 20 : CapabilitySystem.getMax(player.experienceLevel);
         return this.foodLevel < cap;
     }
 

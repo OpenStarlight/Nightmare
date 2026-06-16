@@ -1,5 +1,7 @@
 package cn.starlight.nightmare.modifier;
 
+import cn.starlight.nightmare.item.ModItems;
+import cn.starlight.nightmare.util.item.ItemUtil;
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.fabricmc.fabric.api.item.v1.DefaultItemComponentEvents;
 import net.minecraft.core.component.DataComponents;
@@ -30,38 +32,39 @@ public class ItemModifier {
         };
         for (Item item : seeds) {
             DefaultItemComponentEvents.MODIFY.register(context -> context.modify(item, builder -> {
-                builder.set(DataComponents.FOOD, new FoodProperties(0, 0.5f, true));
+                builder.set(DataComponents.FOOD, new FoodProperties(0, 1f, true));
                 builder.set(DataComponents.CONSUMABLE, Consumable.builder().build());
             }));
         }
 
         // 回复1饱食度和1饱和度的食物
         Item[] foodsOneHunger = new Item[]{
-                Items.SWEET_BERRIES, Items.MELON_SLICE, Items.GLOW_BERRIES, Items.MUTTON, Items.CHICKEN, Items.RABBIT, Items.COD, Items.SALMON, Items.TROPICAL_FISH
+                Items.SWEET_BERRIES, Items.MELON_SLICE, Items.GLOW_BERRIES, Items.MUTTON, Items.CHICKEN, Items.RABBIT, Items.COD, Items.SALMON, Items.TROPICAL_FISH,
+                Items.BROWN_MUSHROOM, Items.RED_MUSHROOM
         };
-        for (Item item : foodsOneHunger) modifyFood(item, 1, 1f);
+        for (Item item : foodsOneHunger) ItemUtil.modifyFoodProperties(item, 1, 1f);
 
         // 回复2饱食度和2饱和度的食物
         Item[] foodsTwoHunger = new Item[]{
                 Items.APPLE, Items.CHORUS_FRUIT, Items.CARROT, Items.BEEF, Items.PORKCHOP, Items.ROTTEN_FLESH
         };
-        for (Item item : foodsTwoHunger) modifyFood(item, 2, 2f);
+        for (Item item : foodsTwoHunger) ItemUtil.modifyFoodProperties(item, 2, 2f);
 
         // 其他食物
-        modifyFood(Items.BAKED_POTATO, 3, 4f);
-        modifyFood(Items.COOKED_BEEF, 6, 8f);
-        modifyFood(Items.COOKED_PORKCHOP, 6, 8f);
-        modifyFood(Items.COOKED_MUTTON, 4, 6f);
-        modifyFood(Items.COOKED_RABBIT, 4, 6f);
-        modifyFood(Items.COOKED_CHICKEN, 4, 6f);
-        modifyFood(Items.COOKED_COD, 4, 6f);
-        modifyFood(Items.COOKED_SALMON, 4, 6f);
-        modifyFood(Items.BREAD, 4, 4f);
-        modifyFood(Items.COOKIE, 2, 2f);
-        modifyFood(Items.PUMPKIN_PIE, 6, 6f);
-        modifyFood(Items.MUSHROOM_STEW, 4, 6f);
-        modifyFood(Items.SUSPICIOUS_STEW, 4, 6f);
-        modifyFood(Items.BEETROOT_SOUP, 6, 8f);
+        ItemUtil.modifyFoodProperties(Items.BAKED_POTATO, 3, 4f);
+        ItemUtil.modifyFoodProperties(Items.COOKED_BEEF, 6, 8f);
+        ItemUtil.modifyFoodProperties(Items.COOKED_PORKCHOP, 6, 8f);
+        ItemUtil.modifyFoodProperties(Items.COOKED_MUTTON, 4, 6f);
+        ItemUtil.modifyFoodProperties(Items.COOKED_RABBIT, 4, 6f);
+        ItemUtil.modifyFoodProperties(Items.COOKED_CHICKEN, 4, 6f);
+        ItemUtil.modifyFoodProperties(Items.COOKED_COD, 4, 6f);
+        ItemUtil.modifyFoodProperties(Items.COOKED_SALMON, 4, 6f);
+        ItemUtil.modifyFoodProperties(Items.BREAD, 4, 4f);
+        ItemUtil.modifyFoodProperties(Items.COOKIE, 2, 2f);
+        ItemUtil.modifyFoodProperties(Items.PUMPKIN_PIE, 6, 6f);
+        ItemUtil.modifyFoodProperties(Items.MUSHROOM_STEW, 4, 6f);
+        ItemUtil.modifyFoodProperties(Items.SUSPICIOUS_STEW, 4, 6f);
+        ItemUtil.modifyFoodProperties(Items.BEETROOT_SOUP, 6, 8f);
 
         // 调整工具数值
         Map<Item, Double> toolDamage = Map.ofEntries(
@@ -98,20 +101,7 @@ public class ItemModifier {
                 Map.entry(Items.DIAMOND_SPEAR, 6.0),
                 Map.entry(Items.NETHERITE_SPEAR, 8.0)
         );
-        for (Map.Entry<Item, Double> entry : toolDamage.entrySet()) {
-            DefaultItemComponentEvents.MODIFY.register(context -> context.modify(entry.getKey(), builder -> {
-                ItemAttributeModifiers modifiers = entry.getKey().components().getOrDefault(DataComponents.ATTRIBUTE_MODIFIERS, ItemAttributeModifiers.EMPTY);
-                ItemAttributeModifiers.Builder modifierBuilder = ItemAttributeModifiers.builder();
-                for (ItemAttributeModifiers.Entry modifierEntry : modifiers.modifiers()) {
-                    if (modifierEntry.matches(Attributes.ATTACK_DAMAGE, Item.BASE_ATTACK_DAMAGE_ID)) {
-                        modifierBuilder.add(Attributes.ATTACK_DAMAGE, new AttributeModifier(Item.BASE_ATTACK_DAMAGE_ID, entry.getValue() - 1.0, AttributeModifier.Operation.ADD_VALUE), net.minecraft.world.entity.EquipmentSlotGroup.MAINHAND);
-                    } else {
-                        modifierBuilder.add(modifierEntry.attribute(), modifierEntry.modifier(), modifierEntry.slot(), modifierEntry.display());
-                    }
-                }
-                builder.set(DataComponents.ATTRIBUTE_MODIFIERS, modifierBuilder.build());
-            }));
-        }
+        for (Map.Entry<Item, Double> entry : toolDamage.entrySet()) ItemUtil.modifyAttackDamage(entry.getKey(), entry.getValue());
 
         Map<Item, Double> toolSpeed = Map.ofEntries(
                 Map.entry(Items.GOLDEN_AXE, 1.0),
@@ -120,32 +110,12 @@ public class ItemModifier {
                 Map.entry(Items.DIAMOND_AXE, 1.0),
                 Map.entry(Items.NETHERITE_AXE, 1.0)
         );
-
-        for (Map.Entry<Item, Double> entry : toolSpeed.entrySet()) {
-            DefaultItemComponentEvents.MODIFY.register(context -> context.modify(entry.getKey(), builder -> {
-                ItemAttributeModifiers modifiers = entry.getKey().components().getOrDefault(DataComponents.ATTRIBUTE_MODIFIERS, ItemAttributeModifiers.EMPTY);
-                ItemAttributeModifiers.Builder modifierBuilder = ItemAttributeModifiers.builder();
-                for (ItemAttributeModifiers.Entry modifierEntry : modifiers.modifiers()) {
-                    if (modifierEntry.matches(Attributes.ATTACK_SPEED, Item.BASE_ATTACK_SPEED_ID)) {
-                        modifierBuilder.add(Attributes.ATTACK_SPEED, new AttributeModifier(Item.BASE_ATTACK_SPEED_ID, entry.getValue() - 4.0, AttributeModifier.Operation.ADD_VALUE), net.minecraft.world.entity.EquipmentSlotGroup.MAINHAND);
-                    } else {
-                        modifierBuilder.add(modifierEntry.attribute(), modifierEntry.modifier(), modifierEntry.slot(), modifierEntry.display());
-                    }
-                }
-                builder.set(DataComponents.ATTRIBUTE_MODIFIERS, modifierBuilder.build());
-            }));
-        }
+        for (Map.Entry<Item, Double> entry : toolSpeed.entrySet()) ItemUtil.modifyAttackSpeed(entry.getKey(), entry.getValue());
     }
 
     public static boolean isForbiddenItem(ItemStack stack) {
         return stack.is(Items.WOODEN_AXE) || stack.is(Items.WOODEN_PICKAXE) || stack.is(Items.WOODEN_SHOVEL) || stack.is(Items.WOODEN_HOE) || stack.is(Items.WOODEN_SWORD) || stack.is(Items.WOODEN_SPEAR) ||
                 stack.is(Items.STONE_PICKAXE) || stack.is(Items.STONE_AXE) || stack.is(Items.STONE_HOE) || stack.is(Items.STONE_SHOVEL) ||
                 stack.is(Items.STONE_SPEAR) || stack.is(Items.STONE_SWORD);
-    }
-
-    private static void modifyFood(Item item, int hunger, float saturation) {
-        DefaultItemComponentEvents.MODIFY.register(context -> context.modify(item, builder -> {
-            builder.set(DataComponents.FOOD, new FoodProperties(hunger, saturation, true));
-        }));
     }
 }

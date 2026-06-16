@@ -59,7 +59,7 @@ public class ModToolMaterials {
     public static final ToolMaterial ANCIENT_METAL = new ToolMaterial(
             INCORRECT_FOR_ANCIENT_METAL_TOOL,
             640,
-            8.5F,
+            10F,
             6F,
             6,
             ANCIENT_METAL_TOOL_MATERIALS
@@ -67,7 +67,7 @@ public class ModToolMaterials {
     public static final ToolMaterial MITHRIL = new ToolMaterial(
             INCORRECT_FOR_MITHRIL_TOOL,
             2560,
-            9.0F,
+            14.0F,
             8F,
             8,
             MITHRIL_TOOL_MATERIALS
@@ -75,7 +75,7 @@ public class ModToolMaterials {
     public static final ToolMaterial ADAMANTIUM = new ToolMaterial(
             INCORRECT_FOR_ADAMANTIUM_TOOL,
             5120,
-            14.5F,
+            18F,
             10F,
             12,
             ADAMANTIUM_TOOL_MATERIALS

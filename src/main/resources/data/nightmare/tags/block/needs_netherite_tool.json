@@ -1,0 +1,7 @@
+{
+  "replace": true,
+  "values": [
+    "nightmare:adamantium_ore",
+    "nightmare:adamantium_block"
+  ]
+}

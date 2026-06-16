@@ -1,7 +1,6 @@
 package cn.starlight.nightmare.event;
 
-import cn.starlight.nightmare.handler.CapabilityHandler;
-import cn.starlight.nightmare.item.ModItems;
+import cn.starlight.nightmare.system.CapabilitySystem;
 import cn.starlight.nightmare.modifier.ItemModifier;
 import cn.starlight.nightmare.util.player.PlayerUtil;
 import net.minecraft.server.MinecraftServer;
@@ -16,12 +15,12 @@ public class ServerEvent {
         boolean updateEverySecond = server.getTickCount() % 20 == 0;
         for (ServerPlayer player : server.getPlayerList().getPlayers()) {
             if (updateEverySecond) {
-                CapabilityHandler.handleHealth(player);
-                CapabilityHandler.handleFood(player);
-                CapabilityHandler.handleAir(player);
+                CapabilitySystem.handleHealth(player);
+                CapabilitySystem.handleFood(player);
+                CapabilitySystem.handleAir(player);
             }
-            CapabilityHandler.handleInteractionRange(player);
-            CapabilityHandler.handleLevelBonuses(player);
+            CapabilitySystem.handleInteractionRange(player);
+            CapabilitySystem.handleLevelBonuses(player);
         }
     }
 
