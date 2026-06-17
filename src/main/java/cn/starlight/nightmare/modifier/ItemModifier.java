@@ -26,7 +26,7 @@ public class ItemModifier {
         // 可以吃的
         Item[] eatable = new Item[]{
                 Items.WHEAT_SEEDS, Items.PUMPKIN_SEEDS, Items.MELON_SEEDS, Items.BEETROOT_SEEDS, Items.TORCHFLOWER_SEEDS, Items.COCOA_BEANS,
-                Items.BROWN_MUSHROOM, Items.RED_MUSHROOM, Items.NETHER_WART
+                Items.BROWN_MUSHROOM, Items.RED_MUSHROOM, Items.NETHER_WART, Items.SUGAR
         };
         for (Item item : eatable) DefaultItemComponentEvents.MODIFY.register(context -> context.modify(item, builder -> {
             builder.set(DataComponents.CONSUMABLE, Consumable.builder().build());
@@ -34,7 +34,8 @@ public class ItemModifier {
 
         // 回复1饱和度的食物
         Item[] foodsOneSaturation = new Item[]{
-                Items.WHEAT_SEEDS, Items.PUMPKIN_SEEDS, Items.MELON_SEEDS, Items.BEETROOT_SEEDS, Items.TORCHFLOWER_SEEDS, Items.COCOA_BEANS, Items.NETHER_WART
+                Items.WHEAT_SEEDS, Items.PUMPKIN_SEEDS, Items.MELON_SEEDS, Items.BEETROOT_SEEDS, Items.TORCHFLOWER_SEEDS, Items.COCOA_BEANS,
+                Items.NETHER_WART, Items.SUGAR
         };
         for (Item item : foodsOneSaturation) ItemUtil.modifyFoodProperties(item, 0, 1f);
 
@@ -66,6 +67,14 @@ public class ItemModifier {
         ItemUtil.modifyFoodProperties(Items.MUSHROOM_STEW, 4, 6f);
         ItemUtil.modifyFoodProperties(Items.SUSPICIOUS_STEW, 4, 6f);
         ItemUtil.modifyFoodProperties(Items.BEETROOT_SOUP, 6, 8f);
+
+        // 碗类食品最大堆叠改为4
+        Item[] bowlFoods = new Item[]{
+                Items.MUSHROOM_STEW, Items.SUSPICIOUS_STEW, Items.RABBIT_STEW, Items.BEETROOT_SOUP
+        };
+        for (Item item : bowlFoods) DefaultItemComponentEvents.MODIFY.register(context -> context.modify(item, builder -> {
+            builder.set(DataComponents.MAX_STACK_SIZE, 4);
+        }));
 
         // 调整工具数值
         Map<Item, Double> toolDamage = Map.ofEntries(

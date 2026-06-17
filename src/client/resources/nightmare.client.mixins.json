@@ -3,7 +3,8 @@
 	"package": "cn.starlight.nightmare.client.mixin",
 	"compatibilityLevel": "JAVA_25",
 	"client": [
-		"MixinGui"
+		"MixinGui",
+		"MixinMinecraft"
 	],
 	"injectors": {
 		"defaultRequire": 1

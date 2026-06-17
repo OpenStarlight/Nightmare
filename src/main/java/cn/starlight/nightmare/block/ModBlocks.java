@@ -1,13 +1,25 @@
 package cn.starlight.nightmare.block;
 
+import cn.starlight.nightmare.block.impl.BlueBerryBushBlock;
 import cn.starlight.nightmare.util.RegistryUtil;
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
+import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 
 public class ModBlocks {
+    // Plants
+    public static final Block BLUE_BERRY_BUSH = RegistryUtil.registerBlock("blue_berry_bush", BlueBerryBushBlock::new,
+            BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).randomTicks().instabreak().noCollision().sound(SoundType.SWEET_BERRY_BUSH).pushReaction(PushReaction.DESTROY),
+            (block, properties) -> new BlockItem(block, properties.food(new FoodProperties(1, 1.0F, true))), new Item.Properties());
+
     // Ores
     public static final Block SILVER_ORE = RegistryUtil.registerBlock("silver_ore", Block::new, blockProperties(3.0F, 3.0F));
     public static final Block DEEPSLATE_SILVER_ORE = RegistryUtil.registerBlock("deepslate_silver_ore", Block::new, blockProperties(4.5F, 3.0F));
@@ -23,11 +35,15 @@ public class ModBlocks {
 
     public static void initialize() {
         CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.NATURAL_BLOCKS).register(creativeTab -> {
+            creativeTab.insertAfter(Items.SWEET_BERRIES, BLUE_BERRY_BUSH.asItem());
             creativeTab.insertAfter(Items.DEEPSLATE_COPPER_ORE, SILVER_ORE.asItem());
             creativeTab.insertAfter(SILVER_ORE.asItem(), DEEPSLATE_SILVER_ORE.asItem());
             creativeTab.insertAfter(Items.DEEPSLATE_DIAMOND_ORE, MITHRIL_ORE.asItem());
             creativeTab.insertAfter(MITHRIL_ORE.asItem(), DEEPSLATE_MITHRIL_ORE.asItem());
             creativeTab.insertAfter(Items.ANCIENT_DEBRIS, ADAMANTIUM_ORE.asItem());
+        });
+        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.FOOD_AND_DRINKS).register(creativeTab -> {
+            creativeTab.insertAfter(Items.SWEET_BERRIES, BLUE_BERRY_BUSH.asItem());
         });
         CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.BUILDING_BLOCKS).register(creativeTab -> {
             creativeTab.insertAfter(Items.IRON_BLOCK, SILVER_BLOCK.asItem());

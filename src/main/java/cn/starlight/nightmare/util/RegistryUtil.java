@@ -14,6 +14,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 
+import java.util.function.BiFunction;
 import java.util.function.Function;
 
 public class RegistryUtil {
@@ -26,13 +27,17 @@ public class RegistryUtil {
     }
 
     public static <T extends Block> T registerBlock(String name, Function<BlockBehaviour.Properties, T> blockFactory, BlockBehaviour.Properties settings) {
+        return registerBlock(name, blockFactory, settings, BlockItem::new, new Item.Properties());
+    }
+
+    public static <T extends Block> T registerBlock(String name, Function<BlockBehaviour.Properties, T> blockFactory, BlockBehaviour.Properties settings, BiFunction<Block, Item.Properties, Item> itemFactory, Item.Properties itemSettings) {
         ResourceKey<Block> blockKey = ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(NightmareMod.MOD_ID, name));
         T block = blockFactory.apply(settings.setId(blockKey));
 
         Registry.register(BuiltInRegistries.BLOCK, blockKey, block);
 
         ResourceKey<Item> itemKey = ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(NightmareMod.MOD_ID, name));
-        Item item = new BlockItem(block, new Item.Properties().setId(itemKey));
+        Item item = itemFactory.apply(block, itemSettings.setId(itemKey));
 
         Registry.register(BuiltInRegistries.ITEM, itemKey, item);
         return block;

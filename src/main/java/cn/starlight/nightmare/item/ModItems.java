@@ -1,13 +1,30 @@
 package cn.starlight.nightmare.item;
 
+import cn.starlight.nightmare.block.ModBlocks;
+import cn.starlight.nightmare.item.impl.BowlWaterItem;
+import cn.starlight.nightmare.item.impl.CerealItem;
 import cn.starlight.nightmare.util.RegistryUtil;
 import cn.starlight.nightmare.util.item.ItemUtil;
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
+import net.fabricmc.fabric.api.event.player.UseBlockCallback;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.component.Consumables;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.LayeredCauldronBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.level.material.Fluids;
 
 public class ModItems {
     // Shards and basic materials
@@ -37,8 +54,17 @@ public class ModItems {
     public static final Item ADAMANTIUM_INGOT = RegistryUtil.registerItem("adamantium_ingot", Item::new, new Item.Properties());
 
     // Foods
+    public static final Item BLUE_BERRIES = ModBlocks.BLUE_BERRY_BUSH.asItem();
+    public static final Item BOWL_WATER = RegistryUtil.registerItem("bowl_water", BowlWaterItem::new, new Item.Properties()
+            .food(new FoodProperties(0, 0.0F, true), Consumables.DEFAULT_DRINK)
+            .usingConvertsTo(Items.BOWL)
+            .stacksTo(4));
+    public static final Item CEREAL = RegistryUtil.registerItem("cereal", CerealItem::new, new Item.Properties()
+            .food(new FoodProperties(2, 4.0F, true))
+            .usingConvertsTo(Items.BOWL)
+            .stacksTo(4));
     public static final Item SALAD = RegistryUtil.registerItem("salad", Item::new, new Item.Properties()
-            .food(new FoodProperties(1, 1.0F, true))
+            .food(new FoodProperties(1, 2.0F, true))
             .usingConvertsTo(Items.BOWL)
             .stacksTo(4));
 
@@ -169,7 +195,11 @@ public class ModItems {
                     creativeTab.insertAfter(ADAMANTIUM_AXE, ADAMANTIUM_HOE);
                 });
         CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.FOOD_AND_DRINKS)
-                .register((creativeTab) -> creativeTab.insertAfter(Items.BEETROOT_SOUP, SALAD));
+                .register((creativeTab) -> {
+                    creativeTab.insertBefore(Items.MUSHROOM_STEW, BOWL_WATER);
+                    creativeTab.insertAfter(BOWL_WATER, CEREAL);
+                    creativeTab.insertAfter(CEREAL, SALAD);
+                });
         CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.COMBAT)
                 .register((creativeTab) -> {
                     creativeTab.insertBefore(Items.COPPER_SWORD, FLINT_KNIFE);

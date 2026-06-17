@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:potion",
+    "minecraft:bowl"
+  ],
+  "result": {
+    "id": "nightmare:bowl_water"
+  }
+}

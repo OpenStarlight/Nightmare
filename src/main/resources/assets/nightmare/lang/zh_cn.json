@@ -30,6 +30,9 @@
   "item.nightmare.flint_knife": "燧石小刀",
   "item.nightmare.flint_shovel": "燧石锹",
   "item.nightmare.salad": "沙拉",
+  "item.nightmare.bowl_water": "盛水碗",
+  "item.nightmare.cereal": "谷物粥",
+  "item.nightmare.blue_berry_bush": "蓝莓",
   "item.nightmare.silver_ore": "银矿石",
   "item.nightmare.deepslate_silver_ore": "深层银矿石",
   "item.nightmare.mithril_ore": "秘银矿石",
@@ -68,6 +71,7 @@
   "item.nightmare.rusted_iron_sword": "锈铁剑",
 
   "block.nightmare.silver_ore": "银矿石",
+  "block.nightmare.blue_berry_bush": "蓝莓丛",
   "block.nightmare.deepslate_silver_ore": "深层银矿石",
   "block.nightmare.mithril_ore": "秘银矿石",
   "block.nightmare.deepslate_mithril_ore": "深层秘银矿石",

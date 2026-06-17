@@ -1,5 +1,7 @@
 package cn.starlight.nightmare.player.effect;
 
+import cn.starlight.nightmare.player.effect.impl.DiabetesEffect;
+import cn.starlight.nightmare.player.effect.impl.MalnourishedEffect;
 import cn.starlight.nightmare.util.RegistryUtil;
 import net.minecraft.core.Holder;
 import net.minecraft.world.effect.MobEffect;

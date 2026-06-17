@@ -45,9 +45,12 @@ public class NutritionSystem {
             entry(Items.PUFFERFISH, 24000, 0, 0),
             entry(Items.COOKED_COD, 48000, 0, 0),
             entry(Items.COOKED_SALMON, 48000, 0, 0),
-            entry(Items.COOKIE, 0, 0, 1200),
+            entry(Items.COOKIE, 0, 24000, 1200),
+            entry(Items.COCOA_BEANS, 0, 0, 1200),
+            entry(Items.SUGAR, 0, 0, 4800),
             entry(Items.MELON_SLICE, 0, 8000, 4800),
             entry(Items.SWEET_BERRIES, 0, 8000, 4800),
+            entry(ModItems.BLUE_BERRIES, 0, 8000, 4800),
             entry(Items.GLOW_BERRIES, 0, 8000, 4800),
             entry(Items.CHORUS_FRUIT, 0, 8000, 4800),
             entry(Items.ROTTEN_FLESH, 8000, 0, 0),
@@ -66,8 +69,9 @@ public class NutritionSystem {
             entry(Items.BEETROOT_SOUP, 0, 80000, 0),
             entry(Items.RABBIT_STEW, 48000, 40000, 0),
             entry(Items.SUSPICIOUS_STEW, 0, 16000, 0),
-            entry(Items.HONEY_BOTTLE, 0, 0, 9600),
-            entry(ModItems.SALAD, 0, 8000, 0)
+            entry(ModItems.SALAD, 0, 8000, 0),
+            entry(ModItems.CEREAL, 0, 8000, 9600),
+            entry(Items.HONEY_BOTTLE, 0, 0, 9600)
     );
 
     public static void tickPlayer(ServerPlayer player) {

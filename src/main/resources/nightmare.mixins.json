@@ -12,6 +12,7 @@
       "item.AccessorItemProperties",
       "item.MixinConsumable",
       "item.MixinFoodData",
+      "item.MixinFoodProperties",
       "item.MixinToolMaterial",
       "player.MixinPlayer",
       "player.MixinPlayerAttributes",

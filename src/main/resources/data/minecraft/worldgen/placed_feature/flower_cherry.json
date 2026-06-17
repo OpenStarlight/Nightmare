@@ -3,13 +3,9 @@
   "placement": [
     {
       "type": "minecraft:noise_threshold_count",
-      "above_noise": 24,
-      "below_noise": 16,
+      "above_noise": 12,
+      "below_noise": 6,
       "noise_level": -0.8
-    },
-    {
-      "type": "minecraft:rarity_filter",
-      "chance": 6
     },
     {
       "type": "minecraft:in_square"
@@ -20,6 +16,32 @@
     },
     {
       "type": "minecraft:biome"
+    },
+    {
+      "type": "minecraft:count",
+      "count": 96
+    },
+    {
+      "type": "minecraft:random_offset",
+      "xz_spread": {
+        "type": "minecraft:trapezoid",
+        "max": 6,
+        "min": -6,
+        "plateau": 0
+      },
+      "y_spread": {
+        "type": "minecraft:trapezoid",
+        "max": 2,
+        "min": -2,
+        "plateau": 0
+      }
+    },
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "minecraft:matching_block_tag",
+        "tag": "minecraft:air"
+      }
     }
   ]
 }

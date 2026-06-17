@@ -1,4 +1,4 @@
-package cn.starlight.nightmare.player.effect;
+package cn.starlight.nightmare.player.effect.impl;
 
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffect;
@@ -6,11 +6,9 @@ import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
 import org.jspecify.annotations.NonNull;
 
-import java.awt.*;
-
-public class DiabetesEffect extends MobEffect {
-    protected DiabetesEffect() {
-        super(MobEffectCategory.HARMFUL, 0xffffff);
+public class MalnourishedEffect extends MobEffect {
+    public MalnourishedEffect() {
+        super(MobEffectCategory.HARMFUL, 0xff2222);
     }
 
     @Override

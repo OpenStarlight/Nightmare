@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "food",
+  "ingredients": [
+    "minecraft:wheat_seeds",
+    "minecraft:sugar",
+    "nightmare:bowl_water",
+    "#nightmare:cereal_berries"
+  ],
+  "result": {
+    "id": "nightmare:cereal"
+  }
+}
