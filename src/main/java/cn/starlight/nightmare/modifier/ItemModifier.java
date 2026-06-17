@@ -1,6 +1,8 @@
 package cn.starlight.nightmare.modifier;
 
+import cn.starlight.nightmare.player.NutritionSystem;
 import cn.starlight.nightmare.util.item.ItemUtil;
+import cn.starlight.nightmare.util.render.StringUtil;
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.fabricmc.fabric.api.item.v1.DefaultItemComponentEvents;
 import net.minecraft.core.component.DataComponents;
@@ -21,21 +23,25 @@ public class ItemModifier {
             creativeTab.getSearchTabStacks().removeIf(ItemModifier::isForbiddenItem);
         });
 
-        // 可以吃的种子
-        Item[] seeds = new Item[]{
-                Items.WHEAT_SEEDS, Items.PUMPKIN_SEEDS, Items.MELON_SEEDS, Items.BEETROOT_SEEDS, Items.TORCHFLOWER_SEEDS, Items.COCOA_BEANS
+        // 可以吃的
+        Item[] eatable = new Item[]{
+                Items.WHEAT_SEEDS, Items.PUMPKIN_SEEDS, Items.MELON_SEEDS, Items.BEETROOT_SEEDS, Items.TORCHFLOWER_SEEDS, Items.COCOA_BEANS,
+                Items.BROWN_MUSHROOM, Items.RED_MUSHROOM, Items.NETHER_WART
         };
-        for (Item item : seeds) {
-            DefaultItemComponentEvents.MODIFY.register(context -> context.modify(item, builder -> {
-                builder.set(DataComponents.FOOD, new FoodProperties(0, 1f, true));
-                builder.set(DataComponents.CONSUMABLE, Consumable.builder().build());
-            }));
-        }
+        for (Item item : eatable) DefaultItemComponentEvents.MODIFY.register(context -> context.modify(item, builder -> {
+            builder.set(DataComponents.CONSUMABLE, Consumable.builder().build());
+        }));
+
+        // 回复1饱和度的食物
+        Item[] foodsOneSaturation = new Item[]{
+                Items.WHEAT_SEEDS, Items.PUMPKIN_SEEDS, Items.MELON_SEEDS, Items.BEETROOT_SEEDS, Items.TORCHFLOWER_SEEDS, Items.COCOA_BEANS, Items.NETHER_WART
+        };
+        for (Item item : foodsOneSaturation) ItemUtil.modifyFoodProperties(item, 0, 1f);
 
         // 回复1饱食度和1饱和度的食物
         Item[] foodsOneHunger = new Item[]{
-                Items.SWEET_BERRIES, Items.MELON_SLICE, Items.GLOW_BERRIES, Items.MUTTON, Items.CHICKEN, Items.RABBIT, Items.COD, Items.SALMON, Items.TROPICAL_FISH,
-                Items.BROWN_MUSHROOM, Items.RED_MUSHROOM
+                Items.SWEET_BERRIES, Items.MELON_SLICE, Items.GLOW_BERRIES, Items.MUTTON, Items.CHICKEN, Items.RABBIT, Items.COD, Items.SALMON,
+                Items.TROPICAL_FISH, Items.BROWN_MUSHROOM, Items.RED_MUSHROOM
         };
         for (Item item : foodsOneHunger) ItemUtil.modifyFoodProperties(item, 1, 1f);
 
@@ -106,6 +112,19 @@ public class ItemModifier {
                 Map.entry(Items.NETHERITE_AXE, 1.0)
         );
         for (Map.Entry<Item, Double> entry : toolSpeed.entrySet()) ItemUtil.modifyAttackSpeed(entry.getKey(), entry.getValue());
+
+        modifyTooltips();
+    }
+
+    private static void modifyTooltips() {
+        for (Map.Entry<Item, NutritionSystem.NutritionValue> entry : NutritionSystem.FOOD_NUTRITION_MAP.entrySet()) {
+            if ((int)entry.getValue().protein() > 0)
+                ItemUtil.addTooltip(entry.getKey(), StringUtil.toComponent("<green><!italic><lang:message.nightmare.tooltip.nutrition_protein:'" + (int)entry.getValue().protein() + "'></!italic></green>"));
+            if ((int)entry.getValue().phytonutrient() > 0)
+                ItemUtil.addTooltip(entry.getKey(), StringUtil.toComponent("<green><!italic><lang:message.nightmare.tooltip.nutrition_phytonutrient:'" + (int)entry.getValue().phytonutrient() + "'></!italic></green>"));
+            if ((int)entry.getValue().insulinResistance() > 0)
+                ItemUtil.addTooltip(entry.getKey(), StringUtil.toComponent("<red><!italic><lang:message.nightmare.tooltip.nutrition_insulinResistance:'" + (int)entry.getValue().insulinResistance() + "'></!italic></red>"));
+        }
     }
 
     public static boolean isForbiddenItem(ItemStack stack) {

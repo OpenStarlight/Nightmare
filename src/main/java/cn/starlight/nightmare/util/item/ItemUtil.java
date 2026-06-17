@@ -2,8 +2,10 @@ package cn.starlight.nightmare.util.item;
 
 import cn.starlight.nightmare.item.ModItems;
 import cn.starlight.nightmare.mixin.item.AccessorItemProperties;
+import cn.starlight.nightmare.util.render.StringUtil;
 import net.fabricmc.fabric.api.item.v1.DefaultItemComponentEvents;
 import net.minecraft.core.component.*;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.food.FoodProperties;
@@ -11,6 +13,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
+import net.minecraft.world.item.component.ItemLore;
 
 public class ItemUtil {
     public static int getToolLevel(ItemStack stack) {
@@ -33,6 +36,13 @@ public class ItemUtil {
     public static void modifyFoodProperties(Item item, int hunger, float saturation) {
         DefaultItemComponentEvents.MODIFY.register(context -> context.modify(item, builder -> {
             builder.set(DataComponents.FOOD, new FoodProperties(hunger, saturation, true));
+        }));
+    }
+
+    public static void addTooltip(Item item, Component tooltip) {
+        DefaultItemComponentEvents.MODIFY.register(context -> context.modify(item, builder -> {
+            ItemLore lore = item.components().getOrDefault(DataComponents.LORE, ItemLore.EMPTY);
+            builder.set(DataComponents.LORE, lore.withLineAdded(tooltip));
         }));
     }
 

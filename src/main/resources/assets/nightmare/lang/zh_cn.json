@@ -1,5 +1,11 @@
 {
   "message.nightmare.nutrition_tick_failed": "无法处理你的营养值属性，因此你已被强制踢出！\n如果你认为这是一个错误，请向 Nightmare Mod 的开发者报告。",
+  "message.nightmare.tooltip.nutrition_protein": "+%d 蛋白质",
+  "message.nightmare.tooltip.nutrition_phytonutrient": "+%d 植物营养素",
+  "message.nightmare.tooltip.nutrition_insulinResistance": "+%d 胰岛素抵抗",
+  "message.nightmare.command.fieldSet": "字段%s修改完成",
+  "message.nightmare.command.attributeSet": "%s的[%s]已被设置为%d",
+  "message.nightmare.command.attributeGet": "%s的[%s]为%d",
 
   "item.nightmare.flint_shard": "燧石碎片",
   "item.nightmare.obsidian_shard": "黑曜石碎片",

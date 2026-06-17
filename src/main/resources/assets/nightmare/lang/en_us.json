@@ -1,5 +1,11 @@
 {
   "message.nightmare.nutrition_tick_failed": "Failed to tick your nutrition attributes, so you have been kicked forcibly!\nIf you believe this is an error, please report it to Nightmare Mod's developers.",
+  "message.nightmare.tooltip.nutrition_protein": "+{} Protein",
+  "message.nightmare.tooltip.nutrition_phytonutrient": "+{} Phytonutrient",
+  "message.nightmare.tooltip.nutrition_insulinResistance": "+{} Insulin Resistance",
+  "message.nightmare.command.fieldSet": "Field %s modification complete",
+  "message.nightmare.command.attributeSet": "%s's [%s] has been set to %d",
+  "message.nightmare.command.attributeGet": "%s's [%s] is %d",
 
   "item.nightmare.flint_shard": "Flint Shard",
   "item.nightmare.obsidian_shard": "Obsidian Shard",
