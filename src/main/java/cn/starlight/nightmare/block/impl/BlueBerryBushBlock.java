@@ -38,7 +38,6 @@ import org.jspecify.annotations.NonNull;
 
 public class BlueBerryBushBlock extends VegetationBlock implements BonemealableBlock {
     public static final MapCodec<BlueBerryBushBlock> CODEC = simpleCodec(BlueBerryBushBlock::new);
-    private static final float HURT_SPEED_THRESHOLD = 0.003F;
     public static final int MAX_AGE = 3;
     public static final IntegerProperty AGE = BlockStateProperties.AGE_3;
     private static final VoxelShape SHAPE_SAPLING = Block.column(10.0D, 0.0D, 8.0D);

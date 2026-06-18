@@ -1,5 +1,6 @@
 package cn.starlight.nightmare.modifier;
 
+import cn.starlight.nightmare.item.ModItems;
 import cn.starlight.nightmare.player.NutritionSystem;
 import cn.starlight.nightmare.util.item.ItemUtil;
 import cn.starlight.nightmare.util.render.StringUtil;
@@ -140,5 +141,9 @@ public class ItemModifier {
         return stack.is(Items.WOODEN_AXE) || stack.is(Items.WOODEN_PICKAXE) || stack.is(Items.WOODEN_SHOVEL) || stack.is(Items.WOODEN_HOE) || stack.is(Items.WOODEN_SWORD) || stack.is(Items.WOODEN_SPEAR) ||
                 stack.is(Items.STONE_PICKAXE) || stack.is(Items.STONE_AXE) || stack.is(Items.STONE_HOE) || stack.is(Items.STONE_SHOVEL) ||
                 stack.is(Items.STONE_SPEAR) || stack.is(Items.STONE_SWORD);
+    }
+
+    public static boolean isDrinkingItem(ItemStack stack) {
+        return stack.is(ModItems.BOWL_WATER);
     }
 }

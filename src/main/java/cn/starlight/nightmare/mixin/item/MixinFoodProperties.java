@@ -1,6 +1,7 @@
 package cn.starlight.nightmare.mixin.item;
 
 import cn.starlight.nightmare.item.ModItems;
+import cn.starlight.nightmare.modifier.ItemModifier;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
@@ -16,10 +17,10 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 @Mixin(FoodProperties.class)
 public class MixinFoodProperties {
 
-    // 跳过盛水碗进食完成的打嗝声，仅保留饮用音效
+    // 跳过指定物品进食完成的打嗝声，仅保留饮用音效
     @Redirect(method = "onConsume", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;playSound(Lnet/minecraft/world/entity/Entity;DDDLnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V", ordinal = 1))
-    private void nightmare$skipBurpForDrink(Level level, Entity except, double x, double y, double z, SoundEvent sound, SoundSource source, float volume, float pitch, Level levelArg, LivingEntity user, ItemStack stack, Consumable consumable) {
-        if (stack.is(ModItems.BOWL_WATER)) return;
+    private void nightmare$skipBurpForDrink(Level level$method, Entity except, double x, double y, double z, SoundEvent sound, SoundSource source, float volume, float pitch, Level level, LivingEntity user, ItemStack stack, Consumable consumable) {
+        if (ItemModifier.isDrinkingItem(stack)) return;
         level.playSound(except, x, y, z, sound, source, volume, pitch);
     }
 }
