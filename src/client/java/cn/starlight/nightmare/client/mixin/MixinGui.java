@@ -78,9 +78,9 @@ public abstract class MixinGui {
             x += minecraft.font.width(String.valueOf(text.charAt(i)));
         }
 
-        long gameTime = minecraft.level.getLevelData().getGameTime();
-        long days = gameTime / 24000L;
-        long dayTicks = gameTime % 24000L;
+        long dayTime = minecraft.level.getOverworldClockTime();
+        long days = dayTime / 24000L;
+        long dayTicks = dayTime % 24000L;
         int cap = CapabilitySystem.getMax(player.experienceLevel);
         double entityRange = player.getAttributeValue(Attributes.ENTITY_INTERACTION_RANGE);
         double blockRange = player.getAttributeValue(Attributes.BLOCK_INTERACTION_RANGE);

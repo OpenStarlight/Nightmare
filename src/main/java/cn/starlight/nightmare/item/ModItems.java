@@ -1,6 +1,7 @@
 package cn.starlight.nightmare.item;
 
 import cn.starlight.nightmare.block.ModBlocks;
+import cn.starlight.nightmare.item.impl.BowlMilkItem;
 import cn.starlight.nightmare.item.impl.BowlWaterItem;
 import cn.starlight.nightmare.item.impl.CerealItem;
 import cn.starlight.nightmare.util.RegistryUtil;
@@ -15,6 +16,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.item.HoeItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUtils;
@@ -59,7 +61,15 @@ public class ModItems {
             .food(new FoodProperties(0, 0.0F, true), Consumables.DEFAULT_DRINK)
             .usingConvertsTo(Items.BOWL)
             .stacksTo(4));
+    public static final Item BOWL_MILK = RegistryUtil.registerItem("bowl_milk", BowlMilkItem::new, new Item.Properties()
+            .food(new FoodProperties(0, 0.0F, true), Consumables.MILK_BUCKET)
+            .usingConvertsTo(Items.BOWL)
+            .stacksTo(4));
     public static final Item CEREAL = RegistryUtil.registerItem("cereal", CerealItem::new, new Item.Properties()
+            .food(new FoodProperties(2, 4.0F, true))
+            .usingConvertsTo(Items.BOWL)
+            .stacksTo(4));
+    public static final Item PORRIDGE = RegistryUtil.registerItem("porridge", CerealItem::new, new Item.Properties()
             .food(new FoodProperties(2, 4.0F, true))
             .usingConvertsTo(Items.BOWL)
             .stacksTo(4));
@@ -91,8 +101,8 @@ public class ModItems {
             ModToolMaterials.SILVER, 0F, -2.8F));
     public static final Item SILVER_SHOVEL = RegistryUtil.registerItem("silver_shovel", Item::new, new Item.Properties().shovel(
             ModToolMaterials.SILVER, 0F, -3F));
-    public static final Item SILVER_HOE = RegistryUtil.registerItem("silver_hoe", Item::new, new Item.Properties().hoe(
-            ModToolMaterials.SILVER, -3F, -2.4F));
+    public static final Item SILVER_HOE = RegistryUtil.registerItem("silver_hoe", properties -> new HoeItem(
+            ModToolMaterials.SILVER, -3F, -2.4F, properties), new Item.Properties());
     public static final Item SILVER_SWORD = RegistryUtil.registerItem("silver_sword", Item::new, new Item.Properties().sword(
             ModToolMaterials.SILVER, 1F, -2.4F));
 
@@ -103,8 +113,8 @@ public class ModItems {
             ModToolMaterials.RUSTED_IRON, 0F, -2.8F));
     public static final Item RUSTED_IRON_SHOVEL = RegistryUtil.registerItem("rusted_iron_shovel", Item::new, new Item.Properties().shovel(
             ModToolMaterials.RUSTED_IRON, 0F, -3F));
-    public static final Item RUSTED_IRON_HOE = RegistryUtil.registerItem("rusted_iron_hoe", Item::new, new Item.Properties().hoe(
-            ModToolMaterials.RUSTED_IRON, -3F, -2.4F));
+    public static final Item RUSTED_IRON_HOE = RegistryUtil.registerItem("rusted_iron_hoe", properties -> new HoeItem(
+            ModToolMaterials.RUSTED_IRON, -3F, -2.4F, properties), new Item.Properties());
     public static final Item RUSTED_IRON_SWORD = RegistryUtil.registerItem("rusted_iron_sword", Item::new, new Item.Properties().sword(
             ModToolMaterials.RUSTED_IRON, 1F, -2.4F));
 
@@ -115,8 +125,8 @@ public class ModItems {
             ModToolMaterials.ANCIENT_METAL, 0F, -2.8F));
     public static final Item ANCIENT_METAL_SHOVEL = RegistryUtil.registerItem("ancient_metal_shovel", Item::new, new Item.Properties().shovel(
             ModToolMaterials.ANCIENT_METAL, 0F, -3F));
-    public static final Item ANCIENT_METAL_HOE = RegistryUtil.registerItem("ancient_metal_hoe", Item::new, new Item.Properties().hoe(
-            ModToolMaterials.ANCIENT_METAL, -6F, -2.4F));
+    public static final Item ANCIENT_METAL_HOE = RegistryUtil.registerItem("ancient_metal_hoe", properties -> new HoeItem(
+            ModToolMaterials.ANCIENT_METAL, -6F, -2.4F, properties), new Item.Properties());
     public static final Item ANCIENT_METAL_SWORD = RegistryUtil.registerItem("ancient_metal_sword", Item::new, new Item.Properties().sword(
             ModToolMaterials.ANCIENT_METAL, 1F, -2.4F));
 
@@ -127,8 +137,8 @@ public class ModItems {
             ModToolMaterials.MITHRIL, 0F, -2.8F));
     public static final Item MITHRIL_SHOVEL = RegistryUtil.registerItem("mithril_shovel", Item::new, new Item.Properties().shovel(
             ModToolMaterials.MITHRIL, 0F, -3F));
-    public static final Item MITHRIL_HOE = RegistryUtil.registerItem("mithril_hoe", Item::new, new Item.Properties().hoe(
-            ModToolMaterials.MITHRIL, -8F, -2.4F));
+    public static final Item MITHRIL_HOE = RegistryUtil.registerItem("mithril_hoe", properties -> new HoeItem(
+            ModToolMaterials.MITHRIL, -8F, -2.4F, properties), new Item.Properties());
     public static final Item MITHRIL_SWORD = RegistryUtil.registerItem("mithril_sword", Item::new, new Item.Properties().sword(
             ModToolMaterials.MITHRIL, 1F, -2.4F));
 
@@ -139,8 +149,8 @@ public class ModItems {
             ModToolMaterials.ADAMANTIUM, 0F, -2.8F));
     public static final Item ADAMANTIUM_SHOVEL = RegistryUtil.registerItem("adamantium_shovel", Item::new, new Item.Properties().shovel(
             ModToolMaterials.ADAMANTIUM, 0F, -3F));
-    public static final Item ADAMANTIUM_HOE = RegistryUtil.registerItem("adamantium_hoe", Item::new, new Item.Properties().hoe(
-            ModToolMaterials.ADAMANTIUM, -10F, -2.4F));
+    public static final Item ADAMANTIUM_HOE = RegistryUtil.registerItem("adamantium_hoe", properties -> new HoeItem(
+            ModToolMaterials.ADAMANTIUM, -10F, -2.4F, properties), new Item.Properties());
     public static final Item ADAMANTIUM_SWORD = RegistryUtil.registerItem("adamantium_sword", Item::new, new Item.Properties().sword(
             ModToolMaterials.ADAMANTIUM, 1F, -2.4F));
 
@@ -197,8 +207,10 @@ public class ModItems {
         CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.FOOD_AND_DRINKS)
                 .register((creativeTab) -> {
                     creativeTab.insertBefore(Items.MUSHROOM_STEW, BOWL_WATER);
-                    creativeTab.insertAfter(BOWL_WATER, CEREAL);
-                    creativeTab.insertAfter(CEREAL, SALAD);
+                    creativeTab.insertAfter(BOWL_WATER, BOWL_MILK);
+                    creativeTab.insertAfter(BOWL_MILK, CEREAL);
+                    creativeTab.insertAfter(CEREAL, PORRIDGE);
+                    creativeTab.insertAfter(PORRIDGE, SALAD);
                 });
         CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.COMBAT)
                 .register((creativeTab) -> {

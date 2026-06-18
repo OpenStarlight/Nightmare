@@ -70,7 +70,8 @@ public class NutritionSystem {
             entry(Items.RABBIT_STEW, 48000, 40000, 0),
             entry(Items.SUSPICIOUS_STEW, 0, 16000, 0),
             entry(ModItems.SALAD, 0, 8000, 0),
-            entry(ModItems.CEREAL, 0, 8000, 9600),
+            entry(ModItems.CEREAL, 0, 16000, 4800),
+            entry(ModItems.PORRIDGE, 0, 8000, 9600),
             entry(Items.HONEY_BOTTLE, 0, 0, 9600)
     );
 

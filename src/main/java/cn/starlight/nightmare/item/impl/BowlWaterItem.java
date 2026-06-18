@@ -2,6 +2,7 @@ package cn.starlight.nightmare.item.impl;
 
 import cn.starlight.nightmare.item.ModItems;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
+import net.fabricmc.fabric.api.event.player.UseItemCallback;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -14,6 +15,7 @@ import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.block.AbstractCandleBlock;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CandleBlock;
@@ -24,6 +26,8 @@ import net.minecraft.world.level.block.LayeredCauldronBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.HitResult;
 import org.jspecify.annotations.NonNull;
 
 public class BowlWaterItem extends Item {
@@ -35,9 +39,9 @@ public class BowlWaterItem extends Item {
 
             BlockPos pos = hitResult.getBlockPos();
             BlockState state = level.getBlockState(pos);
-            if (state.getFluidState().isSourceOfType(Fluids.WATER) || state.is(Blocks.WATER_CAULDRON)) {
+            if (state.is(Blocks.WATER_CAULDRON)) {
                 if (level instanceof ServerLevel serverLevel) {
-                    if (state.is(Blocks.WATER_CAULDRON)) LayeredCauldronBlock.lowerFillLevel(state, serverLevel, pos);
+                    LayeredCauldronBlock.lowerFillLevel(state, serverLevel, pos);
                     player.setItemInHand(hand, ItemUtils.createFilledResult(stack, player, new ItemStack(ModItems.BOWL_WATER)));
                     serverLevel.playSound(null, pos, SoundEvents.BUCKET_FILL, SoundSource.BLOCKS, 1.0F, 1.0F);
                     serverLevel.gameEvent(player, GameEvent.FLUID_PICKUP, pos);
@@ -46,6 +50,23 @@ public class BowlWaterItem extends Item {
             }
 
             return InteractionResult.PASS;
+        });
+        UseItemCallback.EVENT.register((player, level, hand) -> {
+            ItemStack stack = player.getItemInHand(hand);
+            if (!stack.is(Items.BOWL)) return InteractionResult.PASS;
+
+            BlockHitResult hitResult = getPlayerPOVHitResult(level, player, ClipContext.Fluid.SOURCE_ONLY);
+            if (hitResult.getType() != HitResult.Type.BLOCK) return InteractionResult.PASS;
+
+            BlockPos pos = hitResult.getBlockPos();
+            if (!level.getFluidState(pos).isSourceOfType(Fluids.WATER)) return InteractionResult.PASS;
+
+            if (level instanceof ServerLevel serverLevel) {
+                player.setItemInHand(hand, ItemUtils.createFilledResult(stack, player, new ItemStack(ModItems.BOWL_WATER)));
+                serverLevel.playSound(null, pos, SoundEvents.BUCKET_FILL, SoundSource.BLOCKS, 1.0F, 1.0F);
+                serverLevel.gameEvent(player, GameEvent.FLUID_PICKUP, pos);
+            }
+            return InteractionResult.SUCCESS;
         });
     }
 
@@ -99,6 +120,7 @@ public class BowlWaterItem extends Item {
             if (level instanceof ServerLevel serverLevel) {
                 CampfireBlock.dowse(player, serverLevel, pos, state);
                 serverLevel.setBlock(pos, state.setValue(CampfireBlock.LIT, false), 3);
+                serverLevel.playSound(null, pos, SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 0.5F, 2.6F + (serverLevel.getRandom().nextFloat() - serverLevel.getRandom().nextFloat()) * 0.8F);
                 serverLevel.gameEvent(player, GameEvent.BLOCK_CHANGE, pos);
             }
             return true;

@@ -144,6 +144,6 @@ public class ItemModifier {
     }
 
     public static boolean isDrinkingItem(ItemStack stack) {
-        return stack.is(ModItems.BOWL_WATER);
+        return stack.is(ModItems.BOWL_WATER) || stack.is(ModItems.BOWL_MILK);
     }
 }
