@@ -6,7 +6,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUtils;
@@ -17,7 +17,7 @@ public class BowlMilkItem extends Item {
         super(properties);
         UseEntityCallback.EVENT.register((player, level, hand, entity, hitResult) -> {
             ItemStack stack = player.getItemInHand(hand);
-            if (!stack.is(Items.BOWL) || !entity.is(EntityType.COW)) return InteractionResult.PASS;
+            if (!stack.is(Items.BOWL) || !entity.is(EntityTypes.COW)) return InteractionResult.PASS;
 
             if (level instanceof ServerLevel serverLevel) {
                 player.setItemInHand(hand, ItemUtils.createFilledResult(stack, player, new ItemStack(ModItems.BOWL_MILK)));

@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(Player.class)
 public class MixinPlayerAttributes {
     @Inject(method = "createAttributes", at = @At("RETURN"))
-    private static void addNutritionAttributes(CallbackInfoReturnable<AttributeSupplier.Builder> cir) {
+    private static void nightmare$addNutritionAttributes(CallbackInfoReturnable<AttributeSupplier.Builder> cir) {
         cir.getReturnValue()
                 .add(NutritionSystem.PROTEIN)
                 .add(NutritionSystem.PHYTONUTRIENT)

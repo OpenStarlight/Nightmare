@@ -3,59 +3,120 @@ package cn.starlight.nightmare.item;
 import cn.starlight.nightmare.block.ModBlocks;
 import cn.starlight.nightmare.item.impl.BowlMilkItem;
 import cn.starlight.nightmare.item.impl.BowlWaterItem;
+import cn.starlight.nightmare.util.item.BucketMelting;
 import cn.starlight.nightmare.item.impl.CerealItem;
+import cn.starlight.nightmare.item.impl.CopperBucketItem;
+import cn.starlight.nightmare.item.impl.PowderSnowBucketItem;
 import cn.starlight.nightmare.util.RegistryUtil;
 import cn.starlight.nightmare.util.item.ItemUtil;
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
-import net.fabricmc.fabric.api.event.player.UseBlockCallback;
+import net.fabricmc.fabric.api.event.player.UseItemCallback;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.HoeItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.component.Consumables;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.LayeredCauldronBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.material.Fluids;
 
 public class ModItems {
-    // Shards and basic materials
+    // 基本材料
+    public static final Item LEATHER_STRING = RegistryUtil.registerItem("leather_string", Item::new, new Item.Properties());
+
+    // 碎片
     public static final Item FLINT_SHARD = RegistryUtil.registerItem("flint_shard", Item::new, new Item.Properties());
     public static final Item OBSIDIAN_SHARD = RegistryUtil.registerItem("obsidian_shard", Item::new, new Item.Properties());
     public static final Item EMERALD_SHARD = RegistryUtil.registerItem("emerald_shard", Item::new, new Item.Properties());
     public static final Item DIAMOND_SHARD = RegistryUtil.registerItem("diamond_shard", Item::new, new Item.Properties());
     public static final Item QUARTZ_SHARD = RegistryUtil.registerItem("quartz_shard", Item::new, new Item.Properties());
     public static final Item GLASS_SHARD = RegistryUtil.registerItem("glass_shard", Item::new, new Item.Properties());
-    public static final Item LEATHER_STRING = RegistryUtil.registerItem("leather_string", Item::new, new Item.Properties());
 
-    // Raw materials
+    // 粗矿
     public static final Item RAW_SILVER = RegistryUtil.registerItem("raw_silver", Item::new, new Item.Properties());
     public static final Item RAW_MITHRIL = RegistryUtil.registerItem("raw_mithril", Item::new, new Item.Properties());
-    public static final Item ADAMANTIUM_SHARD = RegistryUtil.registerItem("adamantium_shard", Item::new, new Item.Properties());
+    public static final Item ADAMANTIUM_SHARD = RegistryUtil.registerItem("adamantium_shard", Item::new, new Item.Properties().fireResistant());
 
-    // Nuggets
+    // 矿粒
     public static final Item SILVER_NUGGET = RegistryUtil.registerItem("silver_nugget", Item::new, new Item.Properties());
     public static final Item ANCIENT_METAL_NUGGET = RegistryUtil.registerItem("ancient_metal_nugget", Item::new, new Item.Properties());
     public static final Item MITHRIL_NUGGET = RegistryUtil.registerItem("mithril_nugget", Item::new, new Item.Properties());
-    public static final Item ADAMANTIUM_NUGGET = RegistryUtil.registerItem("adamantium_nugget", Item::new, new Item.Properties());
+    public static final Item ADAMANTIUM_NUGGET = RegistryUtil.registerItem("adamantium_nugget", Item::new, new Item.Properties().fireResistant());
 
-    // Ingots
+    // 矿锭
     public static final Item SILVER_INGOT = RegistryUtil.registerItem("silver_ingot", Item::new, new Item.Properties());
     public static final Item ANCIENT_METAL_INGOT = RegistryUtil.registerItem("ancient_metal_ingot", Item::new, new Item.Properties());
     public static final Item MITHRIL_INGOT = RegistryUtil.registerItem("mithril_ingot", Item::new, new Item.Properties());
-    public static final Item ADAMANTIUM_INGOT = RegistryUtil.registerItem("adamantium_ingot", Item::new, new Item.Properties());
+    public static final Item ADAMANTIUM_INGOT = RegistryUtil.registerItem("adamantium_ingot", Item::new, new Item.Properties().fireResistant());
 
-    // Foods
+    // 容器
+    public static final Item COPPER_BUCKET = RegistryUtil.registerItem("copper_bucket", properties ->
+            new CopperBucketItem("copper", 0.16F, properties), bucketProperties(false));
+    public static final Item COPPER_WATER_BUCKET = RegistryUtil.registerItem("copper_water_bucket", properties ->
+            new CopperBucketItem(Fluids.WATER, COPPER_BUCKET, properties), filledBucketProperties(COPPER_BUCKET, false));
+    public static final Item COPPER_LAVA_BUCKET = RegistryUtil.registerItem("copper_lava_bucket", properties ->
+            new CopperBucketItem(Fluids.LAVA, COPPER_BUCKET, properties), filledBucketProperties(COPPER_BUCKET, false));
+    public static final Item COPPER_MILK_BUCKET = RegistryUtil.registerItem("copper_milk_bucket", Item::new,
+            milkBucketProperties(COPPER_BUCKET, false));
+    public static final Item COPPER_POWDER_SNOW_BUCKET = RegistryUtil.registerItem("copper_powder_snow_bucket", properties ->
+            new PowderSnowBucketItem(Blocks.POWDER_SNOW, SoundEvents.BUCKET_EMPTY_POWDER_SNOW, COPPER_BUCKET, properties), filledBucketProperties(COPPER_BUCKET, false));
+    public static final Item GOLD_BUCKET = RegistryUtil.registerItem("gold_bucket", properties ->
+            new CopperBucketItem("gold", 0.20F, properties), bucketProperties(false));
+    public static final Item GOLD_WATER_BUCKET = RegistryUtil.registerItem("gold_water_bucket", properties ->
+            new CopperBucketItem(Fluids.WATER, GOLD_BUCKET, properties), filledBucketProperties(GOLD_BUCKET, false));
+    public static final Item GOLD_LAVA_BUCKET = RegistryUtil.registerItem("gold_lava_bucket", properties ->
+            new CopperBucketItem(Fluids.LAVA, GOLD_BUCKET, properties), filledBucketProperties(GOLD_BUCKET, false));
+    public static final Item GOLD_MILK_BUCKET = RegistryUtil.registerItem("gold_milk_bucket", Item::new,
+            milkBucketProperties(GOLD_BUCKET, false));
+    public static final Item GOLD_POWDER_SNOW_BUCKET = RegistryUtil.registerItem("gold_powder_snow_bucket",
+            properties -> new PowderSnowBucketItem(Blocks.POWDER_SNOW, SoundEvents.BUCKET_EMPTY_POWDER_SNOW, GOLD_BUCKET, properties), filledBucketProperties(GOLD_BUCKET, false));
+    public static final Item SILVER_BUCKET = RegistryUtil.registerItem("silver_bucket", properties ->
+            new CopperBucketItem("silver", 0.16F, properties), bucketProperties(false));
+    public static final Item SILVER_WATER_BUCKET = RegistryUtil.registerItem("silver_water_bucket", properties ->
+            new CopperBucketItem(Fluids.WATER, SILVER_BUCKET, properties), filledBucketProperties(SILVER_BUCKET, false));
+    public static final Item SILVER_LAVA_BUCKET = RegistryUtil.registerItem("silver_lava_bucket", properties ->
+            new CopperBucketItem(Fluids.LAVA, SILVER_BUCKET, properties), filledBucketProperties(SILVER_BUCKET, false));
+    public static final Item SILVER_MILK_BUCKET = RegistryUtil.registerItem("silver_milk_bucket", Item::new,
+            milkBucketProperties(SILVER_BUCKET, false));
+    public static final Item SILVER_POWDER_SNOW_BUCKET = RegistryUtil.registerItem("silver_powder_snow_bucket", properties ->
+            new PowderSnowBucketItem(Blocks.POWDER_SNOW, SoundEvents.BUCKET_EMPTY_POWDER_SNOW, SILVER_BUCKET, properties), filledBucketProperties(SILVER_BUCKET, false));
+    public static final Item ANCIENT_METAL_BUCKET = RegistryUtil.registerItem("ancient_metal_bucket", properties ->
+            new CopperBucketItem("ancient_metal", 0.04F, properties), bucketProperties(false));
+    public static final Item ANCIENT_METAL_WATER_BUCKET = RegistryUtil.registerItem("ancient_metal_water_bucket", properties ->
+            new CopperBucketItem(Fluids.WATER, ANCIENT_METAL_BUCKET, properties), filledBucketProperties(ANCIENT_METAL_BUCKET, false));
+    public static final Item ANCIENT_METAL_LAVA_BUCKET = RegistryUtil.registerItem("ancient_metal_lava_bucket", properties ->
+            new CopperBucketItem(Fluids.LAVA, ANCIENT_METAL_BUCKET, properties), filledBucketProperties(ANCIENT_METAL_BUCKET, false));
+    public static final Item ANCIENT_METAL_MILK_BUCKET = RegistryUtil.registerItem("ancient_metal_milk_bucket", Item::new,
+            milkBucketProperties(ANCIENT_METAL_BUCKET, false));
+    public static final Item ANCIENT_METAL_POWDER_SNOW_BUCKET = RegistryUtil.registerItem("ancient_metal_powder_snow_bucket", properties ->
+            new PowderSnowBucketItem(Blocks.POWDER_SNOW, SoundEvents.BUCKET_EMPTY_POWDER_SNOW, ANCIENT_METAL_BUCKET, properties), filledBucketProperties(ANCIENT_METAL_BUCKET, false));
+    public static final Item MITHRIL_BUCKET = RegistryUtil.registerItem("mithril_bucket", properties ->
+            new CopperBucketItem("mithril", 0.01F, properties), bucketProperties(false));
+    public static final Item MITHRIL_WATER_BUCKET = RegistryUtil.registerItem("mithril_water_bucket", properties ->
+            new CopperBucketItem(Fluids.WATER, MITHRIL_BUCKET, properties), filledBucketProperties(MITHRIL_BUCKET, false));
+    public static final Item MITHRIL_LAVA_BUCKET = RegistryUtil.registerItem("mithril_lava_bucket", properties ->
+            new CopperBucketItem(Fluids.LAVA, MITHRIL_BUCKET, properties), filledBucketProperties(MITHRIL_BUCKET, false));
+    public static final Item MITHRIL_MILK_BUCKET = RegistryUtil.registerItem("mithril_milk_bucket", Item::new,
+            milkBucketProperties(MITHRIL_BUCKET, false));
+    public static final Item MITHRIL_POWDER_SNOW_BUCKET = RegistryUtil.registerItem("mithril_powder_snow_bucket", properties ->
+            new PowderSnowBucketItem(Blocks.POWDER_SNOW, SoundEvents.BUCKET_EMPTY_POWDER_SNOW, MITHRIL_BUCKET, properties), filledBucketProperties(MITHRIL_BUCKET, false));
+    public static final Item ADAMANTIUM_BUCKET = RegistryUtil.registerItem("adamantium_bucket", properties ->
+            new CopperBucketItem("adamantium", 0.0F, properties), bucketProperties(true));
+    public static final Item ADAMANTIUM_WATER_BUCKET = RegistryUtil.registerItem("adamantium_water_bucket", properties ->
+            new CopperBucketItem(Fluids.WATER, ADAMANTIUM_BUCKET, properties), filledBucketProperties(ADAMANTIUM_BUCKET, true));
+    public static final Item ADAMANTIUM_LAVA_BUCKET = RegistryUtil.registerItem("adamantium_lava_bucket", properties ->
+            new CopperBucketItem(Fluids.LAVA, ADAMANTIUM_BUCKET, properties), filledBucketProperties(ADAMANTIUM_BUCKET, true));
+    public static final Item ADAMANTIUM_MILK_BUCKET = RegistryUtil.registerItem("adamantium_milk_bucket", Item::new,
+            milkBucketProperties(ADAMANTIUM_BUCKET, true));
+    public static final Item ADAMANTIUM_POWDER_SNOW_BUCKET = RegistryUtil.registerItem("adamantium_powder_snow_bucket", properties ->
+            new PowderSnowBucketItem(Blocks.POWDER_SNOW, SoundEvents.BUCKET_EMPTY_POWDER_SNOW, ADAMANTIUM_BUCKET, properties), filledBucketProperties(ADAMANTIUM_BUCKET, true));
+
+    // 食物
     public static final Item BLUE_BERRIES = ModBlocks.BLUE_BERRY_BUSH.asItem();
     public static final Item BOWL_WATER = RegistryUtil.registerItem("bowl_water", BowlWaterItem::new, new Item.Properties()
             .food(new FoodProperties(0, 0.0F, true), Consumables.DEFAULT_DRINK)
@@ -78,7 +139,7 @@ public class ModItems {
             .usingConvertsTo(Items.BOWL)
             .stacksTo(4));
 
-    // Flint tools
+    // 燧石工具
     public static final Item FLINT_AXE = RegistryUtil.registerItem("flint_axe", Item::new, ItemUtil.removeComponent(new Item.Properties().axe(
             ModToolMaterials.FLINT, 3F, -3F), DataComponents.ENCHANTABLE));
     public static final Item FLINT_HATCHET = RegistryUtil.registerItem("flint_hatchet", Item::new, ItemUtil.removeComponent(new Item.Properties().axe(
@@ -88,13 +149,13 @@ public class ModItems {
     public static final Item FLINT_SHOVEL = RegistryUtil.registerItem("flint_shovel", Item::new, ItemUtil.removeComponent(new Item.Properties().shovel(
             ModToolMaterials.FLINT, 1F, -3F), DataComponents.ENCHANTABLE));
 
-    // Obsidian tools
+    // 黑曜石工具
     public static final Item OBSIDIAN_AXE = RegistryUtil.registerItem("obsidian_axe", Item::new, new Item.Properties().axe(
             ModToolMaterials.OBSIDIAN, 2F, -3F));
     public static final Item OBSIDIAN_SHOVEL = RegistryUtil.registerItem("obsidian_shovel", Item::new, new Item.Properties().shovel(
             ModToolMaterials.OBSIDIAN, 0F, -3F));
 
-    // Silver tools
+    // 银工具
     public static final Item SILVER_AXE = RegistryUtil.registerItem("silver_axe", Item::new, new Item.Properties().axe(
             ModToolMaterials.SILVER, 2F, -3F));
     public static final Item SILVER_PICKAXE = RegistryUtil.registerItem("silver_pickaxe", Item::new, new Item.Properties().pickaxe(
@@ -106,7 +167,7 @@ public class ModItems {
     public static final Item SILVER_SWORD = RegistryUtil.registerItem("silver_sword", Item::new, new Item.Properties().sword(
             ModToolMaterials.SILVER, 1F, -2.4F));
 
-    // Rusted iron tools
+    // 锈铁工具
     public static final Item RUSTED_IRON_AXE = RegistryUtil.registerItem("rusted_iron_axe", Item::new, new Item.Properties().axe(
             ModToolMaterials.RUSTED_IRON, 2F, -3F));
     public static final Item RUSTED_IRON_PICKAXE = RegistryUtil.registerItem("rusted_iron_pickaxe", Item::new, new Item.Properties().pickaxe(
@@ -118,7 +179,7 @@ public class ModItems {
     public static final Item RUSTED_IRON_SWORD = RegistryUtil.registerItem("rusted_iron_sword", Item::new, new Item.Properties().sword(
             ModToolMaterials.RUSTED_IRON, 1F, -2.4F));
 
-    // Ancient metal tools
+    // 远古金属工具
     public static final Item ANCIENT_METAL_AXE = RegistryUtil.registerItem("ancient_metal_axe", Item::new, new Item.Properties().axe(
             ModToolMaterials.ANCIENT_METAL, 2F, -3F));
     public static final Item ANCIENT_METAL_PICKAXE = RegistryUtil.registerItem("ancient_metal_pickaxe", Item::new, new Item.Properties().pickaxe(
@@ -130,7 +191,7 @@ public class ModItems {
     public static final Item ANCIENT_METAL_SWORD = RegistryUtil.registerItem("ancient_metal_sword", Item::new, new Item.Properties().sword(
             ModToolMaterials.ANCIENT_METAL, 1F, -2.4F));
 
-    // Mithril tools
+    // 秘银工具
     public static final Item MITHRIL_AXE = RegistryUtil.registerItem("mithril_axe", Item::new, new Item.Properties().axe(
             ModToolMaterials.MITHRIL, 2F, -3F));
     public static final Item MITHRIL_PICKAXE = RegistryUtil.registerItem("mithril_pickaxe", Item::new, new Item.Properties().pickaxe(
@@ -142,19 +203,21 @@ public class ModItems {
     public static final Item MITHRIL_SWORD = RegistryUtil.registerItem("mithril_sword", Item::new, new Item.Properties().sword(
             ModToolMaterials.MITHRIL, 1F, -2.4F));
 
-    // Adamantium tools
+    // 艾德曼工具
     public static final Item ADAMANTIUM_AXE = RegistryUtil.registerItem("adamantium_axe", Item::new, new Item.Properties().axe(
-            ModToolMaterials.ADAMANTIUM, 2F, -3F));
+            ModToolMaterials.ADAMANTIUM, 2F, -3F).fireResistant());
     public static final Item ADAMANTIUM_PICKAXE = RegistryUtil.registerItem("adamantium_pickaxe", Item::new, new Item.Properties().pickaxe(
-            ModToolMaterials.ADAMANTIUM, 0F, -2.8F));
+            ModToolMaterials.ADAMANTIUM, 0F, -2.8F).fireResistant());
     public static final Item ADAMANTIUM_SHOVEL = RegistryUtil.registerItem("adamantium_shovel", Item::new, new Item.Properties().shovel(
-            ModToolMaterials.ADAMANTIUM, 0F, -3F));
+            ModToolMaterials.ADAMANTIUM, 0F, -3F).fireResistant());
     public static final Item ADAMANTIUM_HOE = RegistryUtil.registerItem("adamantium_hoe", properties -> new HoeItem(
-            ModToolMaterials.ADAMANTIUM, -10F, -2.4F, properties), new Item.Properties());
+            ModToolMaterials.ADAMANTIUM, -10F, -2.4F, properties), new Item.Properties().fireResistant());
     public static final Item ADAMANTIUM_SWORD = RegistryUtil.registerItem("adamantium_sword", Item::new, new Item.Properties().sword(
-            ModToolMaterials.ADAMANTIUM, 1F, -2.4F));
+            ModToolMaterials.ADAMANTIUM, 1F, -2.4F).fireResistant());
 
     public static void initialize() {
+        ModBucketBehaviors.registerCauldronInteractions();
+
         CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.INGREDIENTS)
                 .register((creativeTab) -> {
                     creativeTab.insertBefore(Items.FLINT, FLINT_SHARD);
@@ -178,6 +241,36 @@ public class ModItems {
                 });
         CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.TOOLS_AND_UTILITIES)
                 .register((creativeTab) -> {
+                    creativeTab.insertAfter(Items.POWDER_SNOW_BUCKET, COPPER_BUCKET);
+                    creativeTab.insertAfter(COPPER_BUCKET, COPPER_WATER_BUCKET);
+                    creativeTab.insertAfter(COPPER_WATER_BUCKET, COPPER_LAVA_BUCKET);
+                    creativeTab.insertAfter(COPPER_LAVA_BUCKET, COPPER_MILK_BUCKET);
+                    creativeTab.insertAfter(COPPER_MILK_BUCKET, COPPER_POWDER_SNOW_BUCKET);
+                    creativeTab.insertAfter(COPPER_POWDER_SNOW_BUCKET, GOLD_BUCKET);
+                    creativeTab.insertAfter(GOLD_BUCKET, GOLD_WATER_BUCKET);
+                    creativeTab.insertAfter(GOLD_WATER_BUCKET, GOLD_LAVA_BUCKET);
+                    creativeTab.insertAfter(GOLD_LAVA_BUCKET, GOLD_MILK_BUCKET);
+                    creativeTab.insertAfter(GOLD_MILK_BUCKET, GOLD_POWDER_SNOW_BUCKET);
+                    creativeTab.insertAfter(GOLD_POWDER_SNOW_BUCKET, SILVER_BUCKET);
+                    creativeTab.insertAfter(SILVER_BUCKET, SILVER_WATER_BUCKET);
+                    creativeTab.insertAfter(SILVER_WATER_BUCKET, SILVER_LAVA_BUCKET);
+                    creativeTab.insertAfter(SILVER_LAVA_BUCKET, SILVER_MILK_BUCKET);
+                    creativeTab.insertAfter(SILVER_MILK_BUCKET, SILVER_POWDER_SNOW_BUCKET);
+                    creativeTab.insertAfter(SILVER_POWDER_SNOW_BUCKET, ANCIENT_METAL_BUCKET);
+                    creativeTab.insertAfter(ANCIENT_METAL_BUCKET, ANCIENT_METAL_WATER_BUCKET);
+                    creativeTab.insertAfter(ANCIENT_METAL_WATER_BUCKET, ANCIENT_METAL_LAVA_BUCKET);
+                    creativeTab.insertAfter(ANCIENT_METAL_LAVA_BUCKET, ANCIENT_METAL_MILK_BUCKET);
+                    creativeTab.insertAfter(ANCIENT_METAL_MILK_BUCKET, ANCIENT_METAL_POWDER_SNOW_BUCKET);
+                    creativeTab.insertAfter(ANCIENT_METAL_POWDER_SNOW_BUCKET, MITHRIL_BUCKET);
+                    creativeTab.insertAfter(MITHRIL_BUCKET, MITHRIL_WATER_BUCKET);
+                    creativeTab.insertAfter(MITHRIL_WATER_BUCKET, MITHRIL_LAVA_BUCKET);
+                    creativeTab.insertAfter(MITHRIL_LAVA_BUCKET, MITHRIL_MILK_BUCKET);
+                    creativeTab.insertAfter(MITHRIL_MILK_BUCKET, MITHRIL_POWDER_SNOW_BUCKET);
+                    creativeTab.insertAfter(MITHRIL_POWDER_SNOW_BUCKET, ADAMANTIUM_BUCKET);
+                    creativeTab.insertAfter(ADAMANTIUM_BUCKET, ADAMANTIUM_WATER_BUCKET);
+                    creativeTab.insertAfter(ADAMANTIUM_WATER_BUCKET, ADAMANTIUM_LAVA_BUCKET);
+                    creativeTab.insertAfter(ADAMANTIUM_LAVA_BUCKET, ADAMANTIUM_MILK_BUCKET);
+                    creativeTab.insertAfter(ADAMANTIUM_MILK_BUCKET, ADAMANTIUM_POWDER_SNOW_BUCKET);
                     creativeTab.prepend(FLINT_SHOVEL);
                     creativeTab.insertAfter(FLINT_SHOVEL, FLINT_AXE);
                     creativeTab.insertAfter(FLINT_AXE, FLINT_HATCHET);
@@ -208,6 +301,12 @@ public class ModItems {
                 .register((creativeTab) -> {
                     creativeTab.insertBefore(Items.MUSHROOM_STEW, BOWL_WATER);
                     creativeTab.insertAfter(BOWL_WATER, BOWL_MILK);
+                    creativeTab.insertAfter(Items.MILK_BUCKET, COPPER_MILK_BUCKET);
+                    creativeTab.insertAfter(COPPER_MILK_BUCKET, GOLD_MILK_BUCKET);
+                    creativeTab.insertAfter(GOLD_MILK_BUCKET, SILVER_MILK_BUCKET);
+                    creativeTab.insertAfter(SILVER_MILK_BUCKET, ANCIENT_METAL_MILK_BUCKET);
+                    creativeTab.insertAfter(ANCIENT_METAL_MILK_BUCKET, MITHRIL_MILK_BUCKET);
+                    creativeTab.insertAfter(MITHRIL_MILK_BUCKET, ADAMANTIUM_MILK_BUCKET);
                     creativeTab.insertAfter(BOWL_MILK, CEREAL);
                     creativeTab.insertAfter(CEREAL, PORRIDGE);
                     creativeTab.insertAfter(PORRIDGE, SALAD);
@@ -228,5 +327,38 @@ public class ModItems {
                     creativeTab.insertAfter(Items.NETHERITE_SWORD, ADAMANTIUM_SWORD);
                     creativeTab.insertAfter(Items.NETHERITE_AXE, ADAMANTIUM_AXE);
                 });
+
+        // Iron bucket melting
+        UseItemCallback.EVENT.register((player, level, hand) -> {
+            ItemStack stack = player.getItemInHand(hand);
+            if (!stack.is(Items.BUCKET)) return InteractionResult.PASS;
+
+            net.minecraft.world.phys.BlockHitResult hitResult = CopperBucketItem.getSourceHitResult(level, player);
+            if (hitResult.getType() != net.minecraft.world.phys.HitResult.Type.BLOCK) return InteractionResult.PASS;
+            BlockPos pos = hitResult.getBlockPos();
+            if (!level.getFluidState(pos).isSourceOfType(Fluids.LAVA)) return InteractionResult.PASS;
+
+            return BucketMelting.tryMelt(level, player, hand, pos, 0.08F) ? InteractionResult.SUCCESS : InteractionResult.PASS;
+        });
+    }
+
+    private static Item.Properties bucketProperties(boolean fireResistant) {
+        return maybeFireResistant(new Item.Properties().stacksTo(16), fireResistant);
+    }
+
+    private static Item.Properties filledBucketProperties(Item emptyBucket, boolean fireResistant) {
+        return maybeFireResistant(new Item.Properties().stacksTo(1).craftRemainder(emptyBucket), fireResistant);
+    }
+
+    private static Item.Properties milkBucketProperties(Item emptyBucket, boolean fireResistant) {
+        return maybeFireResistant(new Item.Properties()
+                .food(new FoodProperties(0, 0.0F, true), Consumables.MILK_BUCKET)
+                .usingConvertsTo(emptyBucket)
+                .craftRemainder(emptyBucket)
+                .stacksTo(1), fireResistant);
+    }
+
+    private static Item.Properties maybeFireResistant(Item.Properties properties, boolean fireResistant) {
+        return fireResistant ? properties.fireResistant() : properties;
     }
 }

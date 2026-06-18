@@ -19,7 +19,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class MixinBlock {
 
     @Inject(method = "playerDestroy", at = @At("HEAD"), cancellable = true)
-    private void preventDropsWithoutRequiredTool(Level level, Player player, BlockPos pos, BlockState state, BlockEntity blockEntity, ItemStack tool, CallbackInfo ci) {
+    private void nightmare$preventDropsWithoutRequiredTool(Level level, Player player, BlockPos pos, BlockState state, BlockEntity blockEntity, ItemStack tool, CallbackInfo ci) {
         if (DebugFields.disableToolRequirement) return;
         Boolean result = BlockModifier.isCorrectToolForDrops(state.getBlock(), tool);
         if (result != null && !result) {

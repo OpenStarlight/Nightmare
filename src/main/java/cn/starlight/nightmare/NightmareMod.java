@@ -15,6 +15,7 @@ import com.mojang.brigadier.arguments.BoolArgumentType;
 import com.mojang.brigadier.arguments.DoubleArgumentType;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
+import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.minecraft.commands.Commands;
@@ -45,6 +46,7 @@ public class NightmareMod implements ModInitializer {
         ServerEvent serverEvent = new ServerEvent();
         ServerTickEvents.END_SERVER_TICK.register(serverEvent::tickPlayer);
         ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> serverEvent.removeForbiddenItems(handler.player));
+        ServerPlayerEvents.COPY_FROM.register(serverEvent::restoreDeathXp);
 
         if (debug) {
             CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {

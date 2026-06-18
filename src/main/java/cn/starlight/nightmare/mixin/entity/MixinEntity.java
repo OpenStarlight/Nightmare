@@ -13,7 +13,7 @@ public class MixinEntity {
 
     // 使用等级对应的氧气值上限
     @Inject(method = "getMaxAirSupply", at = @At("RETURN"), cancellable = true)
-    private void scalePlayerAirCapacity(CallbackInfoReturnable<Integer> cir) {
+    private void nightmare$scalePlayerAirCapacity(CallbackInfoReturnable<Integer> cir) {
         if ((Object) this instanceof Player player) {
             cir.setReturnValue(CapabilitySystem.getMax(player.experienceLevel) * 30);
         }

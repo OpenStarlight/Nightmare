@@ -1,0 +1,11 @@
+{
+  "values": [
+    "minecraft:milk_bucket",
+    "nightmare:copper_milk_bucket",
+    "nightmare:gold_milk_bucket",
+    "nightmare:silver_milk_bucket",
+    "nightmare:ancient_metal_milk_bucket",
+    "nightmare:mithril_milk_bucket",
+    "nightmare:adamantium_milk_bucket"
+  ]
+}

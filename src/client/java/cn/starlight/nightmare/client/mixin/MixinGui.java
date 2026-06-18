@@ -5,8 +5,8 @@ import cn.starlight.nightmare.player.CapabilitySystem;
 import cn.starlight.nightmare.player.NutritionSystem;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.gui.Hud;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.ai.attributes.Attribute;
@@ -22,50 +22,48 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(Gui.class)
+@Mixin(Hud.class)
 public abstract class MixinGui {
     @Unique
     private static final Identifier NIGHTMARE_LEVEL_BREAK_SPEED_ID = Identifier.fromNamespaceAndPath(NightmareMod.MOD_ID, "level_break_speed");
-    @Unique
-    private static final Identifier NIGHTMARE_LEVEL_ATTACK_DAMAGE_ID = Identifier.fromNamespaceAndPath(NightmareMod.MOD_ID, "level_attack_damage");
 
     @ModifyConstant(method = "extractArmor", constant = @Constant(intValue = 10, ordinal = 1))
-    private static int modifyArmorSlotCount(int constant, GuiGraphicsExtractor graphics, Player player, int y, int rows, int rowHeight, int x) {
+    private static int nightmare$modifyArmorSlotCount(int constant, GuiGraphicsExtractor graphics, Player player, int y, int rows, int rowHeight, int x) {
         return CapabilitySystem.getMax(player.experienceLevel) / 2;
     }
 
     @ModifyConstant(method = "extractFood", constant = @Constant(intValue = 10))
-    private int modifyFoodSlotCount(int constant, GuiGraphicsExtractor graphics, Player player, int y, int x) {
+    private int nightmare$modifyFoodSlotCount(int constant, GuiGraphicsExtractor graphics, Player player, int y, int x) {
         return CapabilitySystem.getMax(player.experienceLevel) / 2;
     }
 
     @ModifyConstant(method = "extractAirBubbles", constant = @Constant(intValue = 10, ordinal = 0))
-    private int modifyAirBubbleBaseCount(int constant, GuiGraphicsExtractor graphics, Player player, int vehicleHearts, int y, int x) {
+    private int nightmare$modifyAirBubbleBaseCount(int constant, GuiGraphicsExtractor graphics, Player player, int vehicleHearts, int y, int x) {
         return CapabilitySystem.getMax(player.experienceLevel) / 2;
     }
 
     @ModifyConstant(method = "extractAirBubbles", constant = @Constant(intValue = 10, ordinal = 1))
-    private int modifyAirBubbleLoopCount(int constant, GuiGraphicsExtractor graphics, Player player, int vehicleHearts, int y, int x) {
+    private int nightmare$modifyAirBubbleLoopCount(int constant, GuiGraphicsExtractor graphics, Player player, int vehicleHearts, int y, int x) {
         return CapabilitySystem.getMax(player.experienceLevel) / 2;
     }
 
     @ModifyConstant(method = "extractAirBubbles", constant = @Constant(intValue = 10, ordinal = 2))
-    private int modifyAirBubbleEmptyThreshold(int constant, GuiGraphicsExtractor graphics, Player player, int vehicleHearts, int y, int x) {
+    private int nightmare$modifyAirBubbleEmptyThreshold(int constant, GuiGraphicsExtractor graphics, Player player, int vehicleHearts, int y, int x) {
         return CapabilitySystem.getMax(player.experienceLevel) / 2;
     }
 
     @ModifyConstant(method = "extractAirBubbles", constant = @Constant(intValue = 10, ordinal = 3))
-    private int modifyAirBubbleShakeThreshold(int constant, GuiGraphicsExtractor graphics, Player player, int vehicleHearts, int y, int x) {
+    private int nightmare$modifyAirBubbleShakeThreshold(int constant, GuiGraphicsExtractor graphics, Player player, int vehicleHearts, int y, int x) {
         return CapabilitySystem.getMax(player.experienceLevel) / 2;
     }
 
     @ModifyConstant(method = "getCurrentAirSupplyBubble", constant = @Constant(intValue = 10))
-    private static int modifyAirBubbleScale(int constant, int currentAirSupplyTicks, int maxAirSupplyTicks, int tickOffset) {
+    private static int nightmare$modifyAirBubbleScale(int constant, int currentAirSupplyTicks, int maxAirSupplyTicks, int tickOffset) {
         return Math.max(1, maxAirSupplyTicks / 30);
     }
 
     @Inject(method = "extractRenderState", at = @At("TAIL"))
-    private void drawNightmareDebug(GuiGraphicsExtractor graphics, DeltaTracker deltaTracker, CallbackInfo ci) {
+    private void nightmare$drawNightmareDebug(GuiGraphicsExtractor graphics, DeltaTracker deltaTracker, CallbackInfo ci) {
         if (!NightmareMod.debug) return;
         Minecraft minecraft = Minecraft.getInstance();
         Player player = minecraft.player;
@@ -85,7 +83,7 @@ public abstract class MixinGui {
         double entityRange = player.getAttributeValue(Attributes.ENTITY_INTERACTION_RANGE);
         double blockRange = player.getAttributeValue(Attributes.BLOCK_INTERACTION_RANGE);
         double breakSpeedBonus = nightmare$getModifierAmount(player.getAttribute(Attributes.BLOCK_BREAK_SPEED), NIGHTMARE_LEVEL_BREAK_SPEED_ID) * 100.0D;
-        double attackDamageBonus = nightmare$getModifierAmount(player.getAttribute(Attributes.ATTACK_DAMAGE), NIGHTMARE_LEVEL_ATTACK_DAMAGE_ID) * 100.0D;
+        double attackDamageBonus = Math.min(player.experienceLevel, 100) * 0.5D;
 
         graphics.text(minecraft.font, "Days: " + days + ", " + dayTicks, 4, 14, 0xFFFFFFFF);
         graphics.text(minecraft.font, String.format("Nutrition: %.0f, %.0f, %.0f",

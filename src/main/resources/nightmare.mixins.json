@@ -5,6 +5,8 @@
 	"mixins": [
       "block.AccessorBlockBehaviour",
       "block.AccessorBlockStateBase",
+      "block.AccessorCauldronInteractionDispatcher",
+      "block.MixinAbstractFurnaceBlockEntity",
       "block.MixinBlock",
       "block.MixinBlockBehaviour",
       "entity.MixinEntity",
@@ -16,6 +18,7 @@
       "item.MixinToolMaterial",
       "player.MixinPlayer",
       "player.MixinPlayerAttributes",
+      "player.MixinFurnaceFuelSlot",
       "player.MixinServerPlayer"
     ],
 	"injectors": {

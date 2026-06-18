@@ -43,7 +43,7 @@ public class MixinToolMaterial {
     public static ToolMaterial NETHERITE;
 
     @Inject(method = "<clinit>", at = @At("TAIL"))
-    private static void modifyToolMaterials(CallbackInfo ci) {
+    private static void nightmare$modifyToolMaterials(CallbackInfo ci) {
         WOOD = new ToolMaterial(BlockTags.INCORRECT_FOR_WOODEN_TOOL, 1, 0.1F, 0F, 1, ItemTags.WOODEN_TOOL_MATERIALS);
         STONE = new ToolMaterial(BlockTags.INCORRECT_FOR_STONE_TOOL, 1, 0.1F, 0F, 1, ItemTags.STONE_TOOL_MATERIALS);
         GOLD = new ToolMaterial(BlockTags.INCORRECT_FOR_GOLD_TOOL, 160, 6.0F, 2F, 4, ItemTags.GOLD_TOOL_MATERIALS);

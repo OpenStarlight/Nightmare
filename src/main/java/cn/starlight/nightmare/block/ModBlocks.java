@@ -25,13 +25,13 @@ public class ModBlocks {
     public static final Block DEEPSLATE_SILVER_ORE = RegistryUtil.registerBlock("deepslate_silver_ore", Block::new, blockProperties(4.5F, 3.0F));
     public static final Block MITHRIL_ORE = RegistryUtil.registerBlock("mithril_ore", Block::new, blockProperties(4.5F, 5.0F));
     public static final Block DEEPSLATE_MITHRIL_ORE = RegistryUtil.registerBlock("deepslate_mithril_ore", Block::new, blockProperties(6.0F, 5.0F));
-    public static final Block ADAMANTIUM_ORE = RegistryUtil.registerBlock("adamantium_ore", Block::new, blockProperties(20.0F, 1000.0F));
+    public static final Block ADAMANTIUM_ORE = RegistryUtil.registerBlock("adamantium_ore", Block::new, blockProperties(20.0F, 1000.0F), BlockItem::new, new Item.Properties().fireResistant());
 
     // Metal blocks
     public static final Block SILVER_BLOCK = RegistryUtil.registerBlock("silver_block", Block::new, blockProperties(5.0F, 6.0F));
     public static final Block ANCIENT_METAL_BLOCK = RegistryUtil.registerBlock("ancient_metal_block", Block::new, blockProperties(6.0F, 8.0F));
     public static final Block MITHRIL_BLOCK = RegistryUtil.registerBlock("mithril_block", Block::new, blockProperties(7.0F, 10.0F));
-    public static final Block ADAMANTIUM_BLOCK = RegistryUtil.registerBlock("adamantium_block", Block::new, blockProperties(30.0F, 1000.0F));
+    public static final Block ADAMANTIUM_BLOCK = RegistryUtil.registerBlock("adamantium_block", Block::new, blockProperties(30.0F, 1000.0F), BlockItem::new, new Item.Properties().fireResistant());
 
     public static void initialize() {
         CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.NATURAL_BLOCKS).register(creativeTab -> {

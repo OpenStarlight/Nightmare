@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    "minecraft:water_bucket",
+    "#nightmare:water_buckets",
     "minecraft:bowl",
     "minecraft:bowl",
     "minecraft:bowl"

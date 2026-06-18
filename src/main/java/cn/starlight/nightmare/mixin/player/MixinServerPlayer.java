@@ -13,7 +13,9 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyConstant;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ServerPlayer.class)
@@ -26,17 +28,17 @@ public class MixinServerPlayer implements NightmarePlayer {
     private boolean nightmare$nightmarePlayerInitialized;
 
     @Inject(method = "readAdditionalSaveData", at = @At("TAIL"))
-    private void readNutritionInitialized(ValueInput input, CallbackInfo ci) {
+    private void nightmare$readNutritionInitialized(ValueInput input, CallbackInfo ci) {
         this.nightmare$nightmarePlayerInitialized = input.getBooleanOr(NIGHTMARE_PLAYER_INITIALIZED, false);
     }
 
     @Inject(method = "addAdditionalSaveData", at = @At("TAIL"))
-    private void writeNutritionInitialized(ValueOutput output, CallbackInfo ci) {
+    private void nightmare$writeNutritionInitialized(ValueOutput output, CallbackInfo ci) {
         output.putBoolean(NIGHTMARE_PLAYER_INITIALIZED, this.nightmare$nightmarePlayerInitialized);
     }
 
     @Inject(method = "restoreFrom", at = @At("TAIL"))
-    private void restoreNutritionInitialized(ServerPlayer oldPlayer, boolean restoreAll, CallbackInfo ci) {
+    private void nightmare$restoreNutritionInitialized(ServerPlayer oldPlayer, boolean restoreAll, CallbackInfo ci) {
         this.nightmare$nightmarePlayerInitialized = ((NightmarePlayer) oldPlayer).nightmare$isNightmarePlayerInitialized();
     }
 
@@ -50,8 +52,15 @@ public class MixinServerPlayer implements NightmarePlayer {
         this.nightmare$nightmarePlayerInitialized = initialized;
     }
 
+    // 疾跑消耗翻1.5倍
+    @ModifyConstant(method = "checkMovementStatistics", constant = @Constant(floatValue = 0.1f))
+    private float nightmare$doubleSprintExhaustion(float original) {
+        return original * 1.5F;
+    }
+
+    // 初始化营养系统
     @Inject(method = "tick", at = @At("HEAD"))
-    private void initializeNutrition(CallbackInfo ci) {
+    private void nightmare$initializeNutrition(CallbackInfo ci) {
         if (this.nightmare$nightmarePlayerInitialized) return;
 
         ServerPlayer player = (ServerPlayer) (Object) this;

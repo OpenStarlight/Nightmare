@@ -1,0 +1,11 @@
+{
+  "values": [
+    "minecraft:water_bucket",
+    "nightmare:copper_water_bucket",
+    "nightmare:gold_water_bucket",
+    "nightmare:silver_water_bucket",
+    "nightmare:ancient_metal_water_bucket",
+    "nightmare:mithril_water_bucket",
+    "nightmare:adamantium_water_bucket"
+  ]
+}

@@ -15,14 +15,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class MixinConsumable {
 
     @Inject(method = "onConsume", at = @At("HEAD"))
-    private void consumeStart(net.minecraft.world.level.Level level, LivingEntity user, ItemStack stack, CallbackInfoReturnable<ItemStack> cir) {
+    private void nightmare$consumeStart(net.minecraft.world.level.Level level, LivingEntity user, ItemStack stack, CallbackInfoReturnable<ItemStack> cir) {
         if (user instanceof ServerPlayer player) {
             CapabilitySystem.getCurrentFoodPlayer().set(player);
         }
     }
 
     @Inject(method = "onConsume", at = @At("RETURN"))
-    private void consumeEnd(net.minecraft.world.level.Level level, LivingEntity user, ItemStack stack, CallbackInfoReturnable<ItemStack> cir) {
+    private void nightmare$consumeEnd(net.minecraft.world.level.Level level, LivingEntity user, ItemStack stack, CallbackInfoReturnable<ItemStack> cir) {
         if (user instanceof ServerPlayer) {
             CapabilitySystem.getCurrentFoodPlayer().remove();
             NutritionSystem.onPlayerConsume((ServerPlayer) user, stack.getItem());

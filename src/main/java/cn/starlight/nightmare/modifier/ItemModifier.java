@@ -1,9 +1,7 @@
 package cn.starlight.nightmare.modifier;
 
 import cn.starlight.nightmare.item.ModItems;
-import cn.starlight.nightmare.player.NutritionSystem;
 import cn.starlight.nightmare.util.item.ItemUtil;
-import cn.starlight.nightmare.util.render.StringUtil;
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.fabricmc.fabric.api.item.v1.DefaultItemComponentEvents;
 import net.minecraft.core.component.DataComponents;
@@ -122,28 +120,17 @@ public class ItemModifier {
                 Map.entry(Items.NETHERITE_AXE, 1.0)
         );
         for (Map.Entry<Item, Double> entry : toolSpeed.entrySet()) ItemUtil.modifyAttackSpeed(entry.getKey(), entry.getValue());
-
-        modifyTooltips();
-    }
-
-    private static void modifyTooltips() {
-        for (Map.Entry<Item, NutritionSystem.NutritionValue> entry : NutritionSystem.FOOD_NUTRITION_MAP.entrySet()) {
-            if ((int)entry.getValue().protein() > 0)
-                ItemUtil.addTooltip(entry.getKey(), StringUtil.toComponent("<green><!italic><lang:message.nightmare.tooltip.nutrition_protein:'" + (int)entry.getValue().protein() + "'></!italic></green>"));
-            if ((int)entry.getValue().phytonutrient() > 0)
-                ItemUtil.addTooltip(entry.getKey(), StringUtil.toComponent("<green><!italic><lang:message.nightmare.tooltip.nutrition_phytonutrient:'" + (int)entry.getValue().phytonutrient() + "'></!italic></green>"));
-            if ((int)entry.getValue().insulinResistance() > 0)
-                ItemUtil.addTooltip(entry.getKey(), StringUtil.toComponent("<red><!italic><lang:message.nightmare.tooltip.nutrition_insulinResistance:'" + (int)entry.getValue().insulinResistance() + "'></!italic></red>"));
-        }
     }
 
     public static boolean isForbiddenItem(ItemStack stack) {
-        return stack.is(Items.WOODEN_AXE) || stack.is(Items.WOODEN_PICKAXE) || stack.is(Items.WOODEN_SHOVEL) || stack.is(Items.WOODEN_HOE) || stack.is(Items.WOODEN_SWORD) || stack.is(Items.WOODEN_SPEAR) ||
-                stack.is(Items.STONE_PICKAXE) || stack.is(Items.STONE_AXE) || stack.is(Items.STONE_HOE) || stack.is(Items.STONE_SHOVEL) ||
+        return stack.is(Items.WOODEN_AXE) || stack.is(Items.WOODEN_PICKAXE) || stack.is(Items.WOODEN_SHOVEL) || stack.is(Items.WOODEN_HOE) || stack.is(Items.WOODEN_SWORD) ||
+                stack.is(Items.WOODEN_SPEAR) || stack.is(Items.STONE_PICKAXE) || stack.is(Items.STONE_AXE) || stack.is(Items.STONE_HOE) || stack.is(Items.STONE_SHOVEL) ||
                 stack.is(Items.STONE_SPEAR) || stack.is(Items.STONE_SWORD);
     }
 
     public static boolean isDrinkingItem(ItemStack stack) {
-        return stack.is(ModItems.BOWL_WATER) || stack.is(ModItems.BOWL_MILK);
+        return stack.is(ModItems.BOWL_WATER) || stack.is(ModItems.BOWL_MILK) || stack.is(ModItems.COPPER_MILK_BUCKET) || stack.is(ModItems.SILVER_MILK_BUCKET) ||
+                stack.is(ModItems.GOLD_MILK_BUCKET) || stack.is(ModItems.ANCIENT_METAL_MILK_BUCKET) || stack.is(ModItems.MITHRIL_MILK_BUCKET) ||
+                stack.is(ModItems.ADAMANTIUM_MILK_BUCKET);
     }
 }

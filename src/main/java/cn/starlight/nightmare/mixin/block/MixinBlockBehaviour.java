@@ -26,7 +26,7 @@ public class MixinBlockBehaviour {
 
     // 全局放缓挖掘速度
     @Inject(method = "getDestroyProgress", at = @At("RETURN"), cancellable = true)
-    private void reduceGlobalDestroyProgress(BlockState state, Player player, BlockGetter level, BlockPos pos, CallbackInfoReturnable<Float> cir) {
+    private void nightmare$reduceGlobalDestroyProgress(BlockState state, Player player, BlockGetter level, BlockPos pos, CallbackInfoReturnable<Float> cir) {
         if (DebugFields.disableBreakSpeedModifier) return;
         float progress = cir.getReturnValue() * 0.1F;
         // 秒挖掘方块额外减慢速度
@@ -38,13 +38,13 @@ public class MixinBlockBehaviour {
 
     // 使更多方块可以被雨熄灭
     @Inject(method = "isRandomlyTicking", at = @At("RETURN"), cancellable = true)
-    private void makeLitBlocksRandomlyTick(BlockState state, CallbackInfoReturnable<Boolean> cir) {
+    private void nightmare$makeLitBlocksRandomlyTick(BlockState state, CallbackInfoReturnable<Boolean> cir) {
         if (isRainExtinguishable(state)) cir.setReturnValue(true);
     }
 
     // 使更多方块可以被雨熄灭
     @Inject(method = "randomTick", at = @At("HEAD"))
-    private void extinguishLitBlocksInRain(BlockState state, ServerLevel level, BlockPos pos, RandomSource random, CallbackInfo ci) {
+    private void nightmare$extinguishLitBlocksInRain(BlockState state, ServerLevel level, BlockPos pos, RandomSource random, CallbackInfo ci) {
         if (!isRainExtinguishable(state) || !level.isRainingAt(pos) || random.nextFloat() >= 0.2F) return;
 
         if (isLitCampfire(state)) {
