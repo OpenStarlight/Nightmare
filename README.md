@@ -25,18 +25,22 @@ Nightmare 是一个基于 Fabric 的提高 Minecraft 生存难度的模组。这
 - Java 25
 - IntelliJ IDEA (推荐)
 
-常用命令：
-
-```bash
-./gradlew build
-./gradlew runClient
-./gradlew runServer
-```
-
 ## 目录说明
 
 - `src/main`：通用逻辑、注册、Mixin、服务端逻辑，通用资源
 - `src/client`：客户端入口、Mixin、资源
+
+## 兼容性提醒
+
+由于 Fabric API 功能有限，本模组大量使用 Mixin 对原版的机制进行了修改，这意味着本模组并不期望与任何其他未测试的模组兼容。
+因此当您添加其他模组时，冲突和崩溃是在预期之内的。如果您遇到了这个情况，请向开发者反馈，我们会酌情处理。
+
+### 已知兼容模组
+- 几乎所有优化模组
+- 几乎所有信息显示模组
+
+### 已知不兼容模组
+- 无
 
 ## 许可证
 

@@ -107,7 +107,7 @@ public abstract class MixinAbstractCraftingMenu extends RecipeBookMenu implement
         if (recipe == null || result.isEmpty()) return false;
 
         Identifier recipeId = recipe.id().identifier();
-        int totalTime = CraftingProgressTimes.ticks(recipeId);
+        int totalTime = CraftingProgressTimes.ticks(recipeId, result);
         if (totalTime <= 0) return false;
 
         this.nightmare$currentRecipe = recipeId;
@@ -131,7 +131,7 @@ public abstract class MixinAbstractCraftingMenu extends RecipeBookMenu implement
         if (recipe == null || result.isEmpty()) return false;
 
         Identifier recipeId = recipe.id().identifier();
-        int totalTime = CraftingProgressTimes.ticks(recipeId);
+        int totalTime = CraftingProgressTimes.ticks(recipeId, result);
         if (totalTime <= 0) return false;
         if (!this.nightmare$canHotbarAccept(player, hotbarSlot, result)) return false;
 
@@ -160,7 +160,7 @@ public abstract class MixinAbstractCraftingMenu extends RecipeBookMenu implement
                 this.nightmare$clearCraftingProgress();
                 return;
             }
-            int totalTime = CraftingProgressTimes.ticks(this.nightmare$currentRecipe);
+            int totalTime = this.nightmare$craftingTotalTime;
             if (totalTime <= 0) {
                 this.nightmare$clearCraftingProgress();
                 return;
@@ -172,7 +172,7 @@ public abstract class MixinAbstractCraftingMenu extends RecipeBookMenu implement
         }
 
         Identifier recipeId = recipe.id().identifier();
-        int totalTime = CraftingProgressTimes.ticks(recipeId);
+        int totalTime = CraftingProgressTimes.ticks(recipeId, this.resultSlots.getItem(0));
         if (totalTime <= 0) {
             this.nightmare$clearCraftingProgress();
             return;
@@ -213,7 +213,7 @@ public abstract class MixinAbstractCraftingMenu extends RecipeBookMenu implement
     @Override
     public boolean nightmare$hasTimedCraftingResult() {
         RecipeHolder<?> recipe = this.resultSlots.getRecipeUsed();
-        return recipe != null && !this.resultSlots.getItem(0).isEmpty() && CraftingProgressTimes.ticks(recipe.id().identifier()) > 0;
+        return recipe != null && !this.resultSlots.getItem(0).isEmpty() && CraftingProgressTimes.ticks(recipe.id().identifier(), this.resultSlots.getItem(0)) > 0;
     }
 
     @Override
@@ -347,7 +347,7 @@ public abstract class MixinAbstractCraftingMenu extends RecipeBookMenu implement
         this.nightmare$completingCraft = false;
 
         if (this.nightmare$craftingQuickMove) {
-            int totalTime = CraftingProgressTimes.ticks(this.nightmare$currentRecipe);
+            int totalTime = this.nightmare$craftingTotalTime;
             if (totalTime > 0) {
                 this.nightmare$craftingProgress = 0;
                 this.nightmare$craftingTotalTime = totalTime;

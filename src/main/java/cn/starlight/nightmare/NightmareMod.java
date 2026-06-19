@@ -24,10 +24,16 @@ import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.core.Holder;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.permissions.Permissions;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
+
+import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -57,6 +63,8 @@ public class NightmareMod implements ModInitializer {
             CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
                 dispatcher.register(Commands.literal("nightmare").requires(source -> source.permissions().hasPermission(Permissions.COMMANDS_MODERATOR))
                         .then(Commands.literal("get")
+                                .then(Commands.literal("itemTags")
+                                        .executes(context -> getItemTags(context.getSource().getPlayerOrException())))
                                 .then(Commands.argument("player", EntityArgument.player())
                                         .then(Commands.literal("protein")
                                                 .executes(context -> getNutrition(context.getSource().getPlayerOrException(), EntityArgument.getPlayer(context, "player"), NutritionSystem.PROTEIN)))
@@ -99,6 +107,27 @@ public class NightmareMod implements ModInitializer {
         AttributeInstance instance = target.getAttribute(attribute);
         if (instance == null) return 0;
         PlayerUtil.showMessage(source, "<lang:message.nightmare.command.attributeGet:'" + target.getName().getString() + "':'" + attribute.getRegisteredName() + "':'<aqua>" + (int)instance.getBaseValue() + "'>", true);
+        return Command.SINGLE_SUCCESS;
+    }
+
+    private static int getItemTags(ServerPlayer player) {
+        ItemStack stack = player.getMainHandItem();
+        if (stack.isEmpty()) {
+            player.sendSystemMessage(Component.literal("Hold an item in your main hand."));
+            return 0;
+        }
+
+        List<String> tags = stack.typeHolder().tags()
+                .map(TagKey::location)
+                .map(id -> "#" + id)
+                .sorted()
+                .toList();
+        if (tags.isEmpty()) {
+            player.sendSystemMessage(Component.literal(stack.getHoverName().getString() + " has no item tags."));
+            return Command.SINGLE_SUCCESS;
+        }
+
+        player.sendSystemMessage(Component.literal(stack.getHoverName().getString() + " item tags: " + String.join(", ", tags)));
         return Command.SINGLE_SUCCESS;
     }
 

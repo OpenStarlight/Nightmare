@@ -1,0 +1,9 @@
+{
+  "ticks": 100,
+  "recipes": [
+    "nightmare:flint_axe",
+    "nightmare:flint_hatchet",
+    "nightmare:flint_knife",
+    "nightmare:flint_shovel"
+  ]
+}
