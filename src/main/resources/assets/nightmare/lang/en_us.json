@@ -1,8 +1,11 @@
 {
   "message.nightmare.nutrition_tick_failed": "Failed to tick your nutrition attributes, so you have been kicked forcibly!\nIf you believe this is an error, please report it to Nightmare Mod's developers.",
-  "message.nightmare.command.fieldSet": "Field %s modification complete",
+  "message.nightmare.command.fieldSet": "Field [%s] has been set to %s",
+  "message.nightmare.command.fieldGet": "Field [%s] is %s",
   "message.nightmare.command.attributeSet": "%s's [%s] has been set to %d",
   "message.nightmare.command.attributeGet": "%s's [%s] is %d",
+  "message.nightmare.command.itemTagGetNoItem": "Hold an item in your main hand",
+  "message.nightmare.command.itemTagGet": "Item [%s] has following tags: \n%s",
 
   "title.nightmare.config": "Nightmare Config",
   "category.nightmare.client": "Client",

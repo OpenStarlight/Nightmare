@@ -3,6 +3,7 @@ package cn.starlight.nightmare.client.mixin;
 import cn.starlight.nightmare.NightmareMod;
 import cn.starlight.nightmare.player.CapabilitySystem;
 import cn.starlight.nightmare.player.NutritionSystem;
+import cn.starlight.nightmare.util.DebugFields;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
@@ -64,7 +65,7 @@ public abstract class MixinGui {
 
     @Inject(method = "extractRenderState", at = @At("TAIL"))
     private void nightmare$drawNightmareDebug(GuiGraphicsExtractor graphics, DeltaTracker deltaTracker, CallbackInfo ci) {
-        if (!NightmareMod.debug) return;
+        if (!NightmareMod.debug || !DebugFields.disablePlayerInformation) return;
         Minecraft minecraft = Minecraft.getInstance();
         Player player = minecraft.player;
         if (player == null || minecraft.level == null) return;

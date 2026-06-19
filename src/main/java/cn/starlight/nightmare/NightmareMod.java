@@ -63,40 +63,69 @@ public class NightmareMod implements ModInitializer {
             CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
                 dispatcher.register(Commands.literal("nightmare").requires(source -> source.permissions().hasPermission(Permissions.COMMANDS_MODERATOR))
                         .then(Commands.literal("get")
-                                .then(Commands.literal("itemTags")
-                                        .executes(context -> getItemTags(context.getSource().getPlayerOrException())))
-                                .then(Commands.argument("player", EntityArgument.player())
-                                        .then(Commands.literal("protein")
-                                                .executes(context -> getNutrition(context.getSource().getPlayerOrException(), EntityArgument.getPlayer(context, "player"), NutritionSystem.PROTEIN)))
-                                        .then(Commands.literal("phytonutrient")
-                                                .executes(context -> getNutrition(context.getSource().getPlayerOrException(), EntityArgument.getPlayer(context, "player"), NutritionSystem.PHYTONUTRIENT)))
-                                        .then(Commands.literal("insulinResistance")
-                                                .executes(context -> getNutrition(context.getSource().getPlayerOrException(), EntityArgument.getPlayer(context, "player"), NutritionSystem.INSULIN_RESISTANCE)))))
+                                .then(Commands.literal("item")
+                                        .then(Commands.literal("tag")
+                                                .executes(context -> getItemTags(context.getSource().getPlayerOrException()))))
+                                .then(Commands.literal("player")
+                                        .then(Commands.argument("player", EntityArgument.player())
+                                                .then(Commands.literal("protein")
+                                                        .executes(context -> getNutrition(context.getSource().getPlayerOrException(), EntityArgument.getPlayer(context, "player"), NutritionSystem.PROTEIN)))
+                                                .then(Commands.literal("phytonutrient")
+                                                        .executes(context -> getNutrition(context.getSource().getPlayerOrException(), EntityArgument.getPlayer(context, "player"), NutritionSystem.PHYTONUTRIENT)))
+                                                .then(Commands.literal("insulinResistance")
+                                                        .executes(context -> getNutrition(context.getSource().getPlayerOrException(), EntityArgument.getPlayer(context, "player"), NutritionSystem.INSULIN_RESISTANCE)))))
+                                .then(Commands.literal("field")
+                                        .then(Commands.literal("disableBreakSpeedModifier")
+                                                .executes(context -> {
+                                                    PlayerUtil.showMessage(context.getSource().getPlayerOrException(),
+                                                            "<lang:message.nightmare.command.fieldGet:'disableBreakSpeedModifier':'<aqua>" + DebugFields.disableBreakSpeedModifier + "'>", true);
+                                                    return Command.SINGLE_SUCCESS;
+                                                }))
+                                        .then(Commands.literal("disableToolRequirement").then(Commands.argument("state", BoolArgumentType.bool())
+                                                .executes(context -> {
+                                                    PlayerUtil.showMessage(context.getSource().getPlayerOrException(),
+                                                            "<lang:message.nightmare.command.fieldGet:'disableToolRequirement':'<aqua>" + DebugFields.disableToolRequirement + "'>", true);
+                                                    return Command.SINGLE_SUCCESS;
+                                                })))
+                                        .then(Commands.literal("disablePlayerInformation")
+                                                .executes(context -> {
+                                                    PlayerUtil.showMessage(context.getSource().getPlayerOrException(),
+                                                            "<lang:message.nightmare.command.fieldGet:'disablePlayerInformation':'<aqua>" + DebugFields.disablePlayerInformation + "'>", true);
+                                                    return Command.SINGLE_SUCCESS;
+                                                }))))
                         .then(Commands.literal("set")
-                                .then(Commands.argument("player", EntityArgument.player())
-                                        .then(Commands.literal("protein")
-                                                .then(Commands.argument("value", DoubleArgumentType.doubleArg())
-                                                        .executes(context -> setNutrition(context.getSource().getPlayerOrException(), EntityArgument.getPlayer(context, "player"), NutritionSystem.PROTEIN, DoubleArgumentType.getDouble(context, "value")))))
-                                        .then(Commands.literal("phytonutrient")
-                                                .then(Commands.argument("value", DoubleArgumentType.doubleArg())
-                                                        .executes(context -> setNutrition(context.getSource().getPlayerOrException(), EntityArgument.getPlayer(context, "player"), NutritionSystem.PHYTONUTRIENT, DoubleArgumentType.getDouble(context, "value")))))
-                                        .then(Commands.literal("insulinResistance")
-                                                .then(Commands.argument("value", DoubleArgumentType.doubleArg())
-                                                        .executes(context -> setNutrition(context.getSource().getPlayerOrException(), EntityArgument.getPlayer(context, "player"), NutritionSystem.INSULIN_RESISTANCE, DoubleArgumentType.getDouble(context, "value")))))))
-                        .then(Commands.literal("field")
-                                .then(Commands.literal("disableBreakSpeedModifier").then(Commands.argument("state", BoolArgumentType.bool())
-                                        .executes(context -> {
-                                            DebugFields.disableBreakSpeedModifier = BoolArgumentType.getBool(context, "state");
-                                            PlayerUtil.showMessage(context.getSource().getPlayerOrException(), "<lang:message.nightmare.command.fieldSet:'[disableBreakSpeedModifier]'>", true);
-                                            return Command.SINGLE_SUCCESS;
-                                        })))
-                                .then(Commands.literal("disableToolRequirement").then(Commands.argument("state", BoolArgumentType.bool())
-                                        .executes(context -> {
-                                            DebugFields.disableToolRequirement = BoolArgumentType.getBool(context, "state");
-                                            PlayerUtil.showMessage(context.getSource().getPlayerOrException(), "<lang:message.nightmare.command.fieldSet:'[disableToolRequirement]'>", true);
-                                            return Command.SINGLE_SUCCESS;
-                                        })))
-                        ));
+                                .then(Commands.literal("player")
+                                        .then(Commands.argument("player", EntityArgument.player())
+                                                .then(Commands.literal("protein")
+                                                        .then(Commands.argument("value", DoubleArgumentType.doubleArg())
+                                                                .executes(context -> setNutrition(context.getSource().getPlayerOrException(), EntityArgument.getPlayer(context, "player"), NutritionSystem.PROTEIN, DoubleArgumentType.getDouble(context, "value")))))
+                                                .then(Commands.literal("phytonutrient")
+                                                        .then(Commands.argument("value", DoubleArgumentType.doubleArg())
+                                                                .executes(context -> setNutrition(context.getSource().getPlayerOrException(), EntityArgument.getPlayer(context, "player"), NutritionSystem.PHYTONUTRIENT, DoubleArgumentType.getDouble(context, "value")))))
+                                                .then(Commands.literal("insulinResistance")
+                                                        .then(Commands.argument("value", DoubleArgumentType.doubleArg())
+                                                                .executes(context -> setNutrition(context.getSource().getPlayerOrException(), EntityArgument.getPlayer(context, "player"), NutritionSystem.INSULIN_RESISTANCE, DoubleArgumentType.getDouble(context, "value")))))))
+
+                                .then(Commands.literal("field")
+                                        .then(Commands.literal("disableBreakSpeedModifier").then(Commands.argument("state", BoolArgumentType.bool())
+                                                .executes(context -> {
+                                                    DebugFields.disableBreakSpeedModifier = BoolArgumentType.getBool(context, "state");
+                                                    PlayerUtil.showMessage(context.getSource().getPlayerOrException(), "<lang:message.nightmare.command.fieldSet:'disableBreakSpeedModifier':'<aqua>" + DebugFields.disableBreakSpeedModifier + "'>", true);
+                                                    return Command.SINGLE_SUCCESS;
+                                                })))
+                                        .then(Commands.literal("disableToolRequirement").then(Commands.argument("state", BoolArgumentType.bool())
+                                                .executes(context -> {
+                                                    DebugFields.disableToolRequirement = BoolArgumentType.getBool(context, "state");
+                                                    PlayerUtil.showMessage(context.getSource().getPlayerOrException(), "<lang:message.nightmare.command.fieldSet:'disableToolRequirement':'<aqua>" + DebugFields.disableToolRequirement + "'>", true);
+                                                    return Command.SINGLE_SUCCESS;
+                                                })))
+                                        .then(Commands.literal("disablePlayerInformation").then(Commands.argument("state", BoolArgumentType.bool())
+                                                .executes(context -> {
+                                                    DebugFields.disablePlayerInformation = BoolArgumentType.getBool(context, "state");
+                                                    PlayerUtil.showMessage(context.getSource().getPlayerOrException(), "<lang:message.nightmare.command.fieldSet:'disablePlayerInformation':'<aqua>" + DebugFields.disablePlayerInformation + "'>", true);
+                                                    return Command.SINGLE_SUCCESS;
+                                                })))
+                                )));
             });
         }
 
@@ -113,7 +142,7 @@ public class NightmareMod implements ModInitializer {
     private static int getItemTags(ServerPlayer player) {
         ItemStack stack = player.getMainHandItem();
         if (stack.isEmpty()) {
-            player.sendSystemMessage(Component.literal("Hold an item in your main hand."));
+            PlayerUtil.showMessage(player, "<red><lang:message.nightmare.command.itemTagGetNoItem></red>", true);
             return 0;
         }
 
@@ -122,12 +151,8 @@ public class NightmareMod implements ModInitializer {
                 .map(id -> "#" + id)
                 .sorted()
                 .toList();
-        if (tags.isEmpty()) {
-            player.sendSystemMessage(Component.literal(stack.getHoverName().getString() + " has no item tags."));
-            return Command.SINGLE_SUCCESS;
-        }
 
-        player.sendSystemMessage(Component.literal(stack.getHoverName().getString() + " item tags: " + String.join(", ", tags)));
+        PlayerUtil.showMessage(player, "<lang:message.nightmare.command.itemTagGet:'" + stack.getHoverName().getString() + "':'<aqua>" + String.join("\n", tags) + "'>", true);
         return Command.SINGLE_SUCCESS;
     }
 
