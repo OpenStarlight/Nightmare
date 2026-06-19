@@ -78,6 +78,7 @@ public class CopperBucketItem extends BucketItem {
         if (getContent() != Fluids.EMPTY) {
             InteractionResult result = super.use(level, player, hand);
             if (result instanceof InteractionResult.Success success && this.emptyResult != null) {
+                if (player.hasInfiniteMaterials()) return result;
                 return success.heldItemTransformedTo(ItemUtils.createFilledResult(stack, player, new ItemStack(this.emptyResult)));
             }
             return result;

@@ -1,10 +1,12 @@
 package cn.starlight.nightmare;
 
 import cn.starlight.nightmare.block.ModBlocks;
+import cn.starlight.nightmare.player.crafting.CraftingProgressTimes;
 import cn.starlight.nightmare.event.ServerEvent;
 import cn.starlight.nightmare.item.ModItems;
 import cn.starlight.nightmare.modifier.BlockModifier;
 import cn.starlight.nightmare.modifier.ItemModifier;
+import cn.starlight.nightmare.network.CraftingProgressPayload;
 import cn.starlight.nightmare.player.NutritionSystem;
 import cn.starlight.nightmare.player.effect.ModEffects;
 import cn.starlight.nightmare.util.DebugFields;
@@ -17,6 +19,7 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
+import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.EntityArgument;
@@ -37,6 +40,8 @@ public class NightmareMod implements ModInitializer {
     public void onInitialize() {
         ModBlocks.initialize();
         ModItems.initialize();
+        CraftingProgressTimes.initialize();
+        PayloadTypeRegistry.clientboundPlay().register(CraftingProgressPayload.TYPE, CraftingProgressPayload.CODEC);
         ModWorldGeneration.initialize();
         ModEffects.initialize();
 
