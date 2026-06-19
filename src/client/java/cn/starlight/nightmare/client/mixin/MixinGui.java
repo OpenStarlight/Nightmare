@@ -65,7 +65,7 @@ public abstract class MixinGui {
 
     @Inject(method = "extractRenderState", at = @At("TAIL"))
     private void nightmare$drawNightmareDebug(GuiGraphicsExtractor graphics, DeltaTracker deltaTracker, CallbackInfo ci) {
-        if (!NightmareMod.debug || !DebugFields.disablePlayerInformation) return;
+        if (!NightmareMod.debug || DebugFields.disablePlayerInformation) return;
         Minecraft minecraft = Minecraft.getInstance();
         Player player = minecraft.player;
         if (player == null || minecraft.level == null) return;
