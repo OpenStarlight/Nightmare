@@ -103,12 +103,7 @@ public class ItemModifier {
                 Map.entry(Items.COPPER_HOE, 1.0),
                 Map.entry(Items.IRON_HOE, 1.0),
                 Map.entry(Items.DIAMOND_HOE, 1.0),
-                Map.entry(Items.NETHERITE_HOE, 1.0),
-                Map.entry(Items.GOLDEN_SPEAR, 1.0),
-                Map.entry(Items.COPPER_SPEAR, 3.0),
-                Map.entry(Items.IRON_SPEAR, 4.0),
-                Map.entry(Items.DIAMOND_SPEAR, 6.0),
-                Map.entry(Items.NETHERITE_SPEAR, 8.0)
+                Map.entry(Items.NETHERITE_HOE, 1.0)
         );
         for (Map.Entry<Item, Double> entry : toolDamage.entrySet()) ItemUtil.modifyAttackDamage(entry.getKey(), entry.getValue());
 
@@ -125,7 +120,8 @@ public class ItemModifier {
     public static boolean isForbiddenItem(ItemStack stack) {
         return stack.is(Items.WOODEN_AXE) || stack.is(Items.WOODEN_PICKAXE) || stack.is(Items.WOODEN_SHOVEL) || stack.is(Items.WOODEN_HOE) || stack.is(Items.WOODEN_SWORD) ||
                 stack.is(Items.WOODEN_SPEAR) || stack.is(Items.STONE_PICKAXE) || stack.is(Items.STONE_AXE) || stack.is(Items.STONE_HOE) || stack.is(Items.STONE_SHOVEL) ||
-                stack.is(Items.STONE_SPEAR) || stack.is(Items.STONE_SWORD);
+                stack.is(Items.STONE_SPEAR) || stack.is(Items.GOLDEN_SPEAR) || stack.is(Items.COPPER_SPEAR) || stack.is(Items.IRON_SPEAR) ||
+                stack.is(Items.DIAMOND_SPEAR) || stack.is(Items.NETHERITE_SPEAR) || stack.is(Items.STONE_SWORD);
     }
 
     public static boolean isDrinkingItem(ItemStack stack) {
