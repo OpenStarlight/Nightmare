@@ -12,7 +12,7 @@ Nightmare 是一个基于 Fabric 的提高 Minecraft 生存难度的模组。这
 
 - Minecraft 26.2
 - Fabric Loader 0.19.3 或更高
-- Fabric API 0.152.1+26.2 或更高
+- Fabric API 0.152.2+26.2 或更高
 - Cloth Config 26.2.155 或更高
 - Mod Menu 20.0.0-beta.2 或更高 (可选)
 - Java 25 或更高

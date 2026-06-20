@@ -1,0 +1,14 @@
+
+{
+  "criteria": {
+    "has_ingredient": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{"items": ["minecraft:obsidian"]}]
+      }
+    }
+  },
+  "requirements": [["has_ingredient"]],
+  "rewards": {"recipes": ["nightmare:obsidian_shard_from_obsidian"]},
+  "sends_telemetry_event": false
+}

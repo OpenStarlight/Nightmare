@@ -1,0 +1,34 @@
+{
+  "parent": "nightmare:root",
+  "criteria": {
+    "has_seed": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{
+          "items": [
+            "minecraft:wheat_seeds",
+            "minecraft:melon_seeds",
+            "minecraft:pumpkin_seeds",
+            "minecraft:beetroot_seeds",
+            "minecraft:torchflower_seeds",
+            "minecraft:cocoa_beans",
+            "minecraft:nether_wart"
+          ]
+        }]
+      }
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.nightmare.fast_food.description"
+    },
+    "icon": {
+      "id": "minecraft:wheat_seeds"
+    },
+    "title": {
+      "translate": "advancement.nightmare.fast_food.title"
+    }
+  },
+  "requirements": [["has_seed"]],
+  "sends_telemetry_event": false
+}

@@ -1,0 +1,14 @@
+
+{
+  "criteria": {
+    "has_ingredient": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{"items": ["minecraft:copper_nugget"]}]
+      }
+    }
+  },
+  "requirements": [["has_ingredient"]],
+  "rewards": {"recipes": ["nightmare:copper_ingot_from_copper_nugget"]},
+  "sends_telemetry_event": false
+}

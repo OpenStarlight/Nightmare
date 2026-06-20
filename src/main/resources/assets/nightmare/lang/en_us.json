@@ -125,6 +125,20 @@
   "effect.nightmare.malnourished": "Malnourished",
   "effect.nightmare.diabetes": "Diabetes",
 
+  "advancement.nightmare.root.title": "Nightmare",
+  "advancement.nightmare.root.description": "Begin your journey in this new world where risk and opportunity coexist!",
+  "advancement.nightmare.fast_food.title": "Fast Food",
+  "advancement.nightmare.fast_food.description": "Let's have some fast food! Even though it doesn't look like food.",
+  "advancement.nightmare.soft_hard.title": "Soft and Hard",
+  "advancement.nightmare.soft_hard.description": "Mine gravel and try to find something useful from it.",
+
+  "advancement.nightmare.adventure.root.title": "Nightmare: Adventure",
+  "advancement.nightmare.adventure.root.description": "Weigh the pros and cons, cooperate with friends, and contend with enemies.",
+  "advancement.nightmare.adventure.first_blood.title": "First Blood",
+  "advancement.nightmare.adventure.first_blood.description": "Kill a hostile creature.",
+  "advancement.nightmare.adventure.delaying_tactic.title": "A Delaying Tactic",
+  "advancement.nightmare.adventure.delaying_tactic.description": "Kill a friendly creature. You know things can't go on like this forever.",
+
   "tooltip.nightmare.nutrition_protein": "+%d Protein",
   "tooltip.nightmare.nutrition_phytonutrient": "+%d Phytonutrient",
   "tooltip.nightmare.nutrition_insulinResistance": "+%d Insulin Resistance",

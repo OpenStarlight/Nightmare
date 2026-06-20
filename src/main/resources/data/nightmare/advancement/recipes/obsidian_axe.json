@@ -1,0 +1,14 @@
+
+{
+  "criteria": {
+    "has_ingredient": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{"items": ["minecraft:obsidian", "minecraft:stick"]}]
+      }
+    }
+  },
+  "requirements": [["has_ingredient"]],
+  "rewards": {"recipes": ["nightmare:obsidian_axe"]},
+  "sends_telemetry_event": false
+}

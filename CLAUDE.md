@@ -18,7 +18,7 @@ README 中记录的运行环境：
 
 - Minecraft 26.2
 - Fabric Loader 0.19.3+
-- Fabric API 0.152.1+26.2
+- Fabric API 0.152.2+26.2
 - Cloth Config 26.2.155+
 - Mod Menu 20.0.0-beta.2+（可选）
 - Java 25+

@@ -1,0 +1,30 @@
+{
+  "parent": "nightmare:adventure/root",
+  "criteria": {
+    "kill_hostile": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": [{
+          "condition": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_type": "#nightmare:hostile"
+          }
+        }]
+      }
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.nightmare.adventure.first_blood.description"
+    },
+    "icon": {
+      "id": "minecraft:golden_sword"
+    },
+    "title": {
+      "translate": "advancement.nightmare.adventure.first_blood.title"
+    }
+  },
+  "requirements": [["kill_hostile"]],
+  "sends_telemetry_event": false
+}

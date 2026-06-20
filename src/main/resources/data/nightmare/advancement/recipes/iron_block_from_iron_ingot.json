@@ -1,0 +1,14 @@
+
+{
+  "criteria": {
+    "has_ingredient": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{"items": ["minecraft:iron_ingot"]}]
+      }
+    }
+  },
+  "requirements": [["has_ingredient"]],
+  "rewards": {"recipes": ["nightmare:iron_block_from_iron_ingot"]},
+  "sends_telemetry_event": false
+}

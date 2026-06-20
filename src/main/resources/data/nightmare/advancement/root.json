@@ -1,0 +1,23 @@
+{
+  "criteria": {
+    "started": {
+      "trigger": "minecraft:tick"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "background": "minecraft:gui/advancements/backgrounds/stone",
+    "description": {
+      "translate": "advancement.nightmare.root.description"
+    },
+    "icon": {
+      "id": "minecraft:grass_block"
+    },
+    "show_toast": false,
+    "title": {
+      "translate": "advancement.nightmare.root.title"
+    }
+  },
+  "requirements": [["started"]],
+  "sends_telemetry_event": false
+}

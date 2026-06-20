@@ -1,0 +1,30 @@
+{
+  "parent": "nightmare:adventure/root",
+  "criteria": {
+    "kill_friendly": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": [{
+          "condition": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_type": "#nightmare:friendly"
+          }
+        }]
+      }
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.nightmare.adventure.delaying_tactic.description"
+    },
+    "icon": {
+      "id": "minecraft:porkchop"
+    },
+    "title": {
+      "translate": "advancement.nightmare.adventure.delaying_tactic.title"
+    }
+  },
+  "requirements": [["kill_friendly"]],
+  "sends_telemetry_event": false
+}

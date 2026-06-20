@@ -1,0 +1,23 @@
+{
+  "criteria": {
+    "started": {
+      "trigger": "minecraft:tick"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "background": "minecraft:gui/advancements/backgrounds/adventure",
+    "description": {
+      "translate": "advancement.nightmare.adventure.root.description"
+    },
+    "icon": {
+      "id": "nightmare:mithril_sword"
+    },
+    "show_toast": false,
+    "title": {
+      "translate": "advancement.nightmare.adventure.root.title"
+    }
+  },
+  "requirements": [["started"]],
+  "sends_telemetry_event": false
+}

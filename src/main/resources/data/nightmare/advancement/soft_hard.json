@@ -1,0 +1,26 @@
+{
+  "parent": "nightmare:fast_food",
+  "criteria": {
+    "has_gravel": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{
+          "items": ["minecraft:gravel"]
+        }]
+      }
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.nightmare.soft_hard.description"
+    },
+    "icon": {
+      "id": "minecraft:gravel"
+    },
+    "title": {
+      "translate": "advancement.nightmare.soft_hard.title"
+    }
+  },
+  "requirements": [["has_gravel"]],
+  "sends_telemetry_event": false
+}

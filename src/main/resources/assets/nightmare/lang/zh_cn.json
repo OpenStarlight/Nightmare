@@ -125,6 +125,20 @@
   "effect.nightmare.malnourished": "营养不良",
   "effect.nightmare.diabetes": "糖尿病",
 
+  "advancement.nightmare.root.title": "Nightmare",
+  "advancement.nightmare.root.description": "开始你在这个风险与机遇并存的新世界的探险！",
+  "advancement.nightmare.fast_food.title": "快餐",
+  "advancement.nightmare.fast_food.description": "来点速食吧！虽然看起来不是食物。",
+  "advancement.nightmare.soft_hard.title": "软硬兼施",
+  "advancement.nightmare.soft_hard.description": "挖掘砂砾，并尝试从中获取到有用的东西。",
+
+  "advancement.nightmare.adventure.root.title": "Nightmare: 冒险",
+  "advancement.nightmare.adventure.root.description": "权衡利弊，与朋友合作，与敌人抗衡。",
+  "advancement.nightmare.adventure.first_blood.title": "初露锋芒",
+  "advancement.nightmare.adventure.first_blood.description": "杀死一个敌对生物。",
+  "advancement.nightmare.adventure.delaying_tactic.title": "缓兵之计",
+  "advancement.nightmare.adventure.delaying_tactic.description": "杀死一个友好生物。你知道不能永远这样下去。",
+
   "tooltip.nightmare.nutrition_protein": "+%d 蛋白质",
   "tooltip.nightmare.nutrition_phytonutrient": "+%d 植物营养素",
   "tooltip.nightmare.nutrition_insulinResistance": "+%d 胰岛素抵抗",
