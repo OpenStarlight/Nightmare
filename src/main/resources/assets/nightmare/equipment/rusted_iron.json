@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "nightmare:rusted_iron"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "nightmare:rusted_iron"
+      }
+    ]
+  }
+}

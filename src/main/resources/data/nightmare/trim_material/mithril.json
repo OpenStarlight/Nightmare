@@ -1,0 +1,10 @@
+{
+  "asset_name": "nightmare_mithril",
+  "description": {
+    "color": "#67C7E2",
+    "translate": "trim_material.nightmare.mithril"
+  },
+  "override_armor_assets": {
+    "nightmare:mithril": "nightmare_mithril_darker"
+  }
+}

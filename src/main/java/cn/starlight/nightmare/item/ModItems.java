@@ -22,6 +22,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.component.Consumables;
+import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.Fluids;
 
@@ -215,6 +216,28 @@ public class ModItems {
     public static final Item ADAMANTIUM_SWORD = RegistryUtil.registerItem("adamantium_sword", Item::new, new Item.Properties().sword(
             ModToolMaterials.ADAMANTIUM, 1F, -2.4F).fireResistant());
 
+    // æŠ¤ç”²
+    public static final Item RUSTED_IRON_HELMET = RegistryUtil.registerItem("rusted_iron_helmet", Item::new, new Item.Properties().humanoidArmor(ModArmorMaterials.RUSTED_IRON, ArmorType.HELMET));
+    public static final Item RUSTED_IRON_CHESTPLATE = RegistryUtil.registerItem("rusted_iron_chestplate", Item::new, new Item.Properties().humanoidArmor(ModArmorMaterials.RUSTED_IRON, ArmorType.CHESTPLATE));
+    public static final Item RUSTED_IRON_LEGGINGS = RegistryUtil.registerItem("rusted_iron_leggings", Item::new, new Item.Properties().humanoidArmor(ModArmorMaterials.RUSTED_IRON, ArmorType.LEGGINGS));
+    public static final Item RUSTED_IRON_BOOTS = RegistryUtil.registerItem("rusted_iron_boots", Item::new, new Item.Properties().humanoidArmor(ModArmorMaterials.RUSTED_IRON, ArmorType.BOOTS));
+    public static final Item SILVER_HELMET = RegistryUtil.registerItem("silver_helmet", Item::new, new Item.Properties().humanoidArmor(ModArmorMaterials.SILVER, ArmorType.HELMET));
+    public static final Item SILVER_CHESTPLATE = RegistryUtil.registerItem("silver_chestplate", Item::new, new Item.Properties().humanoidArmor(ModArmorMaterials.SILVER, ArmorType.CHESTPLATE));
+    public static final Item SILVER_LEGGINGS = RegistryUtil.registerItem("silver_leggings", Item::new, new Item.Properties().humanoidArmor(ModArmorMaterials.SILVER, ArmorType.LEGGINGS));
+    public static final Item SILVER_BOOTS = RegistryUtil.registerItem("silver_boots", Item::new, new Item.Properties().humanoidArmor(ModArmorMaterials.SILVER, ArmorType.BOOTS));
+    public static final Item ANCIENT_METAL_HELMET = RegistryUtil.registerItem("ancient_metal_helmet", Item::new, new Item.Properties().humanoidArmor(ModArmorMaterials.ANCIENT_METAL, ArmorType.HELMET));
+    public static final Item ANCIENT_METAL_CHESTPLATE = RegistryUtil.registerItem("ancient_metal_chestplate", Item::new, new Item.Properties().humanoidArmor(ModArmorMaterials.ANCIENT_METAL, ArmorType.CHESTPLATE));
+    public static final Item ANCIENT_METAL_LEGGINGS = RegistryUtil.registerItem("ancient_metal_leggings", Item::new, new Item.Properties().humanoidArmor(ModArmorMaterials.ANCIENT_METAL, ArmorType.LEGGINGS));
+    public static final Item ANCIENT_METAL_BOOTS = RegistryUtil.registerItem("ancient_metal_boots", Item::new, new Item.Properties().humanoidArmor(ModArmorMaterials.ANCIENT_METAL, ArmorType.BOOTS));
+    public static final Item MITHRIL_HELMET = RegistryUtil.registerItem("mithril_helmet", Item::new, new Item.Properties().humanoidArmor(ModArmorMaterials.MITHRIL, ArmorType.HELMET));
+    public static final Item MITHRIL_CHESTPLATE = RegistryUtil.registerItem("mithril_chestplate", Item::new, new Item.Properties().humanoidArmor(ModArmorMaterials.MITHRIL, ArmorType.CHESTPLATE));
+    public static final Item MITHRIL_LEGGINGS = RegistryUtil.registerItem("mithril_leggings", Item::new, new Item.Properties().humanoidArmor(ModArmorMaterials.MITHRIL, ArmorType.LEGGINGS));
+    public static final Item MITHRIL_BOOTS = RegistryUtil.registerItem("mithril_boots", Item::new, new Item.Properties().humanoidArmor(ModArmorMaterials.MITHRIL, ArmorType.BOOTS));
+    public static final Item ADAMANTIUM_HELMET = RegistryUtil.registerItem("adamantium_helmet", Item::new, new Item.Properties().humanoidArmor(ModArmorMaterials.ADAMANTIUM, ArmorType.HELMET).fireResistant());
+    public static final Item ADAMANTIUM_CHESTPLATE = RegistryUtil.registerItem("adamantium_chestplate", Item::new, new Item.Properties().humanoidArmor(ModArmorMaterials.ADAMANTIUM, ArmorType.CHESTPLATE).fireResistant());
+    public static final Item ADAMANTIUM_LEGGINGS = RegistryUtil.registerItem("adamantium_leggings", Item::new, new Item.Properties().humanoidArmor(ModArmorMaterials.ADAMANTIUM, ArmorType.LEGGINGS).fireResistant());
+    public static final Item ADAMANTIUM_BOOTS = RegistryUtil.registerItem("adamantium_boots", Item::new, new Item.Properties().humanoidArmor(ModArmorMaterials.ADAMANTIUM, ArmorType.BOOTS).fireResistant());
+
     public static void initialize() {
         ModBucketBehaviors.registerCauldronInteractions();
 
@@ -326,6 +349,26 @@ public class ModItems {
                     creativeTab.insertAfter(Items.DIAMOND_AXE, MITHRIL_AXE);
                     creativeTab.insertAfter(Items.NETHERITE_SWORD, ADAMANTIUM_SWORD);
                     creativeTab.insertAfter(Items.NETHERITE_AXE, ADAMANTIUM_AXE);
+                    creativeTab.insertAfter(Items.GOLDEN_BOOTS, RUSTED_IRON_HELMET);
+                    creativeTab.insertAfter(RUSTED_IRON_HELMET, RUSTED_IRON_CHESTPLATE);
+                    creativeTab.insertAfter(RUSTED_IRON_CHESTPLATE, RUSTED_IRON_LEGGINGS);
+                    creativeTab.insertAfter(RUSTED_IRON_LEGGINGS, RUSTED_IRON_BOOTS);
+                    creativeTab.insertAfter(RUSTED_IRON_BOOTS, SILVER_HELMET);
+                    creativeTab.insertAfter(SILVER_HELMET, SILVER_CHESTPLATE);
+                    creativeTab.insertAfter(SILVER_CHESTPLATE, SILVER_LEGGINGS);
+                    creativeTab.insertAfter(SILVER_LEGGINGS, SILVER_BOOTS);
+                    creativeTab.insertAfter(Items.IRON_BOOTS, ANCIENT_METAL_HELMET);
+                    creativeTab.insertAfter(ANCIENT_METAL_HELMET, ANCIENT_METAL_CHESTPLATE);
+                    creativeTab.insertAfter(ANCIENT_METAL_CHESTPLATE, ANCIENT_METAL_LEGGINGS);
+                    creativeTab.insertAfter(ANCIENT_METAL_LEGGINGS, ANCIENT_METAL_BOOTS);
+                    creativeTab.insertAfter(Items.DIAMOND_BOOTS, MITHRIL_HELMET);
+                    creativeTab.insertAfter(MITHRIL_HELMET, MITHRIL_CHESTPLATE);
+                    creativeTab.insertAfter(MITHRIL_CHESTPLATE, MITHRIL_LEGGINGS);
+                    creativeTab.insertAfter(MITHRIL_LEGGINGS, MITHRIL_BOOTS);
+                    creativeTab.insertAfter(Items.NETHERITE_BOOTS, ADAMANTIUM_HELMET);
+                    creativeTab.insertAfter(ADAMANTIUM_HELMET, ADAMANTIUM_CHESTPLATE);
+                    creativeTab.insertAfter(ADAMANTIUM_CHESTPLATE, ADAMANTIUM_LEGGINGS);
+                    creativeTab.insertAfter(ADAMANTIUM_LEGGINGS, ADAMANTIUM_BOOTS);
                 });
 
         // Iron bucket melting

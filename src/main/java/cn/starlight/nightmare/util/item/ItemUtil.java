@@ -11,6 +11,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
+import net.minecraft.world.item.equipment.ArmorType;
 
 public class ItemUtil {
     public static int getToolLevel(ItemStack stack) {
@@ -62,6 +63,18 @@ public class ItemUtil {
                     modifierBuilder.add(modifierEntry.attribute(), modifierEntry.modifier(), modifierEntry.slot(), modifierEntry.display());
                 }
             }
+            builder.set(DataComponents.ATTRIBUTE_MODIFIERS, modifierBuilder.build());
+        }));
+    }
+
+    public static void modifyArmor(Item item, ArmorType type, int armor, float toughness, float knockbackResistance) {
+        DefaultItemComponentEvents.MODIFY.register(context -> context.modify(item, builder -> {
+            ItemAttributeModifiers.Builder modifierBuilder = ItemAttributeModifiers.builder();
+            net.minecraft.world.entity.EquipmentSlotGroup slot = net.minecraft.world.entity.EquipmentSlotGroup.bySlot(type.getSlot());
+            net.minecraft.resources.Identifier id = net.minecraft.resources.Identifier.withDefaultNamespace("armor." + type.getName());
+            modifierBuilder.add(Attributes.ARMOR, new AttributeModifier(id, armor, AttributeModifier.Operation.ADD_VALUE), slot);
+            modifierBuilder.add(Attributes.ARMOR_TOUGHNESS, new AttributeModifier(id, toughness, AttributeModifier.Operation.ADD_VALUE), slot);
+            if (knockbackResistance > 0.0F) modifierBuilder.add(Attributes.KNOCKBACK_RESISTANCE, new AttributeModifier(id, knockbackResistance, AttributeModifier.Operation.ADD_VALUE), slot);
             builder.set(DataComponents.ATTRIBUTE_MODIFIERS, modifierBuilder.build());
         }));
     }

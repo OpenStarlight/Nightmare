@@ -1,0 +1,10 @@
+{
+  "asset_name": "nightmare_ancient_metal",
+  "description": {
+    "color": "#7D7467",
+    "translate": "trim_material.nightmare.ancient_metal"
+  },
+  "override_armor_assets": {
+    "nightmare:ancient_metal": "nightmare_ancient_metal_darker"
+  }
+}

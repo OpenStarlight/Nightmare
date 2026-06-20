@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "M": "nightmare:ancient_metal_ingot"
+  },
+  "pattern": [
+    "MMM",
+    "M M"
+  ],
+  "result": {
+    "id": "nightmare:ancient_metal_helmet"
+  }
+}

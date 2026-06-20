@@ -1,11 +1,15 @@
 package cn.starlight.nightmare.modifier;
 
+import cn.starlight.nightmare.NightmareMod;
 import cn.starlight.nightmare.item.ModItems;
 import cn.starlight.nightmare.util.item.ItemUtil;
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.fabricmc.fabric.api.item.v1.DefaultItemComponentEvents;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
@@ -13,6 +17,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.component.BlocksAttacks;
 import net.minecraft.world.item.component.Consumable;
+import net.minecraft.world.item.equipment.ArmorType;
+import net.minecraft.world.item.equipment.trim.TrimMaterial;
 
 import java.util.List;
 import java.util.Map;
@@ -130,6 +136,49 @@ public class ItemModifier {
                 Map.entry(Items.NETHERITE_AXE, 1.0)
         );
         for (Map.Entry<Item, Double> entry : toolSpeed.entrySet()) ItemUtil.modifyAttackSpeed(entry.getKey(), entry.getValue());
+
+        ItemUtil.modifyArmor(Items.LEATHER_HELMET, ArmorType.HELMET, 1, 0.0F, 0.0F);
+        ItemUtil.modifyArmor(Items.LEATHER_CHESTPLATE, ArmorType.CHESTPLATE, 2, 0.0F, 0.0F);
+        ItemUtil.modifyArmor(Items.LEATHER_LEGGINGS, ArmorType.LEGGINGS, 1, 0.0F, 0.0F);
+        ItemUtil.modifyArmor(Items.LEATHER_BOOTS, ArmorType.BOOTS, 1, 0.0F, 0.0F);
+        ItemUtil.modifyArmor(Items.CHAINMAIL_HELMET, ArmorType.HELMET, 1, 0.0F, 0.0F);
+        ItemUtil.modifyArmor(Items.CHAINMAIL_CHESTPLATE, ArmorType.CHESTPLATE, 3, 0.0F, 0.0F);
+        ItemUtil.modifyArmor(Items.CHAINMAIL_LEGGINGS, ArmorType.LEGGINGS, 2, 0.0F, 0.0F);
+        ItemUtil.modifyArmor(Items.CHAINMAIL_BOOTS, ArmorType.BOOTS, 1, 0.0F, 0.0F);
+        ItemUtil.modifyArmor(Items.GOLDEN_HELMET, ArmorType.HELMET, 1, 0.0F, 0.0F);
+        ItemUtil.modifyArmor(Items.GOLDEN_CHESTPLATE, ArmorType.CHESTPLATE, 3, 0.0F, 0.0F);
+        ItemUtil.modifyArmor(Items.GOLDEN_LEGGINGS, ArmorType.LEGGINGS, 3, 0.0F, 0.0F);
+        ItemUtil.modifyArmor(Items.GOLDEN_BOOTS, ArmorType.BOOTS, 1, 0.0F, 0.0F);
+        ItemUtil.modifyArmor(Items.COPPER_HELMET, ArmorType.HELMET, 2, 0.0F, 0.0F);
+        ItemUtil.modifyArmor(Items.COPPER_CHESTPLATE, ArmorType.CHESTPLATE, 3, 0.0F, 0.0F);
+        ItemUtil.modifyArmor(Items.COPPER_LEGGINGS, ArmorType.LEGGINGS, 3, 0.0F, 0.0F);
+        ItemUtil.modifyArmor(Items.COPPER_BOOTS, ArmorType.BOOTS, 2, 0.0F, 0.0F);
+        ItemUtil.modifyArmor(Items.IRON_HELMET, ArmorType.HELMET, 2, 0.0F, 0.0F);
+        ItemUtil.modifyArmor(Items.IRON_CHESTPLATE, ArmorType.CHESTPLATE, 4, 0.0F, 0.0F);
+        ItemUtil.modifyArmor(Items.IRON_LEGGINGS, ArmorType.LEGGINGS, 4, 0.0F, 0.0F);
+        ItemUtil.modifyArmor(Items.IRON_BOOTS, ArmorType.BOOTS, 2, 0.0F, 0.0F);
+        ItemUtil.modifyArmor(Items.DIAMOND_HELMET, ArmorType.HELMET, 3, 2.0F, 0.0F);
+        ItemUtil.modifyArmor(Items.DIAMOND_CHESTPLATE, ArmorType.CHESTPLATE, 5, 2.0F, 0.0F);
+        ItemUtil.modifyArmor(Items.DIAMOND_LEGGINGS, ArmorType.LEGGINGS, 5, 2.0F, 0.0F);
+        ItemUtil.modifyArmor(Items.DIAMOND_BOOTS, ArmorType.BOOTS, 3, 2.0F, 0.0F);
+        ItemUtil.modifyArmor(Items.NETHERITE_HELMET, ArmorType.HELMET, 3, 3.0F, 0.1F);
+        ItemUtil.modifyArmor(Items.NETHERITE_CHESTPLATE, ArmorType.CHESTPLATE, 6, 3.0F, 0.1F);
+        ItemUtil.modifyArmor(Items.NETHERITE_LEGGINGS, ArmorType.LEGGINGS, 6, 3.0F, 0.1F);
+        ItemUtil.modifyArmor(Items.NETHERITE_BOOTS, ArmorType.BOOTS, 3, 3.0F, 0.1F);
+        ItemUtil.modifyArmor(Items.TURTLE_HELMET, ArmorType.HELMET, 3, 0.0F, 0.0F);
+
+        Map<Item, ResourceKey<TrimMaterial>> trimMaterials = Map.of(
+                ModItems.SILVER_INGOT, ResourceKey.create(Registries.TRIM_MATERIAL, Identifier.fromNamespaceAndPath(NightmareMod.MOD_ID, "silver")),
+                ModItems.ANCIENT_METAL_INGOT, ResourceKey.create(Registries.TRIM_MATERIAL, Identifier.fromNamespaceAndPath(NightmareMod.MOD_ID, "ancient_metal")),
+                ModItems.MITHRIL_INGOT, ResourceKey.create(Registries.TRIM_MATERIAL, Identifier.fromNamespaceAndPath(NightmareMod.MOD_ID, "mithril")),
+                ModItems.ADAMANTIUM_INGOT, ResourceKey.create(Registries.TRIM_MATERIAL, Identifier.fromNamespaceAndPath(NightmareMod.MOD_ID, "adamantium"))
+        );
+        for (Map.Entry<Item, ResourceKey<TrimMaterial>> entry : trimMaterials.entrySet()) {
+            DefaultItemComponentEvents.MODIFY.register(context -> context.modify(entry.getKey(), (builder, lookupProvider, item) -> {
+                builder.set(DataComponents.PROVIDES_TRIM_MATERIAL,
+                        lookupProvider.lookupOrThrow(Registries.TRIM_MATERIAL).getOrThrow(entry.getValue()));
+            }));
+        }
 
         Item[] blockingTools = new Item[]{
                 Items.WOODEN_SWORD, Items.STONE_SWORD, Items.GOLDEN_SWORD, Items.COPPER_SWORD, Items.IRON_SWORD, Items.DIAMOND_SWORD, Items.NETHERITE_SWORD,

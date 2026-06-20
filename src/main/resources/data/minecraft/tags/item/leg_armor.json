@@ -1,0 +1,16 @@
+{
+  "values": [
+    "minecraft:leather_leggings",
+    "minecraft:copper_leggings",
+    "minecraft:chainmail_leggings",
+    "minecraft:golden_leggings",
+    "minecraft:iron_leggings",
+    "minecraft:diamond_leggings",
+    "minecraft:netherite_leggings",
+    "nightmare:rusted_iron_leggings",
+    "nightmare:silver_leggings",
+    "nightmare:ancient_metal_leggings",
+    "nightmare:mithril_leggings",
+    "nightmare:adamantium_leggings"
+  ]
+}

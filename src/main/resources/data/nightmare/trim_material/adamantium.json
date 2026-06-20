@@ -1,0 +1,10 @@
+{
+  "asset_name": "nightmare_adamantium",
+  "description": {
+    "color": "#9E94B2",
+    "translate": "trim_material.nightmare.adamantium"
+  },
+  "override_armor_assets": {
+    "nightmare:adamantium": "nightmare_adamantium_darker"
+  }
+}

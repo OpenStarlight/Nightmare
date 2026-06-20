@@ -1,0 +1,10 @@
+{
+  "asset_name": "nightmare_silver",
+  "description": {
+    "color": "#D4E4EF",
+    "translate": "trim_material.nightmare.silver"
+  },
+  "override_armor_assets": {
+    "nightmare:silver": "nightmare_silver_darker"
+  }
+}
