@@ -1,0 +1,13 @@
+{
+  "criteria": {
+    "has_ingredient": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{"items": ["nightmare:raw_silver_block"]}]
+      }
+    }
+  },
+  "requirements": [["has_ingredient"]],
+  "rewards": {"recipes": ["nightmare:raw_silver_from_raw_silver_block"]},
+  "sends_telemetry_event": false
+}

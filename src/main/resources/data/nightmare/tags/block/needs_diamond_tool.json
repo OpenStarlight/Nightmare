@@ -3,6 +3,7 @@
   "values": [
     "nightmare:mithril_ore",
     "nightmare:deepslate_mithril_ore",
+    "nightmare:raw_mithril_block",
     "nightmare:mithril_block"
   ]
 }

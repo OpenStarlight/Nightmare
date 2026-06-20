@@ -1,0 +1,8 @@
+{
+  "ticks": 400,
+  "recipes": [
+    "minecraft:netherite_ingot",
+    "minecraft:netherite_block",
+    "minecraft:netherite_ingot_from_netherite_block"
+  ]
+}

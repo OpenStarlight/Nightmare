@@ -4,6 +4,8 @@
     "nightmare:flint_axe",
     "nightmare:flint_hatchet",
     "nightmare:flint_knife",
-    "nightmare:flint_shovel"
+    "nightmare:flint_shovel",
+    "nightmare:flint_shards_from_flint",
+    "nightmare:flint_from_shards"
   ]
 }

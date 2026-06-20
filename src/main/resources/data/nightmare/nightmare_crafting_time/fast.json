@@ -1,0 +1,25 @@
+{
+  "ticks": 20,
+  "recipes": [
+    "minecraft:ender_eye",
+    "minecraft:hopper_minecart",
+    "minecraft:chest_minecart",
+    "minecraft:furnace_minecart",
+    "minecraft:tnt_minecart",
+    "minecraft:sticky_piston",
+    "minecraft:slime_block",
+    "minecraft:honey_block",
+    "minecraft:resin_block",
+    "minecraft:resin_clump",
+    "minecraft:slime_ball",
+    "minecraft:honey_block",
+    "minecraft:glow_item_frame",
+    "minecraft:jack_o_lantern"
+  ],
+  "item_tags": [
+    "#c:dyed",
+    "#c:dyes",
+    "#minecraft:dyes",
+    "#minecraft:chest_boats"
+  ]
+}

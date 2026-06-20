@@ -1,0 +1,25 @@
+{
+  "ticks": 100,
+  "recipes": [
+    "minecraft:name_tag",
+    "minecraft:golden_carrot",
+    "minecraft:glistering_melon_slice",
+    "minecraft:golden_dandelion",
+    "minecraft:brush",
+    "minecraft:spyglass",
+    "minecraft:copper_lantern",
+    "minecraft:copper_torch",
+    "minecraft:crossbow",
+    "minecraft:flint_and_steel",
+    "minecraft:lodestone",
+    "minecraft:piston",
+    "minecraft:saddle",
+    "minecraft:shield",
+    "minecraft:smithing_table",
+    "minecraft:stonecutter",
+    "minecraft:tripwire_hook",
+    "minecraft:lantern",
+    "minecraft:soul_lantern",
+    "minecraft:jukebox"
+  ]
+}

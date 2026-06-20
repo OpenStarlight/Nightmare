@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "nightmare:adamantium_ingot"
+  ],
+  "result": {
+    "count": 9,
+    "id": "nightmare:adamantium_nugget"
+  }
+}

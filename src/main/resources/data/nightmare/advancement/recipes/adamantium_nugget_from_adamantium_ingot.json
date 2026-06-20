@@ -1,0 +1,13 @@
+{
+  "criteria": {
+    "has_ingredient": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{"items": ["nightmare:adamantium_ingot"]}]
+      }
+    }
+  },
+  "requirements": [["has_ingredient"]],
+  "rewards": {"recipes": ["nightmare:adamantium_nugget_from_adamantium_ingot"]},
+  "sends_telemetry_event": false
+}

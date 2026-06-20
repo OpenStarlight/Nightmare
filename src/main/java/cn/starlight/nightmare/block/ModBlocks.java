@@ -28,8 +28,10 @@ public class ModBlocks {
     public static final Block ADAMANTIUM_ORE = RegistryUtil.registerBlock("adamantium_ore", Block::new, blockProperties(20.0F, 1000.0F), BlockItem::new, new Item.Properties().fireResistant());
 
     // Metal blocks
+    public static final Block RAW_SILVER_BLOCK = RegistryUtil.registerBlock("raw_silver_block", Block::new, blockProperties(5.0F, 6.0F));
     public static final Block SILVER_BLOCK = RegistryUtil.registerBlock("silver_block", Block::new, blockProperties(5.0F, 6.0F));
     public static final Block ANCIENT_METAL_BLOCK = RegistryUtil.registerBlock("ancient_metal_block", Block::new, blockProperties(6.0F, 8.0F));
+    public static final Block RAW_MITHRIL_BLOCK = RegistryUtil.registerBlock("raw_mithril_block", Block::new, blockProperties(7.0F, 10.0F));
     public static final Block MITHRIL_BLOCK = RegistryUtil.registerBlock("mithril_block", Block::new, blockProperties(7.0F, 10.0F));
     public static final Block ADAMANTIUM_BLOCK = RegistryUtil.registerBlock("adamantium_block", Block::new, blockProperties(30.0F, 1000.0F), BlockItem::new, new Item.Properties().fireResistant());
 
@@ -41,6 +43,8 @@ public class ModBlocks {
             creativeTab.insertAfter(Items.DEEPSLATE_DIAMOND_ORE, MITHRIL_ORE.asItem());
             creativeTab.insertAfter(MITHRIL_ORE.asItem(), DEEPSLATE_MITHRIL_ORE.asItem());
             creativeTab.insertAfter(Items.ANCIENT_DEBRIS, ADAMANTIUM_ORE.asItem());
+            creativeTab.insertAfter(Items.RAW_GOLD_BLOCK, RAW_SILVER_BLOCK.asItem());
+            creativeTab.insertAfter(RAW_SILVER_BLOCK.asItem(), RAW_MITHRIL_BLOCK.asItem());
         });
         CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.FOOD_AND_DRINKS).register(creativeTab -> {
             creativeTab.insertAfter(Items.SWEET_BERRIES, BLUE_BERRY_BUSH.asItem());

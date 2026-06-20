@@ -1,0 +1,15 @@
+{
+  "ticks": 250,
+  "recipes": [
+    "nightmare:ancient_metal_sword",
+    "nightmare:ancient_metal_pickaxe",
+    "nightmare:ancient_metal_axe",
+    "nightmare:ancient_metal_shovel",
+    "nightmare:ancient_metal_hoe",
+    "nightmare:ancient_metal_block_from_ancient_metal_ingot",
+    "nightmare:ancient_metal_bucket",
+    "nightmare:ancient_metal_ingot_from_ancient_metal_block",
+    "nightmare:ancient_metal_ingot_from_ancient_metal_nugget",
+    "nightmare:ancient_metal_nugget_from_ancient_metal_ingot"
+  ]
+}

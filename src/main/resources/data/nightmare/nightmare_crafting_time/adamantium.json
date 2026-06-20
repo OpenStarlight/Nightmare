@@ -1,0 +1,16 @@
+{
+  "ticks": 450,
+  "recipes": [
+    "nightmare:adamantium_sword",
+    "nightmare:adamantium_pickaxe",
+    "nightmare:adamantium_axe",
+    "nightmare:adamantium_shovel",
+    "nightmare:adamantium_hoe",
+    "nightmare:adamantium_block_from_adamantium_ingot",
+    "nightmare:adamantium_bucket",
+    "nightmare:adamantium_ingot_from_adamantium_block",
+    "nightmare:adamantium_ingot_from_adamantium_nugget",
+    "nightmare:adamantium_nugget_from_adamantium_ingot",
+    "nightmare:adamantium_ingot"
+  ]
+}

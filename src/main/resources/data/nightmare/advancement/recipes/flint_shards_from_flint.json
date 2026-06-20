@@ -1,0 +1,13 @@
+{
+  "criteria": {
+    "has_ingredient": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{"items": ["minecraft:flint"]}]
+      }
+    }
+  },
+  "requirements": [["has_ingredient"]],
+  "rewards": {"recipes": ["nightmare:flint_shards_from_flint"]},
+  "sends_telemetry_event": false
+}

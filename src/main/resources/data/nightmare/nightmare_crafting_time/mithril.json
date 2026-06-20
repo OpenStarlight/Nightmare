@@ -1,0 +1,21 @@
+{
+  "ticks": 350,
+  "recipes": [
+    "nightmare:mithril_sword",
+    "nightmare:mithril_pickaxe",
+    "nightmare:mithril_axe",
+    "nightmare:mithril_shovel",
+    "nightmare:mithril_hoe",
+    "nightmare:mithril_block_from_mithril_ingot",
+    "nightmare:mithril_bucket",
+    "nightmare:mithril_ingot_from_mithril_block",
+    "nightmare:mithril_ingot_from_mithril_nugget",
+    "nightmare:mithril_nugget_from_mithril_ingot",
+    "nightmare:raw_mithril_block_from_raw_mithril",
+    "nightmare:raw_mithril_from_raw_mithril_block",
+    "minecraft:emerald",
+    "minecraft:emerald_block",
+    "nightmare:emerald_shard_from_emerald",
+    "nightmare:emerald_from_emerald_shard"
+  ]
+}

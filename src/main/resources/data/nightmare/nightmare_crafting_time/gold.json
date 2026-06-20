@@ -1,0 +1,25 @@
+{
+  "ticks": 100,
+  "recipes": [
+    "minecraft:gold_sword",
+    "minecraft:gold_pickaxe",
+    "minecraft:gold_axe",
+    "minecraft:gold_shovel",
+    "minecraft:gold_hoe",
+    "minecraft:gold_helmet",
+    "minecraft:gold_chestplate",
+    "minecraft:gold_leggings",
+    "minecraft:gold_boots",
+    "minecraft:clock",
+    "minecraft:gold_block",
+    "nightmare:gold_bucket",
+    "minecraft:gold_nugget",
+    "minecraft:gold_ingot_from_gold_block",
+    "minecraft:gold_ingot_from_nuggets",
+    "minecraft:golden_apple",
+    "minecraft:light_weighted_pressure_plate",
+    "minecraft:powered_rail",
+    "minecraft:raw_gold",
+    "minecraft:raw_gold_block"
+  ]
+}

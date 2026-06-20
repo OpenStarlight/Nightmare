@@ -1,0 +1,17 @@
+{
+  "ticks": 150,
+  "recipes": [
+    "nightmare:silver_sword",
+    "nightmare:silver_pickaxe",
+    "nightmare:silver_axe",
+    "nightmare:silver_shovel",
+    "nightmare:silver_hoe",
+    "nightmare:silver_block_from_silver_ingot",
+    "nightmare:silver_bucket",
+    "nightmare:silver_ingot_from_silver_block",
+    "nightmare:silver_ingot_from_silver_nugget",
+    "nightmare:silver_nugget_from_silver_ingot",
+    "nightmare:raw_silver_block_from_raw_silver",
+    "nightmare:raw_silver_from_raw_silver_block"
+  ]
+}

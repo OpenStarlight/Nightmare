@@ -156,18 +156,7 @@ public abstract class MixinAbstractCraftingMenu extends RecipeBookMenu implement
 
         RecipeHolder<?> recipe = this.resultSlots.getRecipeUsed();
         if (recipe == null || this.resultSlots.getItem(0).isEmpty()) {
-            if (!this.nightmare$craftingQuickMove || this.nightmare$currentRecipe == null) {
-                this.nightmare$clearCraftingProgress();
-                return;
-            }
-            int totalTime = this.nightmare$craftingTotalTime;
-            if (totalTime <= 0) {
-                this.nightmare$clearCraftingProgress();
-                return;
-            }
-            this.nightmare$craftingTotalTime = totalTime;
-            this.nightmare$continueCraftingProgress(totalTime);
-            this.nightmare$sendCraftingProgress();
+            this.nightmare$clearCraftingProgress();
             return;
         }
 
@@ -347,8 +336,14 @@ public abstract class MixinAbstractCraftingMenu extends RecipeBookMenu implement
         this.nightmare$completingCraft = false;
 
         if (this.nightmare$craftingQuickMove) {
-            int totalTime = this.nightmare$craftingTotalTime;
-            if (totalTime > 0) {
+            RecipeHolder<?> nextRecipe = this.resultSlots.getRecipeUsed();
+            ItemStack nextResult = this.resultSlots.getItem(0);
+            if (nextRecipe != null && !nextResult.isEmpty() && nextRecipe.id().identifier().equals(this.nightmare$currentRecipe) && this.nightmare$canInventoryAccept(player, nextResult)) {
+                int totalTime = CraftingProgressTimes.ticks(nextRecipe.id().identifier(), nextResult);
+                if (totalTime <= 0) {
+                    this.nightmare$clearCraftingProgress();
+                    return;
+                }
                 this.nightmare$craftingProgress = 0;
                 this.nightmare$craftingTotalTime = totalTime;
                 this.nightmare$craftingCycle++;
@@ -356,6 +351,7 @@ public abstract class MixinAbstractCraftingMenu extends RecipeBookMenu implement
                 this.nightmare$craftingQuickMove = true;
                 this.nightmare$craftingSwapSlot = -1;
                 this.nightmare$craftingRestartGuard = 2;
+                this.nightmare$sendCraftingProgress();
                 return;
             }
         }

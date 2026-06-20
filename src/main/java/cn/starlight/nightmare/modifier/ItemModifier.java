@@ -5,15 +5,30 @@ import cn.starlight.nightmare.util.item.ItemUtil;
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.fabricmc.fabric.api.item.v1.DefaultItemComponentEvents;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.component.BlocksAttacks;
 import net.minecraft.world.item.component.Consumable;
 
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 public class ItemModifier {
+    private static final BlocksAttacks TOOL_BLOCKING = new BlocksAttacks(
+            0.0F,
+            0.0F,
+            List.of(new BlocksAttacks.DamageReduction(90.0F, Optional.empty(), 0.0F, 0.5F)),
+            new BlocksAttacks.ItemDamageFunction(0.001F, 0.999F, 1.0F),
+            Optional.empty(),
+            Optional.of(BuiltInRegistries.SOUND_EVENT.wrapAsHolder(SoundEvents.IRON_PLACE)),
+            Optional.empty()
+    );
+
 
     public static void initialize() {
         // 移除物品
@@ -115,6 +130,39 @@ public class ItemModifier {
                 Map.entry(Items.NETHERITE_AXE, 1.0)
         );
         for (Map.Entry<Item, Double> entry : toolSpeed.entrySet()) ItemUtil.modifyAttackSpeed(entry.getKey(), entry.getValue());
+
+        Item[] blockingTools = new Item[]{
+                Items.WOODEN_SWORD, Items.STONE_SWORD, Items.GOLDEN_SWORD, Items.COPPER_SWORD, Items.IRON_SWORD, Items.DIAMOND_SWORD, Items.NETHERITE_SWORD,
+                Items.WOODEN_PICKAXE, Items.STONE_PICKAXE, Items.GOLDEN_PICKAXE, Items.COPPER_PICKAXE, Items.IRON_PICKAXE, Items.DIAMOND_PICKAXE, Items.NETHERITE_PICKAXE,
+                Items.WOODEN_AXE, Items.STONE_AXE, Items.GOLDEN_AXE, Items.COPPER_AXE, Items.IRON_AXE, Items.DIAMOND_AXE, Items.NETHERITE_AXE,
+                Items.WOODEN_SHOVEL, Items.STONE_SHOVEL, Items.GOLDEN_SHOVEL, Items.COPPER_SHOVEL, Items.IRON_SHOVEL, Items.DIAMOND_SHOVEL, Items.NETHERITE_SHOVEL,
+                Items.WOODEN_HOE, Items.STONE_HOE, Items.GOLDEN_HOE, Items.COPPER_HOE, Items.IRON_HOE, Items.DIAMOND_HOE, Items.NETHERITE_HOE,
+                ModItems.FLINT_AXE, ModItems.FLINT_HATCHET, ModItems.FLINT_KNIFE, ModItems.FLINT_SHOVEL,
+                ModItems.OBSIDIAN_AXE, ModItems.OBSIDIAN_SHOVEL,
+                ModItems.SILVER_SWORD, ModItems.SILVER_PICKAXE, ModItems.SILVER_AXE, ModItems.SILVER_SHOVEL, ModItems.SILVER_HOE,
+                ModItems.RUSTED_IRON_SWORD, ModItems.RUSTED_IRON_PICKAXE, ModItems.RUSTED_IRON_AXE, ModItems.RUSTED_IRON_SHOVEL, ModItems.RUSTED_IRON_HOE,
+                ModItems.ANCIENT_METAL_SWORD, ModItems.ANCIENT_METAL_PICKAXE, ModItems.ANCIENT_METAL_AXE, ModItems.ANCIENT_METAL_SHOVEL, ModItems.ANCIENT_METAL_HOE,
+                ModItems.MITHRIL_SWORD, ModItems.MITHRIL_PICKAXE, ModItems.MITHRIL_AXE, ModItems.MITHRIL_SHOVEL, ModItems.MITHRIL_HOE,
+                ModItems.ADAMANTIUM_SWORD, ModItems.ADAMANTIUM_PICKAXE, ModItems.ADAMANTIUM_AXE, ModItems.ADAMANTIUM_SHOVEL, ModItems.ADAMANTIUM_HOE
+        };
+        for (Item item : blockingTools) DefaultItemComponentEvents.MODIFY.register(context -> context.modify(item, builder -> {
+            builder.set(DataComponents.BLOCKS_ATTACKS, TOOL_BLOCKING);
+        }));
+    }
+
+    public static boolean isBlockingTool(ItemStack stack) {
+        return stack.is(Items.WOODEN_SWORD) || stack.is(Items.STONE_SWORD) || stack.is(Items.GOLDEN_SWORD) || stack.is(Items.COPPER_SWORD) || stack.is(Items.IRON_SWORD) || stack.is(Items.DIAMOND_SWORD) || stack.is(Items.NETHERITE_SWORD) ||
+                stack.is(Items.WOODEN_PICKAXE) || stack.is(Items.STONE_PICKAXE) || stack.is(Items.GOLDEN_PICKAXE) || stack.is(Items.COPPER_PICKAXE) || stack.is(Items.IRON_PICKAXE) || stack.is(Items.DIAMOND_PICKAXE) || stack.is(Items.NETHERITE_PICKAXE) ||
+                stack.is(Items.WOODEN_AXE) || stack.is(Items.STONE_AXE) || stack.is(Items.GOLDEN_AXE) || stack.is(Items.COPPER_AXE) || stack.is(Items.IRON_AXE) || stack.is(Items.DIAMOND_AXE) || stack.is(Items.NETHERITE_AXE) ||
+                stack.is(Items.WOODEN_SHOVEL) || stack.is(Items.STONE_SHOVEL) || stack.is(Items.GOLDEN_SHOVEL) || stack.is(Items.COPPER_SHOVEL) || stack.is(Items.IRON_SHOVEL) || stack.is(Items.DIAMOND_SHOVEL) || stack.is(Items.NETHERITE_SHOVEL) ||
+                stack.is(Items.WOODEN_HOE) || stack.is(Items.STONE_HOE) || stack.is(Items.GOLDEN_HOE) || stack.is(Items.COPPER_HOE) || stack.is(Items.IRON_HOE) || stack.is(Items.DIAMOND_HOE) || stack.is(Items.NETHERITE_HOE) ||
+                stack.is(ModItems.FLINT_AXE) || stack.is(ModItems.FLINT_HATCHET) || stack.is(ModItems.FLINT_KNIFE) || stack.is(ModItems.FLINT_SHOVEL) ||
+                stack.is(ModItems.OBSIDIAN_AXE) || stack.is(ModItems.OBSIDIAN_SHOVEL) ||
+                stack.is(ModItems.SILVER_SWORD) || stack.is(ModItems.SILVER_PICKAXE) || stack.is(ModItems.SILVER_AXE) || stack.is(ModItems.SILVER_SHOVEL) || stack.is(ModItems.SILVER_HOE) ||
+                stack.is(ModItems.RUSTED_IRON_SWORD) || stack.is(ModItems.RUSTED_IRON_PICKAXE) || stack.is(ModItems.RUSTED_IRON_AXE) || stack.is(ModItems.RUSTED_IRON_SHOVEL) || stack.is(ModItems.RUSTED_IRON_HOE) ||
+                stack.is(ModItems.ANCIENT_METAL_SWORD) || stack.is(ModItems.ANCIENT_METAL_PICKAXE) || stack.is(ModItems.ANCIENT_METAL_AXE) || stack.is(ModItems.ANCIENT_METAL_SHOVEL) || stack.is(ModItems.ANCIENT_METAL_HOE) ||
+                stack.is(ModItems.MITHRIL_SWORD) || stack.is(ModItems.MITHRIL_PICKAXE) || stack.is(ModItems.MITHRIL_AXE) || stack.is(ModItems.MITHRIL_SHOVEL) || stack.is(ModItems.MITHRIL_HOE) ||
+                stack.is(ModItems.ADAMANTIUM_SWORD) || stack.is(ModItems.ADAMANTIUM_PICKAXE) || stack.is(ModItems.ADAMANTIUM_AXE) || stack.is(ModItems.ADAMANTIUM_SHOVEL) || stack.is(ModItems.ADAMANTIUM_HOE);
     }
 
     public static boolean isForbiddenItem(ItemStack stack) {
