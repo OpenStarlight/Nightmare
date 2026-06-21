@@ -169,6 +169,8 @@
   "advancement.nightmare.fast_food.description": "Let's have some fast food! Even though it doesn't look like food.",
   "advancement.nightmare.soft_hard.title": "Soft and Hard",
   "advancement.nightmare.soft_hard.description": "Mine gravel and try to find something useful from it.",
+  "advancement.nightmare.first_tool.title": "First Tool",
+  "advancement.nightmare.first_tool.description": "Craft a tool using flint. It's reliable, at least for now.",
 
   "advancement.nightmare.adventure.root.title": "Nightmare: Adventure",
   "advancement.nightmare.adventure.root.description": "Weigh the pros and cons, cooperate with friends, and contend with enemies.",
@@ -180,7 +182,9 @@
   "tooltip.nightmare.nutrition_protein": "+%d Protein",
   "tooltip.nightmare.nutrition_phytonutrient": "+%d Phytonutrient",
   "tooltip.nightmare.nutrition_insulinResistance": "+%d Insulin Resistance",
-  "tooltip.minecraft.category.seeds": "Eating grass and producing milk, turns out I was the cow all along.",
-  "tooltip.minecraft.category.buckets": "Doesn't seem suitable for holding fish, unless you want a heavy metal feast.",
+  "tooltip.category.silver_tool": "+2 Extra damage on undead mobs",
+  "tooltip.category.silver_armor": "Immune to poison damage when wearing a full set",
+  "tooltip.category.seeds": "Eating grass and producing milk, turns out I was the cow all along.",
+  "tooltip.category.buckets": "Doesn't seem suitable for holding fish, unless you want a heavy metal feast.",
   "tooltip.minecraft.sugar": "Don't talk about sugar; the mere sight of the word makes me want to inject insulin."
 }

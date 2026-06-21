@@ -11,6 +11,7 @@
       "block.MixinBlockBehaviour",
       "entity.MixinEntity",
       "entity.MixinLivingEntity",
+      "entity.MixinMob",
       "inventory.AccessorTransientCraftingContainer",
       "inventory.MixinAbstractContainerMenu",
       "inventory.MixinAbstractCraftingMenu",

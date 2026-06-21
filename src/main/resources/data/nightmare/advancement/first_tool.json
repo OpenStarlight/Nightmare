@@ -1,0 +1,30 @@
+{
+  "parent": "nightmare:soft_hard",
+  "criteria": {
+    "has_flint_tool": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{
+          "items": [
+            "nightmare:flint_shovel",
+            "nightmare:flint_hatchet",
+            "nightmare:flint_axe"
+          ]
+        }]
+      }
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.nightmare.first_tool.description"
+    },
+    "icon": {
+      "id": "nightmare:flint_hatchet"
+    },
+    "title": {
+      "translate": "advancement.nightmare.first_tool.title"
+    }
+  },
+  "requirements": [["has_flint_tool"]],
+  "sends_telemetry_event": false
+}

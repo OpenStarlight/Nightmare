@@ -169,6 +169,8 @@
   "advancement.nightmare.fast_food.description": "来点速食吧！虽然看起来不是食物。",
   "advancement.nightmare.soft_hard.title": "软硬兼施",
   "advancement.nightmare.soft_hard.description": "挖掘砂砾，并尝试从中获取到有用的东西。",
+  "advancement.nightmare.first_tool.title": "第一把工具",
+  "advancement.nightmare.first_tool.description": "用燧石合成一把工具。至少对于现在是可靠的。",
 
   "advancement.nightmare.adventure.root.title": "Nightmare: 冒险",
   "advancement.nightmare.adventure.root.description": "权衡利弊，与朋友合作，与敌人抗衡。",
@@ -180,7 +182,9 @@
   "tooltip.nightmare.nutrition_protein": "+%d 蛋白质",
   "tooltip.nightmare.nutrition_phytonutrient": "+%d 植物营养素",
   "tooltip.nightmare.nutrition_insulinResistance": "+%d 胰岛素抵抗",
-  "tooltip.minecraft.category.seeds": "吃草挤奶，原来我才是那头牛。",
-  "tooltip.minecraft.category.buckets": "似乎不适合装鱼，除非你想来顿重金属大餐。",
+  "tooltip.category.silver_tool": "攻击亡灵生物时+2额外伤害",
+  "tooltip.category.silver_armor": "穿着全套时对中毒效果免疫",
+  "tooltip.category.seeds": "吃草挤奶，原来我才是那头牛。",
+  "tooltip.category.buckets": "似乎不适合装鱼，除非你想来顿重金属大餐。",
   "tooltip.minecraft.sugar": "别跟我说糖，我现在看见糖字就想打胰岛素。"
 }

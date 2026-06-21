@@ -1,10 +1,15 @@
 package cn.starlight.nightmare.mixin.entity;
 
+import cn.starlight.nightmare.item.ModItems;
 import cn.starlight.nightmare.player.CapabilitySystem;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageTypes;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -40,13 +45,32 @@ public abstract class MixinLivingEntity {
     // 玩家伤害减半
     @ModifyVariable(method = "hurtServer", at = @At("HEAD"), argsOnly = true, name = "damage")
     private float nightmare$reducePlayerDamage(float damage, ServerLevel level, DamageSource source) {
-        return source.getEntity() instanceof Player ? damage * 0.5F : damage;
+        LivingEntity self = (LivingEntity)(Object)this;
+        if (source.getEntity() instanceof Player) damage *= 0.5F;
+        // 银工具对亡灵生物额外造成2点伤害
+        if (self.getType().builtInRegistryHolder().is(EntityTypeTags.UNDEAD) && source.getEntity() instanceof LivingEntity attacker &&
+                (attacker.getMainHandItem().is(ModItems.SILVER_SWORD) || attacker.getMainHandItem().is(ModItems.SILVER_PICKAXE) || attacker.getMainHandItem().is(ModItems.SILVER_AXE) || attacker.getMainHandItem().is(ModItems.SILVER_SHOVEL) || attacker.getMainHandItem().is(ModItems.SILVER_HOE))) {
+            damage += 2.0F;
+        }
+        return damage;
+    }
+
+    // 穿着银装备时免疫中毒伤害
+    @Inject(method = "hurtServer", at = @At("HEAD"), cancellable = true)
+    private void nightmare$preventSilverArmorPoisonDamage(ServerLevel level, DamageSource source, float damage, CallbackInfoReturnable<Boolean> cir) {
+        LivingEntity self = (LivingEntity)(Object)this;
+        if (!(self instanceof Player player)) return;
+        if (!player.hasEffect(MobEffects.POISON) || !source.is(DamageTypes.MAGIC)) return;
+        if (player.getItemBySlot(EquipmentSlot.HEAD).is(ModItems.SILVER_HELMET) && player.getItemBySlot(EquipmentSlot.CHEST).is(ModItems.SILVER_CHESTPLATE) &&
+                player.getItemBySlot(EquipmentSlot.LEGS).is(ModItems.SILVER_LEGGINGS) && player.getItemBySlot(EquipmentSlot.FEET).is(ModItems.SILVER_BOOTS)) {
+            cir.setReturnValue(false);
+        }
     }
 
     @Redirect(method = "hurtServer", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/component/BlocksAttacks;onBlocked(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/entity/LivingEntity;)V"))
-    private void nightmare$playToolBlockSounds(BlocksAttacks blocksAttacks, ServerLevel level, LivingEntity entity, ServerLevel hurtLevel, DamageSource source, float damage) {
-        blocksAttacks.onBlocked(level, entity);
-        entity.playSound(this.getHurtSound(source), this.getSoundVolume(), entity.getVoicePitch());
+    private void nightmare$playToolBlockSounds(BlocksAttacks blocksAttacks, ServerLevel level, LivingEntity user, ServerLevel hurtLevel, DamageSource source, float damage) {
+        blocksAttacks.onBlocked(level, user);
+        user.playSound(this.getHurtSound(source), this.getSoundVolume(), user.getVoicePitch());
     }
 
     // 死亡只掉落40%经验

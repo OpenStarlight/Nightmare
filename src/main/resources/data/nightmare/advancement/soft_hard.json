@@ -1,11 +1,15 @@
 {
-  "parent": "nightmare:fast_food",
+  "parent": "nightmare:root",
   "criteria": {
     "has_gravel": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [{
-          "items": ["minecraft:gravel"]
+          "items": [
+            "minecraft:gravel",
+            "minecraft:flint",
+            "nightmare:flint_shard"
+          ]
         }]
       }
     }

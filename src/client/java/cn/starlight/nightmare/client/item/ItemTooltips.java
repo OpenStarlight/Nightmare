@@ -23,19 +23,28 @@ public class ItemTooltips {
     }
 
     private static void addGeneralTooltips(ItemStack stack, List<Component> lines) {
-        addGeneralTooltip(stack, lines, Items.WHEAT_SEEDS, "minecraft.category.seeds");
-        addGeneralTooltip(stack, lines, Items.PUMPKIN_SEEDS, "minecraft.category.seeds");
-        addGeneralTooltip(stack, lines, Items.MELON_SEEDS, "minecraft.category.seeds");
-        addGeneralTooltip(stack, lines, Items.BEETROOT_SEEDS, "minecraft.category.seeds");
-        addGeneralTooltip(stack, lines, Items.TORCHFLOWER_SEEDS, "minecraft.category.seeds");
-        addGeneralTooltip(stack, lines, Items.NETHER_WART, "minecraft.category.seeds");
-        addGeneralTooltip(stack, lines, ModItems.COPPER_WATER_BUCKET, "minecraft.category.buckets");
-        addGeneralTooltip(stack, lines, ModItems.SILVER_WATER_BUCKET, "minecraft.category.buckets");
-        addGeneralTooltip(stack, lines, ModItems.GOLD_WATER_BUCKET, "minecraft.category.buckets");
-        addGeneralTooltip(stack, lines, ModItems.ANCIENT_METAL_WATER_BUCKET, "minecraft.category.buckets");
-        addGeneralTooltip(stack, lines, ModItems.MITHRIL_WATER_BUCKET, "minecraft.category.buckets");
-        addGeneralTooltip(stack, lines, ModItems.ADAMANTIUM_WATER_BUCKET, "minecraft.category.buckets");
-        addGeneralTooltip(stack, lines, Items.SUGAR, "minecraft.sugar");
+        addTooltip(stack, lines, Items.WHEAT_SEEDS, "category.seeds");
+        addTooltip(stack, lines, Items.PUMPKIN_SEEDS, "category.seeds");
+        addTooltip(stack, lines, Items.MELON_SEEDS, "category.seeds");
+        addTooltip(stack, lines, Items.BEETROOT_SEEDS, "category.seeds");
+        addTooltip(stack, lines, Items.TORCHFLOWER_SEEDS, "category.seeds");
+        addTooltip(stack, lines, Items.NETHER_WART, "category.seeds");
+        addTooltip(stack, lines, ModItems.COPPER_WATER_BUCKET, "category.buckets");
+        addTooltip(stack, lines, ModItems.SILVER_WATER_BUCKET, "category.buckets");
+        addTooltip(stack, lines, ModItems.GOLD_WATER_BUCKET, "category.buckets");
+        addTooltip(stack, lines, ModItems.ANCIENT_METAL_WATER_BUCKET, "category.buckets");
+        addTooltip(stack, lines, ModItems.MITHRIL_WATER_BUCKET, "category.buckets");
+        addTooltip(stack, lines, ModItems.ADAMANTIUM_WATER_BUCKET, "category.buckets");
+        addTooltip(stack, lines, Items.SUGAR, "minecraft.sugar");
+        addTooltipCustomStyle(stack, lines, ModItems.SILVER_SWORD, "<green><lang:tooltip.category.silver_tool></green>");
+        addTooltipCustomStyle(stack, lines, ModItems.SILVER_AXE, "<green><lang:tooltip.category.silver_tool></green>");
+        addTooltipCustomStyle(stack, lines, ModItems.SILVER_PICKAXE, "<green><lang:tooltip.category.silver_tool></green>");
+        addTooltipCustomStyle(stack, lines, ModItems.SILVER_SHOVEL, "<green><lang:tooltip.category.silver_tool></green>");
+        addTooltipCustomStyle(stack, lines, ModItems.SILVER_HOE, "<green><lang:tooltip.category.silver_tool></green>");
+        addTooltipCustomStyle(stack, lines, ModItems.SILVER_HELMET, "<green><lang:tooltip.category.silver_armor></green>");
+        addTooltipCustomStyle(stack, lines, ModItems.SILVER_CHESTPLATE, "<green><lang:tooltip.category.silver_armor></green>");
+        addTooltipCustomStyle(stack, lines, ModItems.SILVER_LEGGINGS, "<green><lang:tooltip.category.silver_armor></green>");
+        addTooltipCustomStyle(stack, lines, ModItems.SILVER_BOOTS, "<green><lang:tooltip.category.silver_armor></green>");
     }
 
     private static void addNutritionTooltips(ItemStack stack, List<Component> lines) {
@@ -51,7 +60,11 @@ public class ItemTooltips {
         }
     }
 
-    private static void addGeneralTooltip(ItemStack stack, List<Component> lines, Item item, String itemKey) {
+    private static void addTooltip(ItemStack stack, List<Component> lines, Item item, String itemKey) {
         if (stack.is(item)) lines.add(StringUtil.toComponent("<gray><italic>\"<lang:tooltip." + itemKey + ">\"</italic></gray>"));
+    }
+
+    private static void addTooltipCustomStyle(ItemStack stack, List<Component> lines, Item item, String string) {
+        if (stack.is(item)) lines.add(StringUtil.toComponent(string));
     }
 }
