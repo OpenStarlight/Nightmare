@@ -116,6 +116,26 @@ public class ModItems {
             milkBucketProperties(ADAMANTIUM_BUCKET, true));
     public static final Item ADAMANTIUM_POWDER_SNOW_BUCKET = RegistryUtil.registerItem("adamantium_powder_snow_bucket", properties ->
             new PowderSnowBucketItem(Blocks.POWDER_SNOW, SoundEvents.BUCKET_EMPTY_POWDER_SNOW, ADAMANTIUM_BUCKET, properties), filledBucketProperties(ADAMANTIUM_BUCKET, true));
+    public static final Item DIAMOND_BUCKET = RegistryUtil.registerItem("diamond_bucket", properties ->
+            new CopperBucketItem("diamond", 0.02F, properties), bucketProperties(false));
+    public static final Item DIAMOND_WATER_BUCKET = RegistryUtil.registerItem("diamond_water_bucket", properties ->
+            new CopperBucketItem(Fluids.WATER, DIAMOND_BUCKET, properties), filledBucketProperties(DIAMOND_BUCKET, false));
+    public static final Item DIAMOND_LAVA_BUCKET = RegistryUtil.registerItem("diamond_lava_bucket", properties ->
+            new CopperBucketItem(Fluids.LAVA, DIAMOND_BUCKET, properties), filledBucketProperties(DIAMOND_BUCKET, false));
+    public static final Item DIAMOND_MILK_BUCKET = RegistryUtil.registerItem("diamond_milk_bucket", Item::new,
+            milkBucketProperties(DIAMOND_BUCKET, false));
+    public static final Item DIAMOND_POWDER_SNOW_BUCKET = RegistryUtil.registerItem("diamond_powder_snow_bucket", properties ->
+            new PowderSnowBucketItem(Blocks.POWDER_SNOW, SoundEvents.BUCKET_EMPTY_POWDER_SNOW, DIAMOND_BUCKET, properties), filledBucketProperties(DIAMOND_BUCKET, false));
+    public static final Item NETHERITE_BUCKET = RegistryUtil.registerItem("netherite_bucket", properties ->
+            new CopperBucketItem("netherite", 0.0F, properties), bucketProperties(true));
+    public static final Item NETHERITE_WATER_BUCKET = RegistryUtil.registerItem("netherite_water_bucket", properties ->
+            new CopperBucketItem(Fluids.WATER, NETHERITE_BUCKET, properties), filledBucketProperties(NETHERITE_BUCKET, true));
+    public static final Item NETHERITE_LAVA_BUCKET = RegistryUtil.registerItem("netherite_lava_bucket", properties ->
+            new CopperBucketItem(Fluids.LAVA, NETHERITE_BUCKET, properties), filledBucketProperties(NETHERITE_BUCKET, true));
+    public static final Item NETHERITE_MILK_BUCKET = RegistryUtil.registerItem("netherite_milk_bucket", Item::new,
+            milkBucketProperties(NETHERITE_BUCKET, true));
+    public static final Item NETHERITE_POWDER_SNOW_BUCKET = RegistryUtil.registerItem("netherite_powder_snow_bucket", properties ->
+            new PowderSnowBucketItem(Blocks.POWDER_SNOW, SoundEvents.BUCKET_EMPTY_POWDER_SNOW, NETHERITE_BUCKET, properties), filledBucketProperties(NETHERITE_BUCKET, true));
 
     // 食物
     public static final Item BLUE_BERRIES = ModBlocks.BLUE_BERRY_BUSH.asItem();
@@ -294,6 +314,16 @@ public class ModItems {
                     creativeTab.insertAfter(ADAMANTIUM_WATER_BUCKET, ADAMANTIUM_LAVA_BUCKET);
                     creativeTab.insertAfter(ADAMANTIUM_LAVA_BUCKET, ADAMANTIUM_MILK_BUCKET);
                     creativeTab.insertAfter(ADAMANTIUM_MILK_BUCKET, ADAMANTIUM_POWDER_SNOW_BUCKET);
+                    creativeTab.insertAfter(ADAMANTIUM_POWDER_SNOW_BUCKET, DIAMOND_BUCKET);
+                    creativeTab.insertAfter(DIAMOND_BUCKET, DIAMOND_WATER_BUCKET);
+                    creativeTab.insertAfter(DIAMOND_WATER_BUCKET, DIAMOND_LAVA_BUCKET);
+                    creativeTab.insertAfter(DIAMOND_LAVA_BUCKET, DIAMOND_MILK_BUCKET);
+                    creativeTab.insertAfter(DIAMOND_MILK_BUCKET, DIAMOND_POWDER_SNOW_BUCKET);
+                    creativeTab.insertAfter(DIAMOND_POWDER_SNOW_BUCKET, NETHERITE_BUCKET);
+                    creativeTab.insertAfter(NETHERITE_BUCKET, NETHERITE_WATER_BUCKET);
+                    creativeTab.insertAfter(NETHERITE_WATER_BUCKET, NETHERITE_LAVA_BUCKET);
+                    creativeTab.insertAfter(NETHERITE_LAVA_BUCKET, NETHERITE_MILK_BUCKET);
+                    creativeTab.insertAfter(NETHERITE_MILK_BUCKET, NETHERITE_POWDER_SNOW_BUCKET);
                     creativeTab.prepend(FLINT_SHOVEL);
                     creativeTab.insertAfter(FLINT_SHOVEL, FLINT_AXE);
                     creativeTab.insertAfter(FLINT_AXE, FLINT_HATCHET);
@@ -330,6 +360,8 @@ public class ModItems {
                     creativeTab.insertAfter(SILVER_MILK_BUCKET, ANCIENT_METAL_MILK_BUCKET);
                     creativeTab.insertAfter(ANCIENT_METAL_MILK_BUCKET, MITHRIL_MILK_BUCKET);
                     creativeTab.insertAfter(MITHRIL_MILK_BUCKET, ADAMANTIUM_MILK_BUCKET);
+                    creativeTab.insertAfter(ADAMANTIUM_MILK_BUCKET, DIAMOND_MILK_BUCKET);
+                    creativeTab.insertAfter(DIAMOND_MILK_BUCKET, NETHERITE_MILK_BUCKET);
                     creativeTab.insertAfter(BOWL_MILK, CEREAL);
                     creativeTab.insertAfter(CEREAL, PORRIDGE);
                     creativeTab.insertAfter(PORRIDGE, SALAD);

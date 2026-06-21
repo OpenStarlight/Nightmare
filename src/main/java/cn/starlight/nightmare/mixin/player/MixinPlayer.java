@@ -1,7 +1,14 @@
 package cn.starlight.nightmare.mixin.player;
 
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.GameType;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.pattern.BlockInWorld;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
@@ -12,7 +19,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Player.class)
-public class MixinPlayer {
+public abstract class MixinPlayer {
     @Shadow
     public int experienceLevel;
     @Shadow
@@ -36,6 +43,14 @@ public class MixinPlayer {
     @Redirect(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Player;causeFoodExhaustion(F)V"))
     private void nightmare$critExhaustion(Player instance, float amount) {
         instance.causeFoodExhaustion(nightmare$wasCrit ? amount * 2.0F : amount);
+    }
+
+    // 饥饿值为0或血量为1时无法攻击怪物
+    @Inject(method = "cannotAttack", at = @At(value = "HEAD"), cancellable = true)
+    private void nightmare$cannotAttack(Entity entity, CallbackInfoReturnable<Boolean> cir) {
+        if ((Object)this instanceof ServerPlayer serverPlayer) {
+            if (serverPlayer.getFoodData().getFoodLevel() <= 0 || serverPlayer.getHealth() <= 1F) cir.setReturnValue(true);
+        }
     }
 
     /**

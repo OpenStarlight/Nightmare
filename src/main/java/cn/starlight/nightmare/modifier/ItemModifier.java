@@ -224,6 +224,6 @@ public class ItemModifier {
     public static boolean isDrinkingItem(ItemStack stack) {
         return stack.is(ModItems.BOWL_WATER) || stack.is(ModItems.BOWL_MILK) || stack.is(ModItems.COPPER_MILK_BUCKET) || stack.is(ModItems.SILVER_MILK_BUCKET) ||
                 stack.is(ModItems.GOLD_MILK_BUCKET) || stack.is(ModItems.ANCIENT_METAL_MILK_BUCKET) || stack.is(ModItems.MITHRIL_MILK_BUCKET) ||
-                stack.is(ModItems.ADAMANTIUM_MILK_BUCKET);
+                stack.is(ModItems.ADAMANTIUM_MILK_BUCKET) || stack.is(ModItems.DIAMOND_MILK_BUCKET) || stack.is(ModItems.NETHERITE_MILK_BUCKET);
     }
 }
