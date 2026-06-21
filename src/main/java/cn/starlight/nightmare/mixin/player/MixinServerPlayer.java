@@ -1,7 +1,7 @@
 package cn.starlight.nightmare.mixin.player;
 
 import cn.starlight.nightmare.player.NutritionSystem;
-import cn.starlight.nightmare.util.player.NightmarePlayer;
+import cn.starlight.nightmare.util.mixin.NightmarePlayer;
 import net.minecraft.network.DisconnectionDetails;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;

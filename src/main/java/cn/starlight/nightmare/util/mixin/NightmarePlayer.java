@@ -1,4 +1,4 @@
-package cn.starlight.nightmare.util.player;
+package cn.starlight.nightmare.util.mixin;
 
 public interface NightmarePlayer {
     boolean nightmare$isNightmarePlayerInitialized();

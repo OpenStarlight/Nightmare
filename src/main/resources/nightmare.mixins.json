@@ -12,6 +12,7 @@
       "entity.MixinEntity",
       "entity.MixinLivingEntity",
       "entity.MixinMob",
+      "entity.MixinPanicGoal",
       "inventory.AccessorTransientCraftingContainer",
       "inventory.MixinAbstractContainerMenu",
       "inventory.MixinAbstractCraftingMenu",
