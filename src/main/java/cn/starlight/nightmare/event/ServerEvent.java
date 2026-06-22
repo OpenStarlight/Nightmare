@@ -16,7 +16,7 @@ import java.util.Set;
 public class ServerEvent {
 
     // 设置玩家属性
-    public void tickPlayer(MinecraftServer server) {
+    public static void tickPlayer(MinecraftServer server) {
         for (ServerPlayer player : server.getPlayerList().getPlayers()) {
             CapabilitySystem.handleHealth(player);
             CapabilitySystem.handleFood(player);
@@ -28,7 +28,7 @@ public class ServerEvent {
     }
 
     // 检查并移除被禁止的物品
-    public void removeForbiddenItems(ServerPlayer player) {
+    public static void removeForbiddenItems(ServerPlayer player) {
         int removedTotal = 0;
         for (int i = 0; i < player.getInventory().getContainerSize(); i++) {
             if (ItemModifier.isForbiddenItem(player.getInventory().getItem(i))) {
@@ -40,7 +40,7 @@ public class ServerEvent {
     }
 
     // 死亡后继承20%经验
-    public void restoreDeathXp(ServerPlayer oldPlayer, ServerPlayer newPlayer, boolean alive) {
+    public static void restoreDeathXp(ServerPlayer oldPlayer, ServerPlayer newPlayer, boolean alive) {
         if (alive) return;
         if (oldPlayer.level().getGameRules().get(GameRules.KEEP_INVENTORY)) return;
         int total = (int)(5 * oldPlayer.experienceLevel * (oldPlayer.experienceLevel + 1)

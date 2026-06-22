@@ -12,6 +12,7 @@ import cn.starlight.nightmare.player.effect.ModEffects;
 import cn.starlight.nightmare.util.DebugFields;
 import cn.starlight.nightmare.util.player.PlayerUtil;
 import cn.starlight.nightmare.world.ModWorldGeneration;
+import cn.starlight.nightmare.event.UndergroundWorldEvents;
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.arguments.BoolArgumentType;
 import com.mojang.brigadier.arguments.DoubleArgumentType;
@@ -24,11 +25,10 @@ import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.core.Holder;
-import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.permissions.Permissions;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
@@ -47,17 +47,18 @@ public class NightmareMod implements ModInitializer {
         ModBlocks.initialize();
         ModItems.initialize();
         CraftingProgressTimes.initialize();
-        PayloadTypeRegistry.clientboundPlay().register(CraftingProgressPayload.TYPE, CraftingProgressPayload.CODEC);
         ModWorldGeneration.initialize();
         ModEffects.initialize();
 
         ItemModifier.initialize();
         BlockModifier.initialize();
 
-        ServerEvent serverEvent = new ServerEvent();
-        ServerTickEvents.END_SERVER_TICK.register(serverEvent::tickPlayer);
-        ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> serverEvent.removeForbiddenItems(handler.player));
-        ServerPlayerEvents.COPY_FROM.register(serverEvent::restoreDeathXp);
+        PayloadTypeRegistry.clientboundPlay().register(CraftingProgressPayload.TYPE, CraftingProgressPayload.CODEC);
+
+        ServerTickEvents.END_SERVER_TICK.register(ServerEvent::tickPlayer);
+        ServerTickEvents.END_SERVER_TICK.register(UndergroundWorldEvents::tickHeat);
+        ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> ServerEvent.removeForbiddenItems(handler.player));
+        ServerPlayerEvents.COPY_FROM.register(ServerEvent::restoreDeathXp);
 
         if (debug) {
             CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {

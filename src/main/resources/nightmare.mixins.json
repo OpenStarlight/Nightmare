@@ -9,6 +9,10 @@
       "block.MixinAbstractFurnaceBlockEntity",
       "block.MixinBlock",
       "block.MixinBlockBehaviour",
+      "block.MixinBedBlock",
+      "block.MixinBaseFireBlock",
+      "block.MixinMushroomBlock",
+      "block.MixinSpreadingSnowyBlock",
       "entity.MixinEntity",
       "entity.MixinLivingEntity",
       "entity.MixinMob",
@@ -27,7 +31,10 @@
       "player.MixinPlayer",
       "player.MixinPlayerAttributes",
       "player.MixinFurnaceFuelSlot",
-      "player.MixinServerPlayer"
+      "player.MixinServerPlayer",
+      "world.MixinNoiseBasedChunkGenerator",
+      "world.MixinPrimaryLevelData",
+      "world.MixinWorldDimensions"
     ],
 	"injectors": {
 		"defaultRequire": 1

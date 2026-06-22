@@ -6,6 +6,7 @@
   "message.nightmare.command.attributeGet": "%s's [%s] is %d",
   "message.nightmare.command.itemTagGetNoItem": "Hold an item in your main hand",
   "message.nightmare.command.itemTagGet": "Item [%s] has following tags: \n%s",
+  "message.nightmare.unsafe_bed": "You feel that it is not safe enough here.",
 
   "title.nightmare.config": "Nightmare Config",
   "category.nightmare.client": "Client",
@@ -159,6 +160,12 @@
   "block.nightmare.ancient_metal_block": "Block of Ancient Metal",
   "block.nightmare.mithril_block": "Block of Mithril",
   "block.nightmare.adamantium_block": "Block of Adamantium",
+  "block.nightmare.mantle": "Mantle",
+  "block.nightmare.core": "Core",
+  "block.nightmare.underground_portal": "Underground Portal",
+  "item.nightmare.mantle": "Mantle",
+  "item.nightmare.core": "Core",
+  "item.nightmare.underground_portal": "Underground Portal",
 
   "effect.nightmare.malnourished": "Malnourished",
   "effect.nightmare.diabetes": "Diabetes",

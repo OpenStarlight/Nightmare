@@ -1,0 +1,4 @@
+{
+  "parent": "minecraft:block/nether_portal_ns",
+  "textures": { "portal": "nightmare:block/underground_portal" }
+}

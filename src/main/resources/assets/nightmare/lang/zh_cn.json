@@ -6,6 +6,7 @@
   "message.nightmare.command.attributeGet": "%s的[%s]为%d",
   "message.nightmare.command.itemTagGetNoItem": "在你的主手持一个物品",
   "message.nightmare.command.itemTagGet": "物品[%s]有以下标签: \n%s",
+  "message.nightmare.unsafe_bed": "你感觉到这里不够安全。",
 
   "title.nightmare.config": "Nightmare 配置",
   "category.nightmare.client": "客户端",
@@ -159,6 +160,12 @@
   "block.nightmare.ancient_metal_block": "远古金属块",
   "block.nightmare.mithril_block": "秘银块",
   "block.nightmare.adamantium_block": "艾德曼块",
+  "block.nightmare.mantle": "地幔",
+  "block.nightmare.core": "地核",
+  "block.nightmare.underground_portal": "地下世界传送门",
+  "item.nightmare.mantle": "地幔",
+  "item.nightmare.core": "地核",
+  "item.nightmare.underground_portal": "地下世界传送门",
 
   "effect.nightmare.malnourished": "营养不良",
   "effect.nightmare.diabetes": "糖尿病",

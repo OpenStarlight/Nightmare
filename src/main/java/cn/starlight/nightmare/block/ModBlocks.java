@@ -1,7 +1,9 @@
 package cn.starlight.nightmare.block;
 
 import cn.starlight.nightmare.block.impl.BlueBerryBushBlock;
+import cn.starlight.nightmare.block.impl.UndergroundPortalBlock;
 import cn.starlight.nightmare.util.RegistryUtil;
+import cn.starlight.nightmare.world.UndergroundWorld;
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
@@ -13,8 +15,15 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.level.Level;
 
 public class ModBlocks {
+    public static final Block MANTLE = RegistryUtil.registerBlock("mantle", Block::new,
+            BlockBehaviour.Properties.of().strength(-1.0F, 3600000.0F).noLootTable().lightLevel(state -> 15));
+    public static final Block CORE = RegistryUtil.registerBlock("core", Block::new,
+            BlockBehaviour.Properties.of().strength(-1.0F, 3600000.0F).noLootTable().lightLevel(state -> 15));
+    public static final Block UNDERGROUND_PORTAL = RegistryUtil.registerBlock("underground_portal", properties -> new UndergroundPortalBlock(properties, Level.OVERWORLD, UndergroundWorld.LEVEL),
+            BlockBehaviour.Properties.of().noCollision().noLootTable().lightLevel(state -> 11));
     // Plants
     public static final Block BLUE_BERRY_BUSH = RegistryUtil.registerBlock("blue_berry_bush", BlueBerryBushBlock::new,
             BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).randomTicks().instabreak().noCollision().sound(SoundType.SWEET_BERRY_BUSH).pushReaction(PushReaction.DESTROY),
@@ -37,6 +46,8 @@ public class ModBlocks {
 
     public static void initialize() {
         CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.NATURAL_BLOCKS).register(creativeTab -> {
+            creativeTab.insertAfter(Items.BEDROCK, MANTLE.asItem());
+            creativeTab.insertAfter(MANTLE.asItem(), CORE.asItem());
             creativeTab.insertAfter(Items.SWEET_BERRIES, BLUE_BERRY_BUSH.asItem());
             creativeTab.insertAfter(Items.DEEPSLATE_COPPER_ORE, SILVER_ORE.asItem());
             creativeTab.insertAfter(SILVER_ORE.asItem(), DEEPSLATE_SILVER_ORE.asItem());
