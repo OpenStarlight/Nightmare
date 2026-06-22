@@ -38,6 +38,11 @@ hs_err_*.log
 replay_*.log
 *.hprof
 *.jfr
-/.claude_tmp/
-/.claude/
-/MITE Resource Pack 1.6.4.zip
+
+# ai
+
+.claude_tmp/
+.claude/
+.codex/
+AGENTS.md
+CLAUDE.md
