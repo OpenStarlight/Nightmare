@@ -158,7 +158,7 @@ public class UndergroundPortalHandler {
         if (frame.height() < 3 || frame.height() > 21) return false;
 
         Direction widthDirection = widthDirection(frame.axis());
-        for (int width = -1; width <= frame.width(); width++) {
+        for (int width = 0; width < frame.width(); width++) {
             if (!level.getBlockState(frame.bottomLeft().relative(widthDirection, width).below()).is(Blocks.CRYING_OBSIDIAN)) return false;
         }
 
@@ -170,7 +170,7 @@ public class UndergroundPortalHandler {
         }
 
         BlockPos top = frame.bottomLeft().above(frame.height());
-        for (int width = -1; width <= frame.width(); width++) {
+        for (int width = 0; width < frame.width(); width++) {
             if (!level.getBlockState(top.relative(widthDirection, width)).is(Blocks.CRYING_OBSIDIAN)) return false;
         }
         return true;

@@ -31,6 +31,21 @@ public class ModWorldGeneration {
     public static final ResourceKey<PlacedFeature> UNDERGROUND_HUGE_MUSHROOM = placedFeature("underground_huge_mushroom");
     public static final ResourceKey<PlacedFeature> GLOW_LICHEN = vanillaPlacedFeature("glow_lichen");
     public static final ResourceKey<PlacedFeature> AMETHYST_GEODE = vanillaPlacedFeature("amethyst_geode");
+    public static final ResourceKey<PlacedFeature> ORE_GRAVEL = vanillaPlacedFeature("ore_gravel");
+    public static final ResourceKey<PlacedFeature> ORE_GRANITE_LOWER = vanillaPlacedFeature("ore_granite_lower");
+    public static final ResourceKey<PlacedFeature> ORE_GRANITE_UPPER = vanillaPlacedFeature("ore_granite_upper");
+    public static final ResourceKey<PlacedFeature> ORE_DIORITE_LOWER = vanillaPlacedFeature("ore_diorite_lower");
+    public static final ResourceKey<PlacedFeature> ORE_DIORITE_UPPER = vanillaPlacedFeature("ore_diorite_upper");
+    public static final ResourceKey<PlacedFeature> ORE_ANDESITE_LOWER = vanillaPlacedFeature("ore_andesite_lower");
+    public static final ResourceKey<PlacedFeature> ORE_ANDESITE_UPPER = vanillaPlacedFeature("ore_andesite_upper");
+    public static final ResourceKey<PlacedFeature> ORE_TUFF = vanillaPlacedFeature("ore_tuff");
+    public static final ResourceKey<PlacedFeature> UNDERGROUND_LARGE_DRIPSTONE = placedFeature("underground_large_dripstone");
+    public static final ResourceKey<PlacedFeature> UNDERGROUND_DRIPSTONE_CLUSTER = placedFeature("underground_dripstone_cluster");
+    public static final ResourceKey<PlacedFeature> UNDERGROUND_POINTED_DRIPSTONE = placedFeature("underground_pointed_dripstone");
+    public static final ResourceKey<PlacedFeature> ROOTED_SULFUR_SPRING = vanillaPlacedFeature("rooted_sulfur_spring");
+    public static final ResourceKey<PlacedFeature> SULFUR_POOL = vanillaPlacedFeature("sulfur_pool");
+    public static final ResourceKey<PlacedFeature> SULFUR_SPIKE_CLUSTER = vanillaPlacedFeature("sulfur_spike_cluster");
+    public static final ResourceKey<PlacedFeature> SULFUR_SPIKE = vanillaPlacedFeature("sulfur_spike");
     public static final ResourceKey<PlacedFeature> PATCH_BLUE_BERRY_BUSH = placedFeature("patch_blue_berry_bush");
     public static final ResourceKey<PlacedFeature> PATCH_BLUE_BERRY_BUSH_PLAINS = placedFeature("patch_blue_berry_bush_plains");
 
@@ -47,10 +62,25 @@ public class ModWorldGeneration {
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(UNDERGROUND_BIOME), GenerationStep.Decoration.UNDERGROUND_ORES, UNDERGROUND_REDSTONE);
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(UNDERGROUND_BIOME), GenerationStep.Decoration.UNDERGROUND_ORES, UNDERGROUND_LAPIS);
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(UNDERGROUND_BIOME), GenerationStep.Decoration.UNDERGROUND_ORES, UNDERGROUND_DIAMOND);
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(UNDERGROUND_BIOME), GenerationStep.Decoration.UNDERGROUND_ORES, ORE_GRAVEL);
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(UNDERGROUND_BIOME), GenerationStep.Decoration.UNDERGROUND_ORES, ORE_GRANITE_LOWER);
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(UNDERGROUND_BIOME), GenerationStep.Decoration.UNDERGROUND_ORES, ORE_GRANITE_UPPER);
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(UNDERGROUND_BIOME), GenerationStep.Decoration.UNDERGROUND_ORES, ORE_DIORITE_LOWER);
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(UNDERGROUND_BIOME), GenerationStep.Decoration.UNDERGROUND_ORES, ORE_DIORITE_UPPER);
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(UNDERGROUND_BIOME), GenerationStep.Decoration.UNDERGROUND_ORES, ORE_ANDESITE_LOWER);
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(UNDERGROUND_BIOME), GenerationStep.Decoration.UNDERGROUND_ORES, ORE_ANDESITE_UPPER);
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(UNDERGROUND_BIOME), GenerationStep.Decoration.UNDERGROUND_ORES, ORE_TUFF);
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(UNDERGROUND_BIOME), GenerationStep.Decoration.LOCAL_MODIFICATIONS, UNDERGROUND_LARGE_DRIPSTONE);
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(UNDERGROUND_BIOME), GenerationStep.Decoration.UNDERGROUND_STRUCTURES, UNDERGROUND_DUNGEON);
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(UNDERGROUND_BIOME), GenerationStep.Decoration.UNDERGROUND_DECORATION, UNDERGROUND_MYCELIUM);
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(UNDERGROUND_BIOME), GenerationStep.Decoration.UNDERGROUND_DECORATION, GLOW_LICHEN);
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(UNDERGROUND_BIOME), GenerationStep.Decoration.UNDERGROUND_DECORATION, UNDERGROUND_DRIPSTONE_CLUSTER);
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(UNDERGROUND_BIOME), GenerationStep.Decoration.UNDERGROUND_DECORATION, UNDERGROUND_POINTED_DRIPSTONE);
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(UNDERGROUND_BIOME), GenerationStep.Decoration.UNDERGROUND_DECORATION, SULFUR_SPIKE_CLUSTER);
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(UNDERGROUND_BIOME), GenerationStep.Decoration.UNDERGROUND_DECORATION, SULFUR_SPIKE);
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(UNDERGROUND_BIOME), GenerationStep.Decoration.LOCAL_MODIFICATIONS, AMETHYST_GEODE);
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(UNDERGROUND_BIOME), GenerationStep.Decoration.LAKES, ROOTED_SULFUR_SPRING);
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(UNDERGROUND_BIOME), GenerationStep.Decoration.LAKES, SULFUR_POOL);
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(UNDERGROUND_BIOME), GenerationStep.Decoration.VEGETAL_DECORATION, UNDERGROUND_HUGE_MUSHROOM);
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(
                 Biomes.FOREST, Biomes.FLOWER_FOREST, Biomes.BIRCH_FOREST, Biomes.DARK_FOREST, Biomes.OLD_GROWTH_BIRCH_FOREST, Biomes.WINDSWEPT_FOREST,

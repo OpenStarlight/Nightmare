@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:mineshaft",
+  "biomes": "#nightmare:has_structure/underground_mineshaft",
+  "mineshaft_type": "normal",
+  "spawn_overrides": {},
+  "step": "underground_structures"
+}

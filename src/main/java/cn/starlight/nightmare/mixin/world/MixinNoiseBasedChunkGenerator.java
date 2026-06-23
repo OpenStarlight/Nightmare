@@ -70,7 +70,7 @@ public abstract class MixinNoiseBasedChunkGenerator {
                     if (!chunk.getBlockState(pos).is(Blocks.WATER) || !chunk.getBlockState(below).isAir()) continue;
 
                     int sample = x * 73428767 ^ y * 19349663 ^ z * 912931;
-                    if (Math.floorMod(sample, 6) != 0) {
+                    if (Math.floorMod(sample, 12) != 0) {
                         chunk.setBlockState(pos, Blocks.AIR.defaultBlockState());
                     }
                 }
