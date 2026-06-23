@@ -1,0 +1,21 @@
+{
+  "parent": "nightmare:fast_food",
+  "criteria": {
+    "get_healthy_nutrition": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.nightmare.healthy_food.description"
+    },
+    "icon": {
+      "id": "minecraft:carrot"
+    },
+    "title": {
+      "translate": "advancement.nightmare.healthy_food.title"
+    }
+  },
+  "requirements": [["get_healthy_nutrition"]],
+  "sends_telemetry_event": false
+}

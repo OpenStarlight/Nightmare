@@ -1,0 +1,28 @@
+{
+  "parent": "nightmare:first_tool",
+  "criteria": {
+    "has_crafting_table": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{
+          "items": [
+            "minecraft:crafting_table"
+          ]
+        }]
+      }
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.nightmare.origin.description"
+    },
+    "icon": {
+      "id": "minecraft:crafting_table"
+    },
+    "title": {
+      "translate": "advancement.nightmare.origin.title"
+    }
+  },
+  "requirements": [["has_crafting_table"]],
+  "sends_telemetry_event": false
+}

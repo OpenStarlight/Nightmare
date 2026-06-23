@@ -1,13 +1,16 @@
 package cn.starlight.nightmare.mixin.entity;
 
 import cn.starlight.nightmare.item.ModItems;
+import cn.starlight.nightmare.modifier.ItemModifier;
 import cn.starlight.nightmare.util.mixin.PanicPropagationMob;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.PathfinderMob;
+import net.minecraft.world.entity.SpawnGroupData;
 import net.minecraft.world.entity.ai.goal.GoalSelector;
 import net.minecraft.world.entity.ai.goal.PanicGoal;
 import net.minecraft.world.entity.ai.goal.WrappedGoal;
@@ -18,6 +21,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.ServerLevelAccessor;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -26,6 +30,7 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Mob.class)
 public abstract class MixinMob implements PanicPropagationMob {
@@ -39,6 +44,27 @@ public abstract class MixinMob implements PanicPropagationMob {
     private int nightmare$propagatedPanicTicks;
     @Unique
     private boolean nightmare$wasPanicking;
+
+    @Inject(method = "finalizeSpawn", at = @At("RETURN"))
+    private void nightmare$removeForbiddenSpawnEquipment(ServerLevelAccessor level, DifficultyInstance difficulty, EntitySpawnReason reason,
+                                                         SpawnGroupData spawnData, CallbackInfoReturnable<SpawnGroupData> cir) {
+        Mob self = (Mob)(Object)this;
+        for (EquipmentSlot slot : EquipmentSlot.values()) {
+            if (ItemModifier.isForbiddenItem(self.getItemBySlot(slot))) {
+                self.setItemSlot(slot, ItemStack.EMPTY);
+            }
+        }
+    }
+
+    @Inject(method = "wantsToPickUp", at = @At("HEAD"), cancellable = true)
+    private void nightmare$rejectForbiddenPickup(ServerLevel level, ItemStack stack, CallbackInfoReturnable<Boolean> cir) {
+        if (ItemModifier.isForbiddenItem(stack)) cir.setReturnValue(false);
+    }
+
+    @Inject(method = "equipItemIfPossible", at = @At("HEAD"), cancellable = true)
+    private void nightmare$rejectForbiddenEquipment(ServerLevel level, ItemStack stack, CallbackInfoReturnable<ItemStack> cir) {
+        if (ItemModifier.isForbiddenItem(stack)) cir.setReturnValue(stack);
+    }
 
     @Inject(method = "populateDefaultEquipmentEnchantments", at = @At("HEAD"))
     private void nightmare$addMetalSpawnEquipment(ServerLevelAccessor level, RandomSource random, DifficultyInstance difficulty, CallbackInfo ci) {

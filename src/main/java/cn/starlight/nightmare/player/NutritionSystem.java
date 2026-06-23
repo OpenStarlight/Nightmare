@@ -1,11 +1,14 @@
 package cn.starlight.nightmare.player;
 
+import cn.starlight.nightmare.NightmareMod;
 import cn.starlight.nightmare.item.ModItems;
 import cn.starlight.nightmare.player.effect.ModEffects;
 import cn.starlight.nightmare.util.RegistryUtil;
+import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.core.Holder;
 import net.minecraft.network.DisconnectionDetails;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -56,6 +59,7 @@ public class NutritionSystem {
             entry(Items.ROTTEN_FLESH, 8000, 0, 0),
             entry(Items.SPIDER_EYE, 8000, 0, 0),
             entry(Items.CARROT, 0, 16000, 0),
+            entry(Items.GOLDEN_CARROT, 0, 16000, 0),
             entry(Items.BEETROOT, 0, 16000, 0),
             entry(Items.POTATO, 0, 16000, 0),
             entry(Items.POISONOUS_POTATO, 0, 16000, 0),
@@ -106,6 +110,7 @@ public class NutritionSystem {
         if (protein < 8000) targetMalnourishedLevel++;
         if (phytonutrient < 8000) targetMalnourishedLevel++;
 
+        boolean shouldGetAdvancement = false;
         MobEffectInstance playerMalnourishedEffect = player.getEffect(ModEffects.MALNOURISHED);
         if (playerMalnourishedEffect != null) {
             int playerMalnourishedLevel = playerMalnourishedEffect.getAmplifier();
@@ -116,10 +121,19 @@ public class NutritionSystem {
                 MobEffectInstance targetMalnourishedEffect = new MobEffectInstance(ModEffects.MALNOURISHED, 1234, targetMalnourishedLevel - 1, false, false, true);
                 player.removeEffect(ModEffects.MALNOURISHED);
                 player.addEffect(targetMalnourishedEffect);
+                shouldGetAdvancement = true;
             }
         } else if (targetMalnourishedLevel != 0) {
             MobEffectInstance targetMalnourishedEffect = new MobEffectInstance(ModEffects.MALNOURISHED, 1234, targetMalnourishedLevel - 1, false, false, true);
             player.addEffect(targetMalnourishedEffect);
+            shouldGetAdvancement = true;
+        }
+
+        if (shouldGetAdvancement) {
+            AdvancementHolder advancement = player.level().getServer().getAdvancements().get(
+                    Identifier.fromNamespaceAndPath(NightmareMod.MOD_ID, "hungry"));
+            if (advancement != null) player.getAdvancements().award(advancement, "get_malnourished");
+            shouldGetAdvancement = false;
         }
 
         // 处理糖尿病
@@ -138,10 +152,23 @@ public class NutritionSystem {
                 MobEffectInstance targetDiabetesEffect = new MobEffectInstance(ModEffects.DIABETES, 1234, targetDiabetesLevel - 1, false, false, true);
                 player.removeEffect(ModEffects.DIABETES);
                 player.addEffect(targetDiabetesEffect);
+                shouldGetAdvancement = true;
             }
         } else if (targetDiabetesLevel != 0) {
             MobEffectInstance targetDiabetesEffect = new MobEffectInstance(ModEffects.DIABETES, 1234, targetDiabetesLevel - 1, false, false, true);
             player.addEffect(targetDiabetesEffect);
+            shouldGetAdvancement = true;
+        }
+
+        if (shouldGetAdvancement) {
+            AdvancementHolder advancement = player.level().getServer().getAdvancements().get(
+                    Identifier.fromNamespaceAndPath(NightmareMod.MOD_ID, "snack_enthusiast"));
+            if (advancement != null) player.getAdvancements().award(advancement, "get_diabetes");
+            if (targetDiabetesLevel >= 2) {
+                advancement = player.level().getServer().getAdvancements().get(
+                        Identifier.fromNamespaceAndPath(NightmareMod.MOD_ID, "insulin_deficiency"));
+                if (advancement != null) player.getAdvancements().award(advancement, "get_diabetes_lv3");
+            }
         }
     }
 
@@ -154,15 +181,25 @@ public class NutritionSystem {
             return;
         }
 
+        int protein = 0;
+        int phytonutrient = 0;
         int insulinResistance = 0;
         for (Map.Entry<Item, NutritionValue> entry : FOOD_NUTRITION_MAP.entrySet()) {
             if (item == entry.getKey()) {
                 proteinAttr.setBaseValue(PROTEIN.value().sanitizeValue(proteinAttr.getBaseValue() + entry.getValue().protein));
                 phytonutrientAttr.setBaseValue(PHYTONUTRIENT.value().sanitizeValue(phytonutrientAttr.getBaseValue() + entry.getValue().phytonutrient));
                 insulinResistanceAttr.setBaseValue(INSULIN_RESISTANCE.value().sanitizeValue(insulinResistanceAttr.getBaseValue() + entry.getValue().insulinResistance));
+                protein = (int) entry.getValue().protein;
+                phytonutrient = (int) entry.getValue().phytonutrient;
                 insulinResistance = (int) entry.getValue().insulinResistance;
                 break;
             }
+        }
+
+        if (protein > 0 || phytonutrient > 0) {
+            AdvancementHolder advancement = player.level().getServer().getAdvancements().get(
+                    Identifier.fromNamespaceAndPath(NightmareMod.MOD_ID, "healthy_food"));
+            if (advancement != null) player.getAdvancements().award(advancement, "get_healthy_nutrition");
         }
 
         if (insulinResistance > 0) {
@@ -172,6 +209,9 @@ public class NutritionSystem {
                 player.addEffect(new MobEffectInstance(MobEffects.NAUSEA, 400, amplifier, false, true, true));
                 if (amplifier >= 2) player.addEffect(new MobEffectInstance(MobEffects.POISON, insulinResistance / 48, amplifier - 2, false, true, true));
             }
+            AdvancementHolder advancement = player.level().getServer().getAdvancements().get(
+                    Identifier.fromNamespaceAndPath(NightmareMod.MOD_ID, "sweet_food"));
+            if (advancement != null) player.getAdvancements().award(advancement, "get_insulin_resistance");
         }
     }
 

@@ -1,0 +1,21 @@
+{
+  "parent": "nightmare:fast_food",
+  "criteria": {
+    "get_insulin_resistance": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.nightmare.sweet_food.description"
+    },
+    "icon": {
+      "id": "minecraft:sugar"
+    },
+    "title": {
+      "translate": "advancement.nightmare.sweet_food.title"
+    }
+  },
+  "requirements": [["get_insulin_resistance"]],
+  "sends_telemetry_event": false
+}

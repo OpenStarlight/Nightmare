@@ -1,0 +1,22 @@
+{
+  "parent": "nightmare:sweet_food",
+  "criteria": {
+    "get_diabetes": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "frame": "goal",
+    "description": {
+      "translate": "advancement.nightmare.snack_enthusiast.description"
+    },
+    "icon": {
+      "id": "minecraft:honey_bottle"
+    },
+    "title": {
+      "translate": "advancement.nightmare.snack_enthusiast.title"
+    }
+  },
+  "requirements": [["get_diabetes"]],
+  "sends_telemetry_event": false
+}

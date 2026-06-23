@@ -1,0 +1,22 @@
+{
+  "parent": "nightmare:healthy_food",
+  "criteria": {
+    "get_malnourished": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "frame": "goal",
+    "description": {
+      "translate": "advancement.nightmare.hungry.description"
+    },
+    "icon": {
+      "id": "minecraft:rotten_flesh"
+    },
+    "title": {
+      "translate": "advancement.nightmare.hungry.title"
+    }
+  },
+  "requirements": [["get_malnourished"]],
+  "sends_telemetry_event": false
+}

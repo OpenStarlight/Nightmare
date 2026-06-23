@@ -1,0 +1,22 @@
+{
+  "parent": "nightmare:snack_enthusiast",
+  "criteria": {
+    "get_diabetes_lv3": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "frame": "challenge",
+    "description": {
+      "translate": "advancement.nightmare.insulin_deficiency.description"
+    },
+    "icon": {
+      "id": "minecraft:honey_bottle"
+    },
+    "title": {
+      "translate": "advancement.nightmare.insulin_deficiency.title"
+    }
+  },
+  "requirements": [["get_diabetes_lv3"]],
+  "sends_telemetry_event": false
+}
