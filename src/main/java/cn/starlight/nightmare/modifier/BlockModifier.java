@@ -22,6 +22,7 @@ public class BlockModifier {
     private static final TagKey<Block> NEEDS_IRON_AXE = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(NightmareMod.MOD_ID, "needs_iron_axe"));
 
     public static void initialize() {
+        BlockUtil.modifyBlockProperties(Blocks.OBSIDIAN, 25.0F, 1200.0F);
         BlockUtil.modifyBlockProperties(Blocks.ANCIENT_DEBRIS, 15.0F, 500.0F);
         BlockUtil.modifyBlockProperties(Blocks.NETHERITE_BLOCK, 25.0F, 500.0F);
     }

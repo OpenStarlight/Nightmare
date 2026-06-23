@@ -1,0 +1,28 @@
+{
+  "parent": "nightmare:diamonds",
+  "criteria": {
+    "has_mithril": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{
+          "items": [
+            "nightmare:mithril_ingot"
+          ]
+        }]
+      }
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.nightmare.further_progress.description"
+    },
+    "icon": {
+      "id": "nightmare:mithril_ingot"
+    },
+    "title": {
+      "translate": "advancement.nightmare.further_progress.title"
+    }
+  },
+  "requirements": [["has_mithril"]],
+  "sends_telemetry_event": false
+}

@@ -1,0 +1,37 @@
+{
+  "parent": "nightmare:progress",
+  "criteria": {
+    "has_any_pickaxe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{
+          "items": [
+            "nightmare:silver_pickaxe",
+            "nightmare:rusted_iron_pickaxe",
+            "nightmare:ancient_metal_pickaxe",
+            "nightmare:mithril_pickaxe",
+            "nightmare:adamantium_pickaxe",
+            "minecraft:copper_pickaxe",
+            "minecraft:golden_pickaxe",
+            "minecraft:iron_pickaxe",
+            "minecraft:netherite_pickaxe",
+            "minecraft:diamond_pickaxe"
+          ]
+        }]
+      }
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.nightmare.time_to_mine.description"
+    },
+    "icon": {
+      "id": "minecraft:iron_pickaxe"
+    },
+    "title": {
+      "translate": "advancement.nightmare.time_to_mine.title"
+    }
+  },
+  "requirements": [["has_any_pickaxe"]],
+  "sends_telemetry_event": false
+}

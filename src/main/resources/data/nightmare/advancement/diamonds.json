@@ -1,0 +1,28 @@
+{
+  "parent": "nightmare:time_to_mine",
+  "criteria": {
+    "has_diamond": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{
+          "items": [
+            "minecraft:diamond"
+          ]
+        }]
+      }
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.nightmare.diamonds.description"
+    },
+    "icon": {
+      "id": "minecraft:diamond"
+    },
+    "title": {
+      "translate": "advancement.nightmare.diamonds.title"
+    }
+  },
+  "requirements": [["has_diamond"]],
+  "sends_telemetry_event": false
+}

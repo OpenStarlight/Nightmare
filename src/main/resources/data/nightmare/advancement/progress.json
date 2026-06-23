@@ -1,0 +1,32 @@
+{
+  "parent": "nightmare:origin",
+  "criteria": {
+    "has_any_metal": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{
+          "items": [
+            "nightmare:silver_ingot",
+            "nightmare:ancient_metal_ingot",
+            "minecraft:copper_ingot",
+            "minecraft:gold_ingot",
+            "minecraft:iron_ingot"
+          ]
+        }]
+      }
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.nightmare.progress.description"
+    },
+    "icon": {
+      "id": "minecraft:iron_ingot"
+    },
+    "title": {
+      "translate": "advancement.nightmare.progress.title"
+    }
+  },
+  "requirements": [["has_any_metal"]],
+  "sends_telemetry_event": false
+}
