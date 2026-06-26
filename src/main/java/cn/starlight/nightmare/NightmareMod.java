@@ -1,6 +1,7 @@
 package cn.starlight.nightmare;
 
 import cn.starlight.nightmare.block.ModBlocks;
+import cn.starlight.nightmare.config.NightmareConfig;
 import cn.starlight.nightmare.event.BlockEvent;
 import cn.starlight.nightmare.player.crafting.CraftingProgressTimes;
 import cn.starlight.nightmare.event.ServerEvent;
@@ -12,15 +13,16 @@ import cn.starlight.nightmare.player.NutritionSystem;
 import cn.starlight.nightmare.player.effect.ModEffects;
 import cn.starlight.nightmare.util.DebugFields;
 import cn.starlight.nightmare.util.player.PlayerUtil;
-import cn.starlight.nightmare.util.world.BlockUtil;
 import cn.starlight.nightmare.world.ModWorldGeneration;
 import cn.starlight.nightmare.event.UndergroundWorldEvent;
+import cn.starlight.nightmare.event.WorldProgressEvent;
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.arguments.BoolArgumentType;
 import com.mojang.brigadier.arguments.DoubleArgumentType;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
@@ -45,6 +47,7 @@ public class NightmareMod implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        NightmareConfig.load();
         ModBlocks.initialize();
         ModItems.initialize();
         CraftingProgressTimes.initialize();
@@ -56,6 +59,8 @@ public class NightmareMod implements ModInitializer {
 
         PayloadTypeRegistry.clientboundPlay().register(CraftingProgressPayload.TYPE, CraftingProgressPayload.CODEC);
 
+        ServerLifecycleEvents.SERVER_STARTED.register(WorldProgressEvent::load);
+        ServerLifecycleEvents.SERVER_STOPPED.register(WorldProgressEvent::reset);
         ServerTickEvents.END_SERVER_TICK.register(ServerEvent::tickPlayer);
         ServerTickEvents.END_SERVER_TICK.register(BlockEvent::tickFallingBlocks);
         ServerTickEvents.END_SERVER_TICK.register(UndergroundWorldEvent::tickHeat);

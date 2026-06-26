@@ -6,12 +6,18 @@
   "message.nightmare.command.attributeGet": "%s's [%s] is %d",
   "message.nightmare.command.itemTagGetNoItem": "Hold an item in your main hand",
   "message.nightmare.command.itemTagGet": "Item [%s] has following tags: \n%s",
+  "message.nightmare.command.locateStructureAsyncStarted": "Started searching for %s asynchronously",
+  "message.nightmare.command.locateStructureAsyncBusy": "Another structure search is still running",
+  "message.nightmare.command.locateStructureAsyncFailed": "Failed to search for %s asynchronously",
+  "message.nightmare.command.locateVillageLocked": "A mysterious force prevents them from appearing...",
   "message.nightmare.unsafe_bed": "You feel that it is not safe enough here.",
 
   "title.nightmare.config": "Nightmare Config",
   "category.nightmare.client": "Client",
+  "category.nightmare.server": "Server",
   "option.nightmare.show_general_tooltips": "Show General Tooltips",
   "option.nightmare.show_nutrition_tooltips": "Show Nutrition Tooltips",
+  "option.nightmare.async_structure_search": "Enable Async Structure Search",
 
   "item.nightmare.flint_shard": "Flint Shard",
   "item.nightmare.obsidian_shard": "Obsidian Shard",

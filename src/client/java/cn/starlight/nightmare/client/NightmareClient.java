@@ -1,6 +1,6 @@
 package cn.starlight.nightmare.client;
 
-import cn.starlight.nightmare.client.config.NightmareConfig;
+import cn.starlight.nightmare.config.NightmareConfig;
 import cn.starlight.nightmare.client.item.ItemTooltips;
 import cn.starlight.nightmare.network.CraftingProgressPayload;
 import cn.starlight.nightmare.player.crafting.CraftingProgressMenu;

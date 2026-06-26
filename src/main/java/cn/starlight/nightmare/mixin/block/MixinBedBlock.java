@@ -19,8 +19,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class MixinBedBlock {
     @Inject(method = "useWithoutItem", at = @At("HEAD"), cancellable = true)
     private void nightmare$preventUnsafeSleep(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult, CallbackInfoReturnable<InteractionResult> cir) {
-        if (!level.dimension().equals(Level.NETHER) && !UndergroundWorld.isUnderground(level)) return;
-        if (level instanceof ServerLevel) player.sendSystemMessage(Component.translatable("message.nightmare.unsafe_bed"));
+        if (!level.dimension().equals(Level.NETHER) && !level.dimension().equals(Level.END) && !UndergroundWorld.isUnderground(level)) return;
+        if (level instanceof ServerLevel) player.sendOverlayMessage(Component.translatable("message.nightmare.unsafe_bed"));
         cir.setReturnValue(InteractionResult.SUCCESS);
     }
 }

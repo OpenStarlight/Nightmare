@@ -1,6 +1,6 @@
 package cn.starlight.nightmare.client.item;
 
-import cn.starlight.nightmare.client.config.NightmareConfig;
+import cn.starlight.nightmare.config.NightmareConfig;
 import cn.starlight.nightmare.item.ModItems;
 import cn.starlight.nightmare.player.NutritionSystem;
 import cn.starlight.nightmare.util.render.StringUtil;
@@ -17,8 +17,8 @@ public class ItemTooltips {
     public static void initialize() {
         ItemTooltipCallback.EVENT.register((stack, tooltipContext, tooltipType, lines) -> {
             NightmareConfig config = NightmareConfig.get();
-            if (config.showNutritionTooltips) addNutritionTooltips(stack, lines);
-            if (config.showGeneralTooltips) addGeneralTooltips(stack, lines);
+            if (config.client.showNutritionTooltips) addNutritionTooltips(stack, lines);
+            if (config.client.showGeneralTooltips) addGeneralTooltips(stack, lines);
         });
     }
 

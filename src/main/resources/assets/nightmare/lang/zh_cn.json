@@ -6,12 +6,18 @@
   "message.nightmare.command.attributeGet": "%s的[%s]为%d",
   "message.nightmare.command.itemTagGetNoItem": "在你的主手持一个物品",
   "message.nightmare.command.itemTagGet": "物品[%s]有以下标签: \n%s",
+  "message.nightmare.command.locateStructureAsyncStarted": "已开始异步搜索%s",
+  "message.nightmare.command.locateStructureAsyncBusy": "已有一个结构搜索任务正在运行",
+  "message.nightmare.command.locateStructureAsyncFailed": "异步搜索%s失败",
+  "message.nightmare.command.locateVillageLocked": "有一股神秘的力量阻止它们出现...",
   "message.nightmare.unsafe_bed": "你感觉到这里不够安全。",
 
   "title.nightmare.config": "Nightmare 配置",
   "category.nightmare.client": "客户端",
+  "category.nightmare.server": "服务端",
   "option.nightmare.show_general_tooltips": "显示常规工具提示",
   "option.nightmare.show_nutrition_tooltips": "显示营养工具提示",
+  "option.nightmare.async_structure_search": "启用异步结构搜索",
 
   "item.nightmare.flint_shard": "燧石碎片",
   "item.nightmare.obsidian_shard": "黑曜石碎片",

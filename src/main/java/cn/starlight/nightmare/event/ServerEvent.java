@@ -4,20 +4,17 @@ import cn.starlight.nightmare.modifier.ItemModifier;
 import cn.starlight.nightmare.player.CapabilitySystem;
 import cn.starlight.nightmare.player.NutritionSystem;
 import cn.starlight.nightmare.util.player.PlayerUtil;
-import net.minecraft.core.BlockPos;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.gamerules.GameRules;
-
-import java.util.Set;
 
 public class ServerEvent {
 
     // 设置玩家属性
     public static void tickPlayer(MinecraftServer server) {
         for (ServerPlayer player : server.getPlayerList().getPlayers()) {
+            WorldProgressEvent.checkIronIngot(player);
             CapabilitySystem.handleHealth(player);
             CapabilitySystem.handleFood(player);
             CapabilitySystem.handleAir(player);
@@ -29,6 +26,8 @@ public class ServerEvent {
 
     // 检查并移除被禁止的物品
     public static void removeForbiddenItems(ServerPlayer player) {
+        WorldProgressEvent.checkIronIngot(player);
+
         int removedTotal = 0;
         for (int i = 0; i < player.getInventory().getContainerSize(); i++) {
             if (ItemModifier.isForbiddenItem(player.getInventory().getItem(i))) {

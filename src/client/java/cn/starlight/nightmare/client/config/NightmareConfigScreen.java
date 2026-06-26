@@ -1,5 +1,6 @@
 package cn.starlight.nightmare.client.config;
 
+import cn.starlight.nightmare.config.NightmareConfig;
 import me.shedaniel.clothconfig2.api.ConfigBuilder;
 import me.shedaniel.clothconfig2.api.ConfigCategory;
 import me.shedaniel.clothconfig2.api.ConfigEntryBuilder;
@@ -12,16 +13,21 @@ public class NightmareConfigScreen {
         ConfigBuilder builder = ConfigBuilder.create()
                 .setParentScreen(parent)
                 .setTitle(Component.translatable("title.nightmare.config"));
-        ConfigCategory category = builder.getOrCreateCategory(Component.translatable("category.nightmare.client"));
+        ConfigCategory clientCategory = builder.getOrCreateCategory(Component.translatable("category.nightmare.client"));
+        ConfigCategory serverCategory = builder.getOrCreateCategory(Component.translatable("category.nightmare.server"));
         ConfigEntryBuilder entryBuilder = builder.entryBuilder();
 
-        category.addEntry(entryBuilder.startBooleanToggle(Component.translatable("option.nightmare.show_general_tooltips"), config.showGeneralTooltips)
+        clientCategory.addEntry(entryBuilder.startBooleanToggle(Component.translatable("option.nightmare.show_general_tooltips"), config.client.showGeneralTooltips)
                 .setDefaultValue(true)
-                .setSaveConsumer(value -> config.showGeneralTooltips = value)
+                .setSaveConsumer(value -> config.client.showGeneralTooltips = value)
                 .build());
-        category.addEntry(entryBuilder.startBooleanToggle(Component.translatable("option.nightmare.show_nutrition_tooltips"), config.showNutritionTooltips)
+        clientCategory.addEntry(entryBuilder.startBooleanToggle(Component.translatable("option.nightmare.show_nutrition_tooltips"), config.client.showNutritionTooltips)
                 .setDefaultValue(true)
-                .setSaveConsumer(value -> config.showNutritionTooltips = value)
+                .setSaveConsumer(value -> config.client.showNutritionTooltips = value)
+                .build());
+        serverCategory.addEntry(entryBuilder.startBooleanToggle(Component.translatable("option.nightmare.async_structure_search"), config.server.asyncStructureSearch)
+                .setDefaultValue(true)
+                .setSaveConsumer(value -> config.server.asyncStructureSearch = value)
                 .build());
 
         builder.setSavingRunnable(NightmareConfig::save);
