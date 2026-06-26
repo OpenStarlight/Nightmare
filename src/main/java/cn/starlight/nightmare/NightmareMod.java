@@ -1,6 +1,7 @@
 package cn.starlight.nightmare;
 
 import cn.starlight.nightmare.block.ModBlocks;
+import cn.starlight.nightmare.event.BlockEvent;
 import cn.starlight.nightmare.player.crafting.CraftingProgressTimes;
 import cn.starlight.nightmare.event.ServerEvent;
 import cn.starlight.nightmare.item.ModItems;
@@ -11,8 +12,9 @@ import cn.starlight.nightmare.player.NutritionSystem;
 import cn.starlight.nightmare.player.effect.ModEffects;
 import cn.starlight.nightmare.util.DebugFields;
 import cn.starlight.nightmare.util.player.PlayerUtil;
+import cn.starlight.nightmare.util.world.BlockUtil;
 import cn.starlight.nightmare.world.ModWorldGeneration;
-import cn.starlight.nightmare.event.UndergroundWorldEvents;
+import cn.starlight.nightmare.event.UndergroundWorldEvent;
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.arguments.BoolArgumentType;
 import com.mojang.brigadier.arguments.DoubleArgumentType;
@@ -25,7 +27,6 @@ import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.core.Holder;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.permissions.Permissions;
 import net.minecraft.tags.TagKey;
@@ -56,7 +57,8 @@ public class NightmareMod implements ModInitializer {
         PayloadTypeRegistry.clientboundPlay().register(CraftingProgressPayload.TYPE, CraftingProgressPayload.CODEC);
 
         ServerTickEvents.END_SERVER_TICK.register(ServerEvent::tickPlayer);
-        ServerTickEvents.END_SERVER_TICK.register(UndergroundWorldEvents::tickHeat);
+        ServerTickEvents.END_SERVER_TICK.register(BlockEvent::tickFallingBlocks);
+        ServerTickEvents.END_SERVER_TICK.register(UndergroundWorldEvent::tickHeat);
         ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> ServerEvent.removeForbiddenItems(handler.player));
         ServerPlayerEvents.COPY_FROM.register(ServerEvent::restoreDeathXp);
 

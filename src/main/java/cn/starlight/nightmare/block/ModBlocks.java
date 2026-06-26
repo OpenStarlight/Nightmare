@@ -23,7 +23,7 @@ public class ModBlocks {
     public static final Block CORE = RegistryUtil.registerBlock("core", Block::new,
             BlockBehaviour.Properties.of().strength(-1.0F, 3600000.0F).noLootTable().lightLevel(state -> 15));
     public static final Block UNDERGROUND_PORTAL = RegistryUtil.registerBlock("underground_portal", properties -> new UndergroundPortalBlock(properties, Level.OVERWORLD, UndergroundWorld.LEVEL),
-            BlockBehaviour.Properties.of().noCollision().noLootTable().lightLevel(state -> 11));
+            BlockBehaviour.Properties.of().noCollision().noLootTable().lightLevel(state -> 11).sound(SoundType.GLASS));
     // Plants
     public static final Block BLUE_BERRY_BUSH = RegistryUtil.registerBlock("blue_berry_bush", BlueBerryBushBlock::new,
             BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).randomTicks().instabreak().noCollision().sound(SoundType.SWEET_BERRY_BUSH).pushReaction(PushReaction.DESTROY),

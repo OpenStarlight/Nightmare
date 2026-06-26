@@ -129,6 +129,7 @@ public class NutritionSystem {
             shouldGetAdvancement = true;
         }
 
+        // 成就
         if (shouldGetAdvancement) {
             AdvancementHolder advancement = player.level().getServer().getAdvancements().get(
                     Identifier.fromNamespaceAndPath(NightmareMod.MOD_ID, "hungry"));
@@ -160,6 +161,7 @@ public class NutritionSystem {
             shouldGetAdvancement = true;
         }
 
+        // 成就
         if (shouldGetAdvancement) {
             AdvancementHolder advancement = player.level().getServer().getAdvancements().get(
                     Identifier.fromNamespaceAndPath(NightmareMod.MOD_ID, "snack_enthusiast"));
@@ -196,12 +198,14 @@ public class NutritionSystem {
             }
         }
 
+        // 成就
         if (protein > 0 || phytonutrient > 0) {
             AdvancementHolder advancement = player.level().getServer().getAdvancements().get(
                     Identifier.fromNamespaceAndPath(NightmareMod.MOD_ID, "healthy_food"));
             if (advancement != null) player.getAdvancements().award(advancement, "get_healthy_nutrition");
         }
 
+        // 处理糖尿病时吃甜食
         if (insulinResistance > 0) {
             MobEffectInstance diabetes = player.getEffect(ModEffects.DIABETES);
             if (diabetes != null) {

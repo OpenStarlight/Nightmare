@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public class UndergroundWorldEvents {
+public class UndergroundWorldEvent {
     private static final Map<UUID, Integer> HEAT_TICKS = new HashMap<>();
 
     public static void tickHeat(MinecraftServer server) {

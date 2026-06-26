@@ -3,6 +3,7 @@ package cn.starlight.nightmare.modifier;
 import cn.starlight.nightmare.NightmareMod;
 import cn.starlight.nightmare.util.item.ItemUtil;
 import cn.starlight.nightmare.util.item.ToolLevel;
+import cn.starlight.nightmare.util.world.BlockFallingRule;
 import cn.starlight.nightmare.util.world.BlockUtil;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
@@ -22,9 +23,24 @@ public class BlockModifier {
     private static final TagKey<Block> NEEDS_IRON_AXE = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(NightmareMod.MOD_ID, "needs_iron_axe"));
 
     public static void initialize() {
-        BlockUtil.modifyBlockProperties(Blocks.OBSIDIAN, 25.0F, 1200.0F);
+        BlockUtil.modifyBlockProperties(Blocks.OBSIDIAN, 15.0F, 1200.0F);
+        BlockUtil.modifyBlockProperties(Blocks.CRYING_OBSIDIAN, 15.0F, 1200.0F);
+        BlockUtil.modifyBlockProperties(Blocks.ENDER_CHEST, 15.0F, 1200.0F);
         BlockUtil.modifyBlockProperties(Blocks.ANCIENT_DEBRIS, 15.0F, 500.0F);
         BlockUtil.modifyBlockProperties(Blocks.NETHERITE_BLOCK, 25.0F, 500.0F);
+
+        Block[] strictFalling = new Block[]{
+                Blocks.DIRT, Blocks.COARSE_DIRT, Blocks.ROOTED_DIRT, Blocks.GRASS_BLOCK, Blocks.PODZOL, Blocks.MYCELIUM, Blocks.DIRT_PATH, Blocks.FARMLAND,
+                Blocks.MUD, Blocks.MUDDY_MANGROVE_ROOTS, Blocks.MOSS_BLOCK, Blocks.PALE_MOSS_BLOCK
+        };
+        for (Block block : strictFalling) BlockUtil.setBlockFallingRule(block, BlockFallingRule.STRICT_FALLING);
+
+        Block[] stable = new Block[]{
+                Blocks.COMMAND_BLOCK, Blocks.REPEATING_COMMAND_BLOCK, Blocks.CHAIN_COMMAND_BLOCK, Blocks.STRUCTURE_BLOCK, Blocks.STRUCTURE_VOID, Blocks.BARRIER,
+                Blocks.JIGSAW, Blocks.TEST_BLOCK, Blocks.TEST_INSTANCE_BLOCK, Blocks.LIGHT, Blocks.BEDROCK, Blocks.END_PORTAL, Blocks.END_PORTAL_FRAME, Blocks.END_GATEWAY,
+                Blocks.NETHER_PORTAL, Blocks.SCAFFOLDING
+        };
+        for (Block block : stable) BlockUtil.setBlockFallingRule(block, BlockFallingRule.STABLE);
     }
 
     public static void addToolRequirement(Block block, TagKey<Item> tagKey, ToolLevel toolLevel) {

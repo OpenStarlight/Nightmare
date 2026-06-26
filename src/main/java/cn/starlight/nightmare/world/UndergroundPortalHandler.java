@@ -17,7 +17,6 @@ import java.util.Optional;
 public class UndergroundPortalHandler {
     private static final int PORTAL_SEARCH_RADIUS = 32;
     private static final int EXIT_SEARCH_RADIUS = 16;
-    private static final int EXIT_SEARCH_HEIGHT = 16;
 
     public static boolean tryCreatePortal(Level level, BlockPos ignitionPos) {
         if (!level.dimension().equals(Level.OVERWORLD) && !UndergroundWorld.isUnderground(level)) return false;
